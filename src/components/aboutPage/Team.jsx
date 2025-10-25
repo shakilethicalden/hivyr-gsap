@@ -1,0 +1,131 @@
+"use client";
+import React, { useEffect, useRef } from "react";
+import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Team() {
+  const sectionRef = useRef(null);
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      cardRefs.current.forEach((card) => {
+        const tiles = card.querySelectorAll(".tile");
+
+        // initial state
+        gsap.set(tiles, { opacity: 1, scale: 1 });
+
+        // reveal animation with ScrollTrigger
+        gsap.to(tiles, {
+          opacity: 0,
+          scale: 1.1,
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: { each: 0.1, from: "random" },
+          scrollTrigger: {
+            trigger: card,
+            start: "top 5%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const team = [
+    {
+      name: "Colby Adcock",
+      title: "CEO & Co-founder",
+      img: "/images/about/ceo.avif",
+      linkedin: "#",
+      twitter: "#",
+    },
+    {
+      name: "Collin Otis",
+      title: "CTO & Co-founder",
+      img: "/images/about/co.avif",
+      linkedin: "#",
+      twitter: "#",
+    },
+  ];
+
+  return (
+    <section
+      ref={sectionRef}
+      className="bg-black text-white py-24 px-6 md:px-16 lg:px-28 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Heading */}
+        <div className="mb-14">
+          <p className="text-sm text-gray-400 uppercase tracking-widest">
+            Meet the Team
+          </p>
+          <h2 className="text-4xl md:text-5xl font-semibold mt-2">Leadership</h2>
+        </div>
+
+        {/* Team Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {team.map((member, i) => (
+            <div key={i} className="group" ref={(el) => (cardRefs.current[i] = el)}>
+              <div className="relative w-full h-[520px] rounded-2xl overflow-hidden">
+                {/* Single full image */}
+                <Image src={member.img} alt={member.name} fill className="object-cover" />
+
+                {/* 9 tile masks overlay for animation */}
+                {Array.from({ length: 9 }).map((_, idx) => {
+                  const col = idx % 3;
+                  const row = Math.floor(idx / 3);
+
+                  return (
+                    <div
+                      key={idx}
+                      className="tile absolute bg-black"
+                      style={{
+                        top: `${row * 33.3333}%`,
+                        left: `${col * 33.3333}%`,
+                        width: "34%",
+                        height: "34%",
+                      }}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Text Info */}
+              <div className="mt-5">
+                <h3 className="text-lg font-semibold">{member.name}</h3>
+                <p className="text-gray-400 text-sm">{member.title}</p>
+
+                <div className="flex items-center gap-5 mt-3 text-sm uppercase tracking-wider">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    className="flex items-center gap-2 hover:text-gray-200 transition-all"
+                  >
+                    <FaLinkedinIn />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href={member.twitter}
+                    target="_blank"
+                    className="flex items-center gap-2 hover:text-gray-200 transition-all"
+                  >
+                    <FaXTwitter />
+                    <span>X</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

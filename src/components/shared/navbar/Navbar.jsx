@@ -13,6 +13,13 @@ export default function Navbar() {
     const tl = useRef(null);
     const iconTl = useRef(null);
 
+    const getHref = (text) => {
+        const clean = text.replace(/\s*\+/, "").trim().toLowerCase();
+        if (clean === "log in") return "/login";
+        if (clean === "contact") return "/contact";
+        return `/${clean.replace(/\s+/g, "-")}`;
+    };
+
     useEffect(() => {
         // Menu slide animation
         tl.current = gsap.timeline({ paused: true });
@@ -89,44 +96,46 @@ export default function Navbar() {
         });
     }, []);
 
+    const navItems = ["Products", "Agents", "Services +", "About", "Pricing"];
+
     return (
         <nav className="w-full flex items-center justify-between px-6 py-4 relative z-50 bg-transparent">
             {/* Logo */}
             <div className="flex items-center w-32 z-50">
-                <Image
-                    src="/images/logo/logo.png"
-                    alt="Logo"
-                    width={800}
-                    height={800}
-                    className="object-contain"
-                    priority
-                />
+                <Link href="/">
+                    <Image
+                        src="/images/logo/logo.png"
+                        alt="Logo"
+                        width={800}
+                        height={800}
+                        className="object-contain"
+                        priority
+                    />
+                </Link>
             </div>
 
             {/* Desktop Links */}
             <div className="hidden lg:flex flex-1 bg-black text-white items-center justify-between lg:px-6 xl:px-12 py-5 lg:ml-2 xl:ml-5 2xl:ml-8">
                 <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide">
-                    {["Products", "Agents", "Services +", "About", "Pricing"].map(
-                        (text, index) => (
-                            <li key={index} className="relative">
-                                <Link
-                                    href="#"
-                                    ref={(el) => (linkRefs.current[index] = el)}
-                                    className="relative inline-block pb-1"
-                                >
-                                    {text}
-                                    <span
-                                        ref={(el) => (underlineRefs.current[index] = el)}
-                                        className="absolute left-0 bottom-0 h-[1px] w-full bg-white scale-x-0"
-                                    ></span>
-                                </Link>
-                            </li>
-                        )
-                    )}
+                    {navItems.map((text, index) => (
+                        <li key={index} className="relative">
+                            <Link
+                                href={getHref(text)}
+                                ref={(el) => (linkRefs.current[index] = el)}
+                                className="relative inline-block pb-1"
+                            >
+                                {text}
+                                <span
+                                    ref={(el) => (underlineRefs.current[index] = el)}
+                                    className="absolute left-0 bottom-0 h-[1px] w-full bg-white scale-x-0"
+                                ></span>
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
 
                 <Link
-                    href="#"
+                    href={getHref("Log In")}
                     ref={(el) => (linkRefs.current[5] = el)}
                     className="relative inline-block pb-1 lg:text-sm xl:text-lg"
                 >
@@ -139,9 +148,8 @@ export default function Navbar() {
             </div>
 
             {/* Contact button for desktop */}
-            <div className="hidden lg:block bg-white text-gray-800 px-8 lg:py-5 xl:py-6 cursor-pointer hover:bg-black  hover:text-white transition-all duration-300">
-                <Link href="#"
-                className="relative inline-block text-sm font-medium">
+            <div className="hidden lg:block bg-white text-gray-800 px-8 lg:py-5 xl:py-6 cursor-pointer hover:bg-black hover:text-white transition-all duration-300">
+                <Link href={getHref("Contact")} className="relative inline-block text-sm font-medium">
                     Contact
                 </Link>
             </div>
@@ -168,28 +176,32 @@ export default function Navbar() {
             >
                 <div>
                     <ul className="space-y-6 text-xl md:text-2xl font-light mt-40">
-                        {["Products", "Agents", "Services +", "About", "Pricing"].map(
-                            (text, index) => (
-                                <li key={index} className="menu-item">
-                                    <Link
-                                        href="#"
-                                        className="hover:text-gray-400 transition-colors duration-300"
-                                    >
-                                        {text}
-                                    </Link>
-                                </li>
-                            )
-                        )}
+                        {navItems.map((text, index) => (
+                            <li key={index} className="menu-item">
+                                <Link
+                                    href={getHref(text)}
+                                    className="hover:text-gray-400 transition-colors duration-300"
+                                >
+                                    {text}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
                 <div className="flex">
-                    <button className="w-1/2 bg-[#fdd204] py-4 text-black text-lg menu-item">
+                    <Link
+                        href={getHref("Log In")}
+                        className="w-1/2 bg-[#fdd204] py-4 text-black text-lg text-center menu-item"
+                    >
                         Log In
-                    </button>
-                    <button className="w-1/2 bg-[#fff] py-4 text-black text-lg menu-item">
+                    </Link>
+                    <Link
+                        href={getHref("Contact")}
+                        className="w-1/2 bg-[#fff] py-4 text-black text-lg text-center menu-item"
+                    >
                         Contact
-                    </button>
+                    </Link>
                 </div>
             </div>
         </nav>
