@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../shared/navbar/Navbar';
 import Footer from '../shared/footer/Footer';
 import ProductBanner from './ProductBanner';
-import ProductBannerImg from './ProductBannerImg';
+import ProductBannerImg from './ProductArea2.jsx';
 import Testimonials from '../testimonial/Testimonial';
 import ProductArea from './ProductArea';
 
