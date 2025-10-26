@@ -4,6 +4,7 @@ import ServiceArea from './ServiceArea';
 import ClientSection from '../clients/ClientSection';
 import Footer from '../shared/footer/Footer';
 import ServiceBanner from './ServiceBanner';
+import CTA from '../homePage/cta/CTA';
 
 const ServiceHome = () => {
     return (
@@ -14,6 +15,7 @@ const ServiceHome = () => {
             <ServiceBanner />
             <ServiceArea />
             <ClientSection />
+            <CTA />
             <Footer />
         </div>
     );
