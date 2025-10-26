@@ -11,66 +11,55 @@ export default function AboutArea() {
   const leftTextRef = useRef(null);
   const rightTextRefs = useRef([]);
 
-  // 🔠 Scramble Function (independent per element)
+  // 🔠 Scramble Function
   const scrambleText = (finalText, element) => {
     const chars =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()";
-    const totalFrames = 25;
+    const totalFrames = Math.max(30, finalText.length);
     let frame = 0;
     const revealProgress = Array(finalText.length).fill(false);
 
-    const scramble = () => {
+    const animate = () => {
       let displayed = "";
       for (let i = 0; i < finalText.length; i++) {
-        if (revealProgress[i]) {
-          displayed += finalText[i];
-        } else {
-          displayed += chars[Math.floor(Math.random() * chars.length)];
-        }
+        displayed += revealProgress[i]
+          ? finalText[i]
+          : chars[Math.floor(Math.random() * chars.length)];
       }
       element.textContent = displayed;
-      frame++;
 
-      if (frame < totalFrames) {
-        const progress = frame / totalFrames;
-        for (let i = 0; i < finalText.length; i++) {
-          if (Math.random() < progress) revealProgress[i] = true;
-        }
-        requestAnimationFrame(scramble);
-      } else {
-        element.textContent = finalText;
+      frame++;
+      const progress = frame / totalFrames;
+      for (let i = 0; i < finalText.length; i++) {
+        if (!revealProgress[i] && Math.random() < progress) revealProgress[i] = true;
       }
+
+      if (frame < totalFrames) requestAnimationFrame(animate);
+      else element.textContent = finalText; // ensures original text ends correctly
     };
 
-    scramble();
+    animate();
+  };
+
+  // 🔹 Trigger scramble for all texts
+  const triggerScramble = (el) => {
+    if (!el) return;
+    const originalText = el.dataset.text; // store original text in data-text
+    scrambleText(originalText, el);
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const section = sectionRef.current;
 
-      // 🎯 Left Side Scramble
+      // LEFT SIDE SCRAMBLE
       const leftEl = leftTextRef.current;
-      const leftText = leftEl.textContent;
-      leftEl.textContent = "";
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        onEnter: () => scrambleText(leftText, leftEl),
-      });
+      triggerScramble(leftEl);
 
-      // 📜 Right Side Paragraph Scrambles
-      rightTextRefs.current.forEach((el) => {
-        const original = el.textContent;
-        el.textContent = "";
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top 85%",
-          onEnter: () => scrambleText(original, el),
-        });
-      });
+      // RIGHT SIDE SCRAMBLES
+      rightTextRefs.current.forEach((el) => triggerScramble(el));
 
-      // 📌 Pin Left Side when Section hits top
+      // PIN LEFT AREA
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
@@ -99,7 +88,8 @@ export default function AboutArea() {
           </p>
           <h2
             ref={leftTextRef}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-snug"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-snug inline-block"
+            data-text="Building the Robotic Foundation Model for Defense"
           >
             Building the Robotic Foundation Model for Defense
           </h2>
@@ -117,7 +107,8 @@ export default function AboutArea() {
             <p
               key={i}
               ref={(el) => (rightTextRefs.current[i] = el)}
-              className="opacity-90"
+              className="opacity-90 inline-block"
+              data-text={para}
             >
               {para}
             </p>
