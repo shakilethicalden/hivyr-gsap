@@ -28,29 +28,34 @@ export default function ProductArea() {
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    const pinCards = cardsRef.current.slice(0, 3); // first 3 cards to pin
-    const lastCard = cardsRef.current[3]; // last card
+    if (!cardsRef.current) return;
+
+    const pinCards = cardsRef.current.slice(0, 3);
+    const lastCard = cardsRef.current[3];
+
+    // Kill any existing ScrollTriggers to avoid duplicates
+    ScrollTrigger.getAll().forEach((st) => st.kill());
 
     pinCards.forEach((card, index) => {
+      if (!card || !lastCard) return;
+
       ScrollTrigger.create({
         trigger: card,
         start: "top top",
-        endTrigger: lastCard,       // pin until last card hits top
+        endTrigger: lastCard,
         end: "top top",
         pin: true,
         pinSpacing: true,
       });
     });
 
-    // Optional: ScrollTrigger for last card to know when to release pins
-    ScrollTrigger.create({
-      trigger: lastCard,
-      start: "top top",
-      onEnter: () => {
-        // release all pins (if needed)
-        pinCards.forEach((card) => ScrollTrigger.getById(card._gsId)?.kill());
-      },
-    });
+    // Force ScrollTrigger to refresh layout calculations
+    ScrollTrigger.refresh();
+
+    // Optional: cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
   }, []);
 
   return (
