@@ -5,6 +5,8 @@ import ProductBanner from './ProductBanner';
 import ProductBannerImg from './ProductArea2.jsx';
 import Testimonials from '../testimonial/Testimonial';
 import ProductArea from './ProductArea';
+import ProductArea2 from './ProductArea2.jsx';
+import ServiceArea from '../servicePage/ServiceArea';
 
 
 const ProductHome = () => {
@@ -14,7 +16,7 @@ const ProductHome = () => {
                 <Navbar />
             </div>
             <ProductBanner />
-            <ProductBannerImg />
+            <ProductArea2 />
             <ProductArea />
             <Testimonials />
             <Footer />
