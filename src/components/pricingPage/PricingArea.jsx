@@ -20,6 +20,7 @@ const plans = [
             "Basic reporting and analytics",
             "Up to 10 individual users",
             "20GB individual data each user",
+            "20GB individual data each user",
         ],
     },
     {
