@@ -18,7 +18,7 @@ const AgentBanner = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center items-center">
+    <section className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center items-center lg:-mt-26">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -46,7 +46,7 @@ const AgentBanner = () => {
       </div>
 
       {/* Moving Text (Slightly Higher in View) */}
-      <div className="absolute bottom-24 left-0 w-full overflow-hidden">
+      <div className="absolute bottom-5 left-0 w-full overflow-hidden">
         <div
           ref={marqueeRef}
           className="flex whitespace-nowrap text-[100px] md:text-[140px] font-extrabold text-white uppercase tracking-wider"

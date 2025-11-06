@@ -108,7 +108,7 @@ const HoverCard = ({ title, description, image }) => {
 
             {/* Text Content */}
             <div className="relative z-10 p-8 flex flex-col justify-end h-full">
-                <h3 className="text-xl font-semibold group-hover:text-white group-hover:translate-y-2 transition-all duration-500 ease-in-out">
+                <h3 className="text-xl font-semibold group-hover:text-white group-hover:translate-y-16 transition-all duration-500 ease-in-out">
                     {title}
                 </h3>
                 <p className="text-[#6e655d] text-sm mt-2 leading-relaxed group-hover:opacity-0 transition-opacity duration-400 ease-in-out">

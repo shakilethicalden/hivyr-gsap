@@ -8,22 +8,18 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const agentCards = [
-  {
-    image: "/images/ai-agents/agent.jpg",
-    text: "AI Workflow Optimization",
-  },
-  {
-    image: "/images/ai-agents/agent.jpg",
-    text: "Customer Support Automation",
-  },
-  {
-    image: "/images/ai-agents/agent.jpg",
-    text: "Data-driven Decision Making",
-  },
-  {
-    image: "/images/ai-agents/agent.jpg",
-    text: "Task Scheduling & Management",
-  },
+  { image: "/images/ai-agents/agent.jpg", text: "AI Workflow Optimization" },
+  { image: "/images/ai-agents/agent.jpg", text: "Customer Support Automation" },
+  { image: "/images/ai-agents/agent.jpg", text: "Data-driven Decision Making" },
+  { image: "/images/ai-agents/agent.jpg", text: "Task Scheduling & Management" },
+  { image: "/images/ai-agents/agent.jpg", text: "AI-driven Research Assistant" },
+  { image: "/images/ai-agents/agent.jpg", text: "Predictive Analytics Engine" },
+  { image: "/images/ai-agents/agent.jpg", text: "Voice Command Integration" },
+  { image: "/images/ai-agents/agent.jpg", text: "Customer Data Processing" },
+  { image: "/images/ai-agents/agent.jpg", text: "Automated Report Generation" },
+  { image: "/images/ai-agents/agent.jpg", text: "Content Recommendation System" },
+  { image: "/images/ai-agents/agent.jpg", text: "Workflow Streamlining Agent" },
+  { image: "/images/ai-agents/agent.jpg", text: "Sales Lead Intelligence" },
 ];
 
 const AgentArea = () => {
@@ -33,14 +29,9 @@ const AgentArea = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title Reveal Animation (bottom to top)
       gsap.fromTo(
         titleRef.current,
-        {
-          y: 80,
-          opacity: 0,
-          clipPath: "inset(100% 0% 0% 0%)",
-        },
+        { y: 80, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
         {
           y: 0,
           opacity: 1,
@@ -50,19 +41,13 @@ const AgentArea = () => {
           scrollTrigger: {
             trigger: titleRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse",
           },
         }
       );
 
-      // Paragraph Reveal Animation (top to bottom)
       gsap.fromTo(
         paragraphRef.current,
-        {
-          y: -40,
-          opacity: 0,
-          clipPath: "inset(0% 0% 100% 0%)",
-        },
+        { y: -40, opacity: 0, clipPath: "inset(0% 0% 100% 0%)" },
         {
           y: 0,
           opacity: 1,
@@ -73,14 +58,18 @@ const AgentArea = () => {
           scrollTrigger: {
             trigger: paragraphRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse",
           },
         }
       );
     });
-
     return () => ctx.revert();
   }, []);
+
+  // Split cards into chunks of 4 for multiple rows
+  const chunkedCards = [];
+  for (let i = 0; i < agentCards.length; i += 4) {
+    chunkedCards.push(agentCards.slice(i, i + 4));
+  }
 
   return (
     <section className="w-full py-20 bg-white overflow-hidden">
@@ -106,46 +95,63 @@ const AgentArea = () => {
           </p>
         </div>
 
-        {/* Card Row with Hover Animation */}
-        <div className="flex flex-col sm:flex-row gap-6 transition-all duration-700">
-          {agentCards.map((card, index) => (
+        {/* Rows of Cards */}
+        <div className="flex flex-col gap-6">
+          {chunkedCards.map((row, rowIndex) => (
             <div
-              key={index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className={`
-                relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-in-out
-                ${hoveredIndex === index ? "flex-[1.4]" : hoveredIndex !== null ? "flex-[0.9]" : "flex-1"}
-                h-[430px]
-              `}
+              key={rowIndex}
+              className="flex flex-col sm:flex-row gap-6 transition-all duration-700"
             >
-              <div className="relative w-full h-full">
-                <Image
-                  src={card.image}
-                  alt={card.text}
-                  fill
-                  className={`
-                    object-cover transition-transform duration-700 ease-in-out
-                    ${hoveredIndex === index ? "scale-95" : "scale-100"}
-                  `}
-                />
-                {/* Text Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5 transition-all duration-700">
-                  <p className="text-white text-lg font-semibold">
-                    {card.text}
-                  </p>
-                </div>
+              {row.map((card, index) => {
+                // Calculate unique index per card
+                const cardIndex = rowIndex * 4 + index;
 
-                {/* Hover Button */}
-                <div
-                  className={`absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-all duration-500
-                    ${hoveredIndex === index ? "opacity-100" : "opacity-0"}`}
-                >
-                  <button className="flex items-center gap-2 bg-white text-black font-semibold px-5 py-3 rounded-full transition-all duration-500 hover:bg-gray-200">
-                    Use Agent <ArrowRight size={18} />
-                  </button>
-                </div>
-              </div>
+                return (
+                  <div
+                    key={cardIndex}
+                    onMouseEnter={() => setHoveredIndex(cardIndex)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-in-out
+                      ${
+                        hoveredIndex === cardIndex
+                          ? "flex-[1.4]"
+                          : hoveredIndex !== null &&
+                            Math.floor(hoveredIndex / 4) === rowIndex
+                          ? "flex-[0.9]"
+                          : "flex-1"
+                      }
+                      h-[430px]
+                    `}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={card.image}
+                        alt={card.text}
+                        fill
+                        className={`object-cover transition-transform duration-700 ease-in-out
+                          ${hoveredIndex === cardIndex ? "scale-95" : "scale-100"}
+                        `}
+                      />
+                      {/* Text Overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5 transition-all duration-700">
+                        <p className="text-white text-lg font-semibold">
+                          {card.text}
+                        </p>
+                      </div>
+
+                      {/* Hover Button */}
+                      <div
+                        className={`absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-all duration-500
+                          ${hoveredIndex === cardIndex ? "opacity-100" : "opacity-0"}`}
+                      >
+                        <button className="flex items-center gap-2 bg-white text-black font-semibold px-5 py-3 rounded-full transition-all duration-500 hover:bg-gray-200">
+                          Use Agent <ArrowRight size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>

@@ -17,7 +17,7 @@ const Service = () => {
   const cardRefs = useRef([]);
 
   useEffect(() => {
-    // ✅ Disable sticky animation for <1024px screens
+    //  Disable sticky animation for <1024px screens
     if (window.innerWidth < 1024) return;
 
     const cards = cardRefs.current;

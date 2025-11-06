@@ -9,7 +9,7 @@ import CTA from '../homePage/cta/CTA';
 const ServiceHome = () => {
     return (
         <div>
-            <div className='max-w-7xl mx-auto'>
+            <div className='px-4 sm:px-8 lg:px-16'>
                 <Navbar />
             </div>
             <ServiceBanner />

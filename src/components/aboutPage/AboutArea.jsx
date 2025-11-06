@@ -100,9 +100,6 @@ export default function AboutArea() {
           {[
             "The fundamental problem isn’t hardware, it’s intelligence. Robots aren’t pervasive today because they’re unintelligent. Most autonomy systems are brittle, limited, and disconnected from the real-world complexity that warfighters face.",
             "To unlock truly transformative capability, we need robots that think, adapt, and act with human-level intelligence. That’s why we’re building Fury, the first foundation model for defense robotics: an embodied AI brain that allows machines to perceive the world, understand natural language, and coordinate action autonomously across any domain.",
-            "Fury represents a new paradigm: a multimodal, mission-adaptive foundation model trained not just to talk, but to do. It enables operators to command fleets of intelligent systems seamlessly, expanding human capability in the field.",
-            "This shift marks the evolution from traditional automation to intelligent autonomy — bridging human insight with machine execution for defense innovation.",
-            "Our mission is to redefine autonomy by merging technology and intelligence to create truly adaptable robotic systems."
           ].map((para, i) => (
             <p
               key={i}

@@ -66,7 +66,7 @@ export default function ProductArea() {
           {/* Row 1 */}
           <div
             ref={(el) => (cardsRef.current[0] = el)}
-            className="p-8 sm:p-12 flex flex-col justify-between border border-gray-300 bg-white text-gray-900  rounded-sm  col-span-1 "
+            className="p-8 sm:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900  rounded-sm  col-span-1 "
           >
             <p className="text-base sm:text-lg text-gray-700 mb-6 font-light">
               {contentCards[0].topText}
@@ -81,7 +81,7 @@ export default function ProductArea() {
           <div className="col-span-1 bg-white"></div>
           <div
             ref={(el) => (cardsRef.current[1] = el)}
-            className="p-8 sm:p-12 flex flex-col justify-between border border-gray-300 bg-white text-gray-900  rounded-sm  col-span-1 "
+            className="p-8 sm:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900  rounded-sm  col-span-1 "
           >
             <p className="text-base sm:text-lg text-gray-700 mb-6 font-light">
               {contentCards[1].topText}
@@ -96,7 +96,7 @@ export default function ProductArea() {
           <div className="col-span-2 bg-white"></div>
           <div
             ref={(el) => (cardsRef.current[2] = el)}
-            className="p-8 sm:p-12 flex flex-col justify-between border border-gray-300 bg-white text-gray-900  rounded-sm  col-span-1 "
+            className="p-8 sm:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900  rounded-sm  col-span-1 "
           >
             <p className="text-base sm:text-lg text-gray-700 mb-6 font-light">
               {contentCards[2].topText}
@@ -111,7 +111,7 @@ export default function ProductArea() {
           <div className="col-span-3 bg-white"></div>
           <div
             ref={(el) => (cardsRef.current[3] = el)}
-            className="p-8 sm:p-12 flex flex-col justify-between border border-gray-300 bg-white text-gray-900  rounded-sm  col-span-1 "
+            className="p-8 sm:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900  rounded-sm  col-span-1 "
           >
             <p className="text-base sm:text-lg text-gray-700 mb-6 font-light">
               {contentCards[3].topText}

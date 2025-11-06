@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
 
 const topLeftCard = {
   title: "Voice AI Agent",
@@ -54,6 +55,102 @@ const bottomCards = [
   },
 ];
 
+const HoverCard = ({ image, title, distance, subtitle, height }) => {
+  const cardRef = useRef(null);
+  const overlayRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    const overlay = overlayRef.current;
+    const img = imageRef.current;
+
+    const handleEnter = () => {
+      gsap.to(img, {
+        scale: 1.15,
+        duration: 1.2,
+        ease: "power3.out",
+      });
+
+      gsap.fromTo(
+        overlay,
+        { scale: 0, opacity: 0 },
+        {
+          scale: 3.8,
+          opacity: 0.65,
+          duration: 1.1,
+          ease: "power4.out",
+          transformOrigin: "center center",
+        }
+      );
+    };
+
+    const handleLeave = () => {
+      gsap.to(img, {
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.inOut",
+      });
+
+      gsap.to(overlay, {
+        scale: 0,
+        opacity: 0,
+        duration: 1,
+        ease: "expo.inOut",
+      });
+    };
+
+    card.addEventListener("mouseenter", handleEnter);
+    card.addEventListener("mouseleave", handleLeave);
+
+    return () => {
+      card.removeEventListener("mouseenter", handleEnter);
+      card.removeEventListener("mouseleave", handleLeave);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`relative rounded-2xl overflow-hidden shadow-lg ${height}`}
+    >
+      <Image
+        ref={imageRef}
+        src={image}
+        alt={title}
+        width={400}
+        height={300}
+        className="w-full h-full object-cover"
+      />
+
+      {/* Smooth circular expanding overlay */}
+      <div
+        ref={overlayRef}
+        className="absolute inset-0 bg-black scale-0 opacity-0"
+        style={{
+          borderRadius: "50%",
+          width: "200%",
+          height: "200%",
+          top: "50%",
+          left: "50%",
+          translate: "-50% -50%",
+          transformOrigin: "center center",
+        }}
+      ></div>
+
+      {/* Text Content */}
+      <div className="absolute top-4 left-4 text-white text-sm font-medium flex items-center gap-2 z-10">
+        <span className="w-2 h-2 bg-white rounded-full"></span>
+        {title}
+      </div>
+      <div className="absolute bottom-5 left-5 text-white z-10">
+        <p className="text-3xl font-semibold">{distance}</p>
+        <p className="text-sm">{subtitle}</p>
+      </div>
+    </div>
+  );
+};
+
 const ProductArea2 = () => {
   return (
     <section className="py-24">
@@ -64,70 +161,27 @@ const ProductArea2 = () => {
         </h2>
 
         {/* Top Section */}
-        <div className="grid grid-cols-5 gap-6 items-end">
-          {/* Top Left */}
-          <div className="relative col-span-1 h-[320px] rounded-2xl overflow-hidden shadow-lg">
-            <Image src={topLeftCard.image} alt={topLeftCard.title} fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/40"></div>
-            <div className="absolute top-4 left-4 text-white text-sm font-medium flex items-center gap-2">
-              <span className="w-2 h-2 bg-white rounded-full"></span>
-              {topLeftCard.title}
-            </div>
-            <div className="absolute bottom-5 left-5 text-white">
-              <p className="text-3xl font-semibold">{topLeftCard.distance}</p>
-              <p className="text-sm">{topLeftCard.subtitle}</p>
-            </div>
-          </div>
+        <div className="grid grid-cols-5 gap-6 items-end mt-10">
+          <HoverCard {...topLeftCard} height="h-[320px]" />
 
           {/* Center Text */}
           <div className="col-span-3 text-center self-start mt-12">
             <p className="text-[#6e655d] mb-8 leading-relaxed max-w-md mx-auto">
-              Discover our suite of AI-powered solutions designed to enhance productivity, streamline workflows, and provide intelligent insights in real time.
+              Discover our suite of AI-powered solutions designed to enhance productivity,
+              streamline workflows, and provide intelligent insights in real time.
             </p>
             <button className="bg-[#2e2a27] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#403a35] transition">
               Explore Products
             </button>
           </div>
 
-          {/* Top Right */}
-          <div className="relative col-span-1 h-[320px] rounded-2xl overflow-hidden shadow-lg">
-            <Image src={topRightCard.image} alt={topRightCard.title} fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/40"></div>
-            <div className="absolute top-4 left-4 text-white text-sm font-medium flex items-center gap-2">
-              <span className="w-2 h-2 bg-white rounded-full"></span>
-              {topRightCard.title}
-            </div>
-            <div className="absolute bottom-5 left-5 text-white">
-              <p className="text-3xl font-semibold">{topRightCard.distance}</p>
-              <p className="text-sm">{topRightCard.subtitle}</p>
-            </div>
-          </div>
+          <HoverCard {...topRightCard} height="h-[320px]" />
         </div>
 
         {/* Bottom Section */}
         <div className="grid grid-cols-5 gap-6 -mt-10 items-end">
           {bottomCards.map((item, idx) => (
-            <div
-              key={idx}
-              className={`relative rounded-2xl overflow-hidden shadow-lg ${item.height}`}
-            >
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={400}
-                height={300}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/40"></div>
-              <div className="absolute top-4 left-4 text-white text-sm font-medium flex items-center gap-2">
-                <span className="w-2 h-2 bg-white rounded-full"></span>
-                {item.title}
-              </div>
-              <div className="absolute bottom-5 left-5 text-white">
-                <p className="text-3xl font-semibold">{item.distance}</p>
-                <p className="text-sm">{item.subtitle}</p>
-              </div>
-            </div>
+            <HoverCard key={idx} {...item} />
           ))}
         </div>
       </div>
