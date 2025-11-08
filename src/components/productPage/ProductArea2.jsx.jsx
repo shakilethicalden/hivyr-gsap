@@ -8,6 +8,7 @@ const topLeftCard = {
   distance: "Real-time",
   subtitle: "AI-powered voice assistant",
   image: "/images/product/product.jpg",
+  height: "h-[320px]",
 };
 
 const topRightCard = {
@@ -15,6 +16,7 @@ const topRightCard = {
   distance: "24/7 Support",
   subtitle: "Conversational AI platform",
   image: "/images/product/product-2.jpg",
+  height: "h-[320px]",
 };
 
 const bottomCards = [
@@ -55,7 +57,7 @@ const bottomCards = [
   },
 ];
 
-const HoverCard = ({ image, title, distance, subtitle, height }) => {
+const HoverCard = ({ image, title, distance, subtitle, height, isMobile }) => {
   const cardRef = useRef(null);
   const overlayRef = useRef(null);
   const imageRef = useRef(null);
@@ -71,7 +73,6 @@ const HoverCard = ({ image, title, distance, subtitle, height }) => {
         duration: 1.2,
         ease: "power3.out",
       });
-
       gsap.fromTo(
         overlay,
         { scale: 0, opacity: 0 },
@@ -80,7 +81,6 @@ const HoverCard = ({ image, title, distance, subtitle, height }) => {
           opacity: 0.65,
           duration: 1.1,
           ease: "power4.out",
-          transformOrigin: "center center",
         }
       );
     };
@@ -91,7 +91,6 @@ const HoverCard = ({ image, title, distance, subtitle, height }) => {
         duration: 1.2,
         ease: "power3.inOut",
       });
-
       gsap.to(overlay, {
         scale: 0,
         opacity: 0,
@@ -112,7 +111,9 @@ const HoverCard = ({ image, title, distance, subtitle, height }) => {
   return (
     <div
       ref={cardRef}
-      className={`relative rounded-2xl overflow-hidden shadow-lg ${height}`}
+      className={`relative rounded-2xl overflow-hidden shadow-lg ${
+        isMobile ? "h-[300px]" : height
+      }`}
     >
       <Image
         ref={imageRef}
@@ -123,7 +124,7 @@ const HoverCard = ({ image, title, distance, subtitle, height }) => {
         className="w-full h-full object-cover"
       />
 
-      {/* Smooth circular expanding overlay */}
+      {/* Overlay */}
       <div
         ref={overlayRef}
         className="absolute inset-0 bg-black scale-0 opacity-0"
@@ -134,7 +135,6 @@ const HoverCard = ({ image, title, distance, subtitle, height }) => {
           top: "50%",
           left: "50%",
           translate: "-50% -50%",
-          transformOrigin: "center center",
         }}
       ></div>
 
@@ -156,33 +156,50 @@ const ProductArea2 = () => {
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-semibold text-center text-[#2e2a27] leading-tight ">
+        <h2 className="text-4xl md:text-5xl font-semibold text-center text-[#2e2a27] leading-tight">
           Explore Our AI Agent Products
         </h2>
 
-        {/* Top Section */}
-        <div className="grid grid-cols-5 gap-6 items-end mt-10">
-          <HoverCard {...topLeftCard} height="h-[320px]" />
-
-          {/* Center Text */}
+        {/* --- Large Device Layout --- */}
+        <div className="hidden lg:grid grid-cols-5 gap-6 items-end mt-10">
+          <HoverCard {...topLeftCard} />
           <div className="col-span-3 text-center self-start mt-12">
             <p className="text-[#6e655d] mb-8 leading-relaxed max-w-md mx-auto">
-              Discover our suite of AI-powered solutions designed to enhance productivity,
-              streamline workflows, and provide intelligent insights in real time.
+              Discover our suite of AI-powered solutions designed to enhance
+              productivity, streamline workflows, and provide intelligent
+              insights in real time.
             </p>
             <button className="bg-[#2e2a27] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#403a35] transition">
               Explore Products
             </button>
           </div>
-
-          <HoverCard {...topRightCard} height="h-[320px]" />
+          <HoverCard {...topRightCard} />
         </div>
 
-        {/* Bottom Section */}
-        <div className="grid grid-cols-5 gap-6 -mt-10 items-end">
+        {/* Bottom Section (Large only) */}
+        <div className="hidden lg:grid grid-cols-5 gap-6 -mt-10 items-end">
           {bottomCards.map((item, idx) => (
             <HoverCard key={idx} {...item} />
           ))}
+        </div>
+
+        {/* --- Mobile & Tablet Layout --- */}
+        <div className="lg:hidden mt-10 flex flex-col items-center text-center">
+          <p className="text-[#6e655d] mb-8 leading-relaxed max-w-md mx-auto text-base md:text-lg">
+            Discover our suite of AI-powered solutions designed to enhance
+            productivity, streamline workflows, and provide intelligent insights
+            in real time.
+          </p>
+          <button className="bg-[#2e2a27] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#403a35] transition mb-10">
+            Explore Products
+          </button>
+
+          {/* 2 cards per row on tablet, all equal height */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+            {[topLeftCard, topRightCard, ...bottomCards].map((item, idx) => (
+              <HoverCard key={idx} {...item} isMobile />
+            ))}
+          </div>
         </div>
       </div>
     </section>

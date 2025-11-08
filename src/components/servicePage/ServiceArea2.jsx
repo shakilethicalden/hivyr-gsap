@@ -1,9 +1,8 @@
-'use client'
+'use client';
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { MdArrowOutward } from 'react-icons/md';
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,60 +41,55 @@ const servicesData = [
 
 const ServiceItem = ({ service, index, activeId, setActiveId }) => {
     const containerRef = useRef(null);
-    const contentRef = useRef(null); 
+    const contentRef = useRef(null);
     const isActive = activeId === service.id;
 
     const handleMouseEnter = () => setActiveId(service.id);
     const handleMouseLeave = () => setActiveId(null);
 
-    // Scroll-trigger animation
+    // Scroll-trigger animation for large devices
     useEffect(() => {
         if (!containerRef.current) return;
-        gsap.fromTo(
-            containerRef.current,
-            { y: 50, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 90%',
-                    toggleActions: 'play none none none',
-                },
-                delay: index * 0.1, 
-            }
-        );
+        if (window.innerWidth >= 1024) {
+            gsap.fromTo(
+                containerRef.current,
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none',
+                    },
+                    delay: index * 0.1,
+                }
+            );
+        }
     }, []);
 
-    // Hover animation
+    // Hover animation for large devices only
     useEffect(() => {
         if (!containerRef.current || !contentRef.current) return;
+        if (window.innerWidth < 1024) return; // skip animation on mobile/tablet
 
         if (isActive) {
-            // Show wrapper container immediately
             gsap.set(contentRef.current, { display: 'flex' });
-
-            // Animate wrapper (image + list) 
             gsap.fromTo(
                 contentRef.current,
                 { y: -20, opacity: 0 },
                 { y: 0, opacity: 1, duration: 0.3, ease: 'power3.out' }
             );
-
-            // Background color
             gsap.to(containerRef.current, { backgroundColor: '#000000', duration: 0.3 });
         } else {
-            // Hide wrapper
             gsap.to(contentRef.current, {
                 y: -20,
                 opacity: 0,
                 duration: 0.2,
                 onComplete: () => gsap.set(contentRef.current, { display: 'none' }),
             });
-
-            // Reset background
             gsap.to(containerRef.current, { backgroundColor: '#1e1e1e', duration: 0.3 });
         }
     }, [isActive]);
@@ -105,34 +99,36 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
             ref={containerRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="flex items-center py-5 gap-10 mb-3 px-8 rounded-2xl bg-[#1e1e1e] relative"
-            style={{ height: '150px' }}
+            className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 mb-6 px-6 lg:px-8 py-6 rounded-2xl bg-[#1e1e1e] relative"
+            style={{
+                minHeight: window.innerWidth >= 1024 ? '180px' : 'auto',
+            }}
         >
-            {/* Title + index */}
-            <div className="flex items-center gap-4 w-2/4 min-w-[180px]">
-                <span className={`text-xl font-bold transition-colors duration-300 ${isActive ? 'text-orange-500' : 'text-gray-500'}`}>
+            {/* Title */}
+            <div className="w-full flex items-center gap-4 mb-4 lg:mb-0">
+                <span className={`text-xl font-bold ${isActive ? 'text-orange-500' : 'text-gray-500'}`}>
                     {index}.
                 </span>
-                <h4 className={`text-2xl font-semibold transition-colors duration-300 truncate ${isActive ? 'text-orange-500' : 'text-gray-400'}`}>
+                <h4 className={`text-2xl font-semibold truncate ${isActive ? 'text-orange-500' : 'text-gray-400'}`}>
                     {service.title}
                 </h4>
             </div>
 
-            {/* Wrapper for Image + Feature List */}
+            {/* Image + Feature List */}
             <div
                 ref={contentRef}
-                className="flex w-1/2 items-center justify-between gap-20 opacity-0"
-                style={{ display: 'none' }}
+                className="flex flex-col lg:flex-row w-full items-center justify-between gap-6 lg:gap-20"
+                style={{ display: window.innerWidth >= 1024 ? 'none' : 'flex' }}
             >
                 {/* Image */}
-                <div className="w-1/2 flex justify-center items-center">
+                <div className="w-full lg:w-1/2 flex justify-center items-center mb-4 lg:mb-0">
                     <div className="w-full h-full max-w-[280px] max-h-[120px] rounded-lg flex items-center justify-center shadow-xl overflow-hidden">
                         <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
                     </div>
                 </div>
 
-                {/* Feature list */}
-                <div className="w-1/2 flex flex-col justify-center space-y-2 text-sm text-gray-200">
+                {/* Feature List */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-2 text-sm text-gray-200">
                     {service.features.map((feature, i) => (
                         <div key={i} className="flex items-start">
                             <span className="text-orange-500 text-2xl leading-none mr-2 mt-[-3px] font-bold">&bull;</span>
@@ -142,8 +138,8 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
                 </div>
             </div>
 
-            {/* Icon */}
-            <div className="ml-auto bg-orange-500 p-3 rounded-full text-white text-3xl flex items-center justify-center">
+            {/* Icon only for large devices */}
+            <div className="hidden lg:flex ml-auto bg-orange-500 p-3 rounded-full text-white text-3xl items-center justify-center">
                 <MdArrowOutward />
             </div>
         </div>
@@ -155,7 +151,7 @@ const ServiceArea2 = () => {
 
     return (
         <section className="bg-[#272727] text-white min-h-screen py-20">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 pb-12">
                     <div>
                         <h3 className="text-white text-xl font-semibold tracking-wider uppercase mb-3">
@@ -172,7 +168,7 @@ const ServiceArea2 = () => {
                     </div>
                 </div>
 
-                <div className="space-y-0">
+                <div className="space-y-6">
                     {servicesData.map((service, index) => (
                         <ServiceItem key={service.id} service={service} index={index + 1} activeId={activeId} setActiveId={setActiveId} />
                     ))}

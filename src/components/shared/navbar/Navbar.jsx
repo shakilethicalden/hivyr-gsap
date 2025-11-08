@@ -99,7 +99,7 @@ export default function Navbar() {
     const navItems = ["Products", "Agents", "Services +", "About", "Pricing"];
 
     return (
-        <nav className="w-full flex items-center justify-between px-6 py-4 relative z-50 bg-transparent">
+        <nav className="w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 py-4 relative z-50 bg-transparent">
             {/* Logo */}
             <div className="flex items-center w-32 z-50">
                 <Link href="/">
@@ -157,7 +157,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="lg:hidden flex flex-col justify-center items-center space-y-1.5 z-50 w-8 h-8"
+                className="lg:hidden flex flex-col justify-center items-center space-y-1.5 z-50 w-8 h-8 bg-black"
             >
                 {[0, 1, 2].map((i) => (
                     <span

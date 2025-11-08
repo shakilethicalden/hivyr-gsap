@@ -6,15 +6,17 @@ import Footer from '../shared/footer/Footer';
 import ServiceBanner from './ServiceBanner';
 import CTA from '../homePage/cta/CTA';
 import ServiceArea2 from './ServiceArea2';
+import ServiceVideo from './ServiceVideo';
 
 const ServiceHome = () => {
     return (
         <div>
-            <div className='px-4 sm:px-8 lg:px-16'>
+            <div className=''>
                 <Navbar />
             </div>
             <ServiceBanner />
             <ServiceArea />
+            <ServiceVideo />
             <ServiceArea2 />
             <ClientSection />
             <CTA />

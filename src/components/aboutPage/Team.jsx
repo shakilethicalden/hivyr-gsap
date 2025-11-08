@@ -14,26 +14,27 @@ export default function Team() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      cardRefs.current.forEach((card) => {
-        const tiles = card.querySelectorAll(".tile");
+      // Only enable animation on large devices
+      if (window.innerWidth >= 1024) {
+        cardRefs.current.forEach((card) => {
+          const tiles = card.querySelectorAll(".tile");
 
-        // initial state
-        gsap.set(tiles, { opacity: 1, scale: 1 });
+          gsap.set(tiles, { opacity: 1, scale: 1 });
 
-        // reveal animation with ScrollTrigger
-        gsap.to(tiles, {
-          opacity: 0,
-          scale: 1.1,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: { each: 0.1, from: "random" },
-          scrollTrigger: {
-            trigger: card,
-            start: "top 5%",
-            toggleActions: "play none none reverse",
-          },
+          gsap.to(tiles, {
+            opacity: 0,
+            scale: 1.1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: { each: 0.1, from: "random" },
+            scrollTrigger: {
+              trigger: card,
+              start: "top 15%",
+              toggleActions: "play none none reverse",
+            },
+          });
         });
-      });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -59,51 +60,63 @@ export default function Team() {
   return (
     <section
       ref={sectionRef}
-      className="bg-black text-white py-24 px-6 md:px-16 lg:px-28 overflow-hidden"
+      className="bg-black text-white py-16 px-6 md:px-12 lg:px-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="mb-14">
+        <div className="mb-12 text-center lg:text-left">
           <p className="text-sm text-gray-400 uppercase tracking-widest">
             Meet the Team
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold mt-2">Leadership</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-2">
+            Leadership
+          </h2>
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
           {team.map((member, i) => (
-            <div key={i} className="group" ref={(el) => (cardRefs.current[i] = el)}>
-              <div className="relative w-full h-[520px] rounded-2xl overflow-hidden">
+            <div
+              key={i}
+              className="group flex flex-col lg:flex-col"
+              ref={(el) => (cardRefs.current[i] = el)}
+            >
+              <div className="relative w-full h-[350px] sm:h-[420px] lg:h-[520px] rounded-2xl overflow-hidden">
                 {/* Single full image */}
-                <Image src={member.img} alt={member.name} fill className="object-cover" />
+                <Image
+                  src={member.img}
+                  alt={member.name}
+                  fill
+                  className="object-cover"
+                  priority
+                />
 
-                {/* 9 tile masks overlay for animation */}
-                {Array.from({ length: 9 }).map((_, idx) => {
-                  const col = idx % 3;
-                  const row = Math.floor(idx / 3);
-
-                  return (
-                    <div
-                      key={idx}
-                      className="tile absolute bg-black"
-                      style={{
-                        top: `${row * 33.3333}%`,
-                        left: `${col * 33.3333}%`,
-                        width: "34%",
-                        height: "34%",
-                      }}
-                    />
-                  );
-                })}
+                {/* 9 tile masks overlay for large devices */}
+                {window.innerWidth >= 1024 &&
+                  Array.from({ length: 9 }).map((_, idx) => {
+                    const col = idx % 3;
+                    const row = Math.floor(idx / 3);
+                    return (
+                      <div
+                        key={idx}
+                        className="tile absolute bg-black"
+                        style={{
+                          top: `${row * 33.3333}%`,
+                          left: `${col * 33.3333}%`,
+                          width: "34%",
+                          height: "34%",
+                        }}
+                      />
+                    );
+                  })}
               </div>
 
               {/* Text Info */}
-              <div className="mt-5">
-                <h3 className="text-lg font-semibold">{member.name}</h3>
-                <p className="text-gray-400 text-sm">{member.title}</p>
+              <div className="mt-5 text-center sm:text-left lg:text-left">
+                <h3 className="text-lg sm:text-xl font-semibold">{member.name}</h3>
+                <p className="text-gray-400 text-sm sm:text-base">{member.title}</p>
 
-                <div className="flex items-center gap-5 mt-3 text-sm uppercase tracking-wider">
+                <div className="flex justify-center sm:justify-start items-center gap-5 mt-3 text-sm uppercase tracking-wider">
                   <a
                     href={member.linkedin}
                     target="_blank"

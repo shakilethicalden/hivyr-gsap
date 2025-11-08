@@ -43,7 +43,7 @@ const AboutBanner = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[90vh] sm:h-[85vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -56,14 +56,14 @@ const AboutBanner = () => {
       </video>
 
       {/* Text Content */}
-      <div className="relative z-10 text-center text-white px-5">
-        <p className="text-sm md:text-base tracking-widest text-gray-300 mb-3">
+      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-0">
+        <p className="text-xs sm:text-sm md:text-base tracking-widest text-gray-300 mb-3">
           OUR MISSION
         </p>
         <h1
           ref={titleRef}
           data-text="Enable the largest robot army in the world through intelligent physical AI for the US military."
-          className="text-4xl sm:text-5xl md:text-6xl  font-bold leading-relaxed max-w-5xl mx-auto inline-block"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight md:leading-relaxed max-w-full md:max-w-5xl mx-auto inline-block"
         >
           Enable the largest robot army in the world through intelligent physical AI for the US military.
         </h1>

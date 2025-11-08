@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
@@ -7,6 +8,8 @@ const AgentBanner = () => {
 
   useEffect(() => {
     const marquee = marqueeRef.current;
+    if (!marquee) return;
+
     const textWidth = marquee.scrollWidth / 2;
 
     gsap.to(marquee, {
@@ -18,7 +21,7 @@ const AgentBanner = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center items-center lg:-mt-26">
+    <section className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center items-center -mt-26">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -32,27 +35,27 @@ const AgentBanner = () => {
 
       {/* Centered Content */}
       <div className="relative z-10 text-center text-white flex flex-col items-center justify-center px-6">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-5xl xl:text-6xl font-extrabold mb-6 leading-tight">
           Empower Your Business with <br /> Intelligent AI Agents
         </h1>
-        <p className="text-base md:text-lg max-w-2xl mb-8 text-gray-200">
+        <p className="text-sm sm:text-base md:text-lg max-w-xl md:max-w-2xl mb-8 text-gray-200">
           From AI-driven workflow automation to intelligent business optimization—
           our agents deliver speed, reliability, and results anywhere in the world.
         </p>
-        <button className="inline-flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full  transition-all text-lg">
+        <button className="inline-flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full text-sm sm:text-base md:text-lg transition-all">
           Request an Agent
-          <span className="text-2xl">↗</span>
+          <span className="text-xl md:text-2xl">↗</span>
         </button>
       </div>
 
-      {/* Moving Text (Slightly Higher in View) */}
+      {/* Moving Text (Marquee) */}
       <div className="absolute bottom-5 left-0 w-full overflow-hidden">
         <div
           ref={marqueeRef}
-          className="flex whitespace-nowrap text-[100px] md:text-[140px] font-extrabold text-white uppercase tracking-wider"
+          className="flex whitespace-nowrap text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] xl:text-[110px] font-extrabold text-white uppercase tracking-wider"
         >
-          <span className="px-8">AI-AGENT-SYSTEMS-AI-AGENT-SYSTEMS-</span>
-          <span className="px-8">AI-AGENT-SYSTEMS-AI-AGENT-SYSTEMS-</span>
+          <span className="px-6 sm:px-8">AI-AGENT-SYSTEMS-AI-AGENT-SYSTEMS-</span>
+          <span className="px-6 sm:px-8">AI-AGENT-SYSTEMS-AI-AGENT-SYSTEMS-</span>
         </div>
       </div>
     </section>

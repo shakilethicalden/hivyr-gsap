@@ -6,7 +6,7 @@ import Footer from '../shared/footer/Footer';
 const ContactHome = () => {
     return (
         <div >
-            <div className='px-4 sm:px-8 lg:px-16'>
+            <div className=''>
                 <Navbar />
             </div>
             <ContactArea />

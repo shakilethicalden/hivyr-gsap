@@ -4,16 +4,18 @@ import AboutBanner from './AboutBanner';
 import AboutArea from './AboutArea';
 import Team from './Team';
 import Footer from '../shared/footer/Footer';
+import AboutTeam from './AboutTeam';
 
 const AboutHome = () => {
     return (
         <div>
-            <div className='px-4 sm:px-8 lg:px-16'>
+            <div className=''>
                 <Navbar />
             </div>
             <AboutBanner />
             <AboutArea />
             <Team />
+            <AboutTeam />
             <Footer />
         </div>
     );

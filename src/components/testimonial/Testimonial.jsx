@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
@@ -34,9 +35,10 @@ export default function Testimonials() {
 
   useEffect(() => {
     const container = containerRef.current;
+    if (!container) return;
+
     const totalWidth = container.scrollWidth / 2;
 
-    // smooth continuous loop
     gsap.to(container, {
       x: `-${totalWidth}`,
       duration: 40,
@@ -49,16 +51,16 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="py-20 overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading and Review Summary */}
-        <div className="flex justify-between items-start mb-12">
-          <h2 className="text-[3rem] font-semibold text-gray-900 leading-tight">
+    <section className="py-16 sm:py-20 overflow-hidden bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading + Summary */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 leading-tight">
             WHAT OUR <br />
             <span className="text-[#fdd204]">USERS SAY</span>
           </h2>
 
-          <div className="border border-gray-300 bg-white text-gray-900 p-6 rounded-sm shadow-sm flex flex-col justify-between ">
+          <div className="border border-gray-300 bg-white text-gray-900 p-5 sm:p-6 rounded-md shadow-sm flex flex-col justify-between w-full sm:w-[360px]">
             <div className="flex items-center justify-between border-b border-gray-300 pb-3">
               <div className="flex items-center text-yellow-500">
                 {"★★★★★".split("").map((s, i) => (
@@ -68,57 +70,57 @@ export default function Testimonials() {
               <img
                 src="https://cdn-icons-png.flaticon.com/512/4712/4712101.png"
                 alt="AI Agent"
-                className="w-6 h-6"
+                className="w-5 h-5 sm:w-6 sm:h-6"
               />
             </div>
+
             <div className="mt-4">
-              <div className="flex items-end gap-1 text-5xl font-semibold text-gray-900">
+              <div className="flex items-end gap-1 text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900">
                 <span>4.9</span>
-                <span className="text-base mb-[10px]">/5</span>
+                <span className="text-sm mb-[6px]">/5</span>
               </div>
-              <p className="text-lg font-medium text-gray-800 mt-2">
+              <p className="text-base sm:text-lg font-medium text-gray-800 mt-2">
                 Excellent AI Experience
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-xs sm:text-sm text-gray-600">
                 Based on 2,430 verified reviews
               </p>
             </div>
           </div>
         </div>
 
-        {/* Infinite Loop Section */}
+        {/* Infinite Scroll Cards */}
         <div className="overflow-hidden">
-          <div ref={containerRef} className="flex">
-            {[...testimonials, ...testimonials, ...testimonials].map(
-              (review, idx) => (
-                <div
-                  key={idx}
-                  className="min-w-[320px] md:min-w-[360px] lg:min-w-[400px] h-[320px] 
-                  border border-gray-300 bg-white text-gray-900 p-6 mx-3 
-                  flex flex-col justify-between shadow-sm rounded-sm"
-                >
-                  <div className="flex items-center justify-between border-b border-gray-300 pb-3">
-                    <div className="flex items-center text-yellow-500">
-                      {Array.from({ length: review.rating }).map((_, i) => (
-                        <span key={i}>★</span>
-                      ))}
-                    </div>
-                    <span className="text-xs text-gray-600 font-medium uppercase">
-                      {review.platform}
-                    </span>
+          <div ref={containerRef} className="flex w-max">
+            {[...testimonials, ...testimonials].map((review, idx) => (
+              <div
+                key={idx}
+                className="max-w-[250px] sm:max-w-[300px] md:max-w-[340px] lg:max-w-[400px] h-[260px] sm:h-[280px] md:h-[300px] lg:h-[320px] border border-gray-300 bg-white text-gray-900  p-4 sm:p-6 mx-2 sm:mx-3 flex flex-col justify-between  shadow-sm rounded-md flex-shrink-0"
+              >
+                {/* Top Row */}
+                <div className="flex items-center justify-between border-b border-gray-300 pb-2 sm:pb-3">
+                  <div className="flex items-center text-yellow-500 text-sm sm:text-base">
+                    {Array.from({ length: review.rating }).map((_, i) => (
+                      <span key={i}>★</span>
+                    ))}
                   </div>
-
-                  <p className="text-lg leading-snug flex-grow mt-4">
-                    {review.text}
-                  </p>
-
-                  <div className="mt-6">
-                    <p className="text-sm text-gray-700">Author</p>
-                    <p className="font-semibold">{review.author}</p>
-                  </div>
+                  <span className="text-[10px] sm:text-xs text-gray-600 font-medium uppercase">
+                    {review.platform}
+                  </span>
                 </div>
-              )
-            )}
+
+                {/* Review Text */}
+                <p className="text-sm sm:text-base max-w-sm leading-snug flex-grow mt-3 sm:mt-4">
+                  {review.text}
+                </p>
+
+                {/* Author */}
+                <div className="mt-4 sm:mt-6">
+                  <p className="text-xs sm:text-sm text-gray-700">Author</p>
+                  <p className="font-semibold text-sm sm:text-base">{review.author}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

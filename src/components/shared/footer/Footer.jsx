@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#f7b518] text-black px-6 md:px-10 xl:px-48 pt-8 pb-16 overflow-hidden relative">
+    <footer className="w-full bg-[#f7b518] text-black px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 pt-8 pb-16 overflow-hidden relative">
       <div className="flex flex-col lg:flex-row justify-between items-center text-sm gap-3">
         <div className="flex flex-col lg:flex-row items-center gap-3">
           <p>© 2025 Hivyr. All rights reserved.</p>

@@ -69,12 +69,12 @@ const ClientSection = () => {
   }, []);
 
   const ImageColumn = ({ images, refProp }) => (
-    <div className="overflow-hidden h-[610px] w-1/3">
+    <div className="overflow-hidden h-[400px] lg:h-[610px] w-1/3">
       <div ref={refProp} className="flex flex-col">
         {images.map((src, i) => (
           <div
             key={i}
-            className="w-full h-45 mb-3 relative rounded-xl overflow-hidden flex items-center justify-center"
+            className="w-full h-45 -mb-16 md:mb-5 lg:mb-3  relative rounded-xl overflow-hidden flex items-center justify-center"
           >
             <Image
               src={src}
@@ -92,7 +92,7 @@ const ClientSection = () => {
     <section className="py-16 md:py-24 px-4 flex justify-center">
       <div className="max-w-7xl w-full flex flex-wrap lg:flex-nowrap items-start bg-gray-100 rounded-2xl shadow-sm">
         {/* Image Columns */}
-        <div className="flex w-full lg:w-1/2 px-4 bg-[#f7b518]/10  justify-between">
+        <div className="flex w-full lg:w-1/2 xl:px-4 bg-[#f7b518]/10  justify-between">
           <ImageColumn images={imagesLeft} refProp={col1Ref} />
           <ImageColumn images={imagesMiddle} refProp={col2Ref} />
           <ImageColumn images={imagesRight} refProp={col3Ref} />
