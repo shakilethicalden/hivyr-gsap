@@ -9,34 +9,40 @@ gsap.registerPlugin(ScrollTrigger);
 const servicesData = [
     {
         id: 1,
-        title: 'Product Strategy & Roadmap',
-        image: '/images/service/service.jpg',
-        features: ['Market Analysis', 'Feature Prioritization', 'Growth Planning', 'Long-term Strategy'],
+        title: 'AI Strategy & Implementation',
+        image: '/images/service/ai-strategy.jpg',
+        features: ['AI Opportunity Assessment', 'Use Case Identification', 'ROI Analysis', 'Implementation Roadmap'],
     },
     {
         id: 2,
-        title: 'UX/UI Design',
-        image: '/images/service/service.jpg',
-        features: ['Wireframing', 'Prototyping', 'User Testing', 'Visual Design'],
+        title: 'Custom AI Agent Development',
+        image: '/images/service/ai-development.jpg',
+        features: ['Conversational AI Design', 'Workflow Automation', 'Multi-agent Systems', 'API Integration'],
     },
     {
         id: 3,
-        title: 'Custom Software Development',
-        image: '/images/service/service.jpg',
-        features: ['Frontend Engineering', 'Backend Development', 'QA & Testing', 'Deployment & CI/CD'],
+        title: 'Natural Language Processing',
+        image: '/images/service/nlp-services.jpg',
+        features: ['Chatbot Development', 'Sentiment Analysis', 'Text Classification', 'Language Translation'],
     },
     {
         id: 4,
-        title: 'Product Analytics',
-        image: '/images/service/service.jpg',
-        features: ['Data Tracking', 'KPI Monitoring', 'A/B Testing', 'User Insights'],
+        title: 'AI Training & Fine-tuning',
+        image: '/images/service/ai-training.jpg',
+        features: ['Data Preparation', 'Model Fine-tuning', 'Performance Optimization', 'Continuous Learning'],
     },
     {
         id: 5,
-        title: 'Consulting Services',
-        image: '/images/service/service.jpg',
-        features: ['Strategy Planning', 'Process Optimization', 'Market Research', 'Technology Consulting'],
+        title: 'AI Analytics & Insights',
+        image: '/images/service/ai-analytics.jpg',
+        features: ['Performance Monitoring', 'User Behavior Analysis', 'Predictive Analytics', 'Decision Support'],
     },
+    {
+        id: 6,
+        title: 'AI Integration Services',
+        image: '/images/service/ai-integration.jpg',
+        features: ['Legacy System Integration', 'API Development', 'Cloud Deployment', 'Scalability Solutions'],
+    }
 ];
 
 const ServiceItem = ({ service, index, activeId, setActiveId }) => {
@@ -106,10 +112,10 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
         >
             {/* Title */}
             <div className="w-full flex items-center gap-4 mb-4 lg:mb-0">
-                <span className={`text-xl font-bold ${isActive ? 'text-orange-500' : 'text-gray-500'}`}>
+                <span className={`text-xl font-bold ${isActive ? 'text-[#f7b518]' : 'text-gray-500'}`}>
                     {index}.
                 </span>
-                <h4 className={`text-2xl font-semibold truncate ${isActive ? 'text-orange-500' : 'text-gray-400'}`}>
+                <h4 className={`text-2xl font-semibold truncate ${isActive ? 'text-[#f7b518]' : 'text-gray-400'}`}>
                     {service.title}
                 </h4>
             </div>
@@ -131,7 +137,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
                 <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-2 text-sm text-gray-200">
                     {service.features.map((feature, i) => (
                         <div key={i} className="flex items-start">
-                            <span className="text-orange-500 text-2xl leading-none mr-2 mt-[-3px] font-bold">&bull;</span>
+                            <span className="text-[#f7b518] text-2xl leading-none mr-2 mt-[-3px] font-bold">&bull;</span>
                             {feature}
                         </div>
                     ))}
@@ -139,7 +145,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
             </div>
 
             {/* Icon only for large devices */}
-            <div className="hidden lg:flex ml-auto bg-orange-500 p-3 rounded-full text-white text-3xl items-center justify-center">
+            <div className="hidden lg:flex ml-auto bg-[#f7b518] p-3 rounded-full text-black text-3xl items-center justify-center">
                 <MdArrowOutward />
             </div>
         </div>
@@ -155,15 +161,15 @@ const ServiceArea2 = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 pb-12">
                     <div>
                         <h3 className="text-white text-xl font-semibold tracking-wider uppercase mb-3">
-                            Service
+                            AI Services
                         </h3>
                         <p className="text-gray-400 text-lg max-w-sm">
-                            Market Analysis, Feature Prioritization, Growth Planning, Long-term Strategy
+                            Custom AI Agents, Intelligent Automation, Machine Learning, Predictive Analytics
                         </p>
                     </div>
                     <div className="flex items-end justify-start md:justify-end">
                         <h2 className="text-5xl lg:text-6xl font-bold leading-tight text-white">
-                            Our award winning digital services
+                            Intelligent solutions powered by AI
                         </h2>
                     </div>
                 </div>
