@@ -1,11 +1,9 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 const AboutBanner = () => {
   const titleRef = useRef(null);
 
-  // 🔠 Scramble Reveal Function
   const scrambleReveal = (finalText, element, duration = 2.5) => {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()";
     const totalFrames = Math.floor(duration * 60);
@@ -35,16 +33,23 @@ const AboutBanner = () => {
   };
 
   useEffect(() => {
-    if (titleRef.current) {
-      const text = titleRef.current.dataset.text;
-      titleRef.current.textContent = "";
-      scrambleReveal(text, titleRef.current, 2.5);
-    }
+    // Import GSAP dynamically (only in browser)
+    let gsap;
+    (async () => {
+      const module = await import("gsap");
+      gsap = module.gsap;
+
+      // Now safe to use GSAP
+      if (titleRef.current) {
+        const text = titleRef.current.dataset.text;
+        titleRef.current.textContent = "";
+        scrambleReveal(text, titleRef.current, 2.5);
+      }
+    })();
   }, []);
 
   return (
     <section className="relative w-full h-[90vh] sm:h-[85vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         autoPlay
@@ -55,7 +60,6 @@ const AboutBanner = () => {
         <source src="/video/banner/banner.mp4" type="video/mp4" />
       </video>
 
-      {/* Text Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-0">
         <p className="text-xs sm:text-sm md:text-base tracking-widest text-gray-300 mb-3">
           OUR MISSION
