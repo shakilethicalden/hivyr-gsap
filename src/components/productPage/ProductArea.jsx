@@ -77,7 +77,7 @@ export default function ProductArea() {
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[0].topText}
             </p>
-            <h3 className="text-3xl font-serif mt-auto">
+            <h3 className="text-3xl mt-auto">
               {contentCards[0].title}
             </h3>
           </div>
@@ -92,7 +92,7 @@ export default function ProductArea() {
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[1].topText}
             </p>
-            <h3 className="text-3xl font-serif mt-auto">
+            <h3 className="text-3xl mt-auto">
               {contentCards[1].title}
             </h3>
           </div>
@@ -107,7 +107,7 @@ export default function ProductArea() {
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[2].topText}
             </p>
-            <h3 className="text-3xl font-serif mt-auto">
+            <h3 className="text-3xl mt-auto">
               {contentCards[2].title}
             </h3>
           </div>
@@ -122,7 +122,7 @@ export default function ProductArea() {
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[3].topText}
             </p>
-            <h3 className="text-3xl font-serif mt-auto">
+            <h3 className="text-3xl mt-auto">
               {contentCards[3].title}
             </h3>
           </div>
@@ -138,7 +138,7 @@ export default function ProductArea() {
               <p className="text-sm sm:text-base text-gray-700 mb-4 font-light">
                 {card.topText}
               </p>
-              <h3 className="text-2xl sm:text-3xl font-serif">{card.title}</h3>
+              <h3 className="text-2xl sm:text-3xl">{card.title}</h3>
             </div>
           ))}
         </div>

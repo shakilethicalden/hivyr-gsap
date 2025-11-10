@@ -103,7 +103,7 @@ export default function ProductBanner() {
 
           <h1
             ref={headingRef}
-            className="font-serif font-light leading-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl"
+            className=" font-light leading-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl"
           >
             {renderAnimatedText("The Ultimate AI Agent for Modern Businesses")}
           </h1>
