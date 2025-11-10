@@ -45,8 +45,8 @@ export default function About() {
             className="absolute inset-0 rounded-[2rem]"
             style={{
               background: 'linear-gradient(to bottom right, #fdd204, #f7b518)',
-              filter: 'blur(20px)',
-              opacity: '1',     
+              filter: 'blur(10px)',
+              opacity: '0.5',     
               zIndex: '-1',
             }}
           ></div>
