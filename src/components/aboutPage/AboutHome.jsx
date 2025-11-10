@@ -6,6 +6,7 @@ import Team from './Team';
 import Footer from '../shared/footer/Footer';
 import AboutTeam from './AboutTeam';
 
+
 const AboutHome = () => {
     return (
         <div>
