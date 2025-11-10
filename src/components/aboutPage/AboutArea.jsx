@@ -1,9 +1,5 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutArea() {
   const sectionRef = useRef(null);
@@ -11,7 +7,6 @@ export default function AboutArea() {
   const leftTextRef = useRef(null);
   const rightTextRefs = useRef([]);
 
-  // 🔠 Scramble Function
   const scrambleText = (finalText, element) => {
     const chars =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()";
@@ -35,41 +30,50 @@ export default function AboutArea() {
       }
 
       if (frame < totalFrames) requestAnimationFrame(animate);
-      else element.textContent = finalText; // ensures original text ends correctly
+      else element.textContent = finalText;
     };
 
     animate();
   };
 
-  // 🔹 Trigger scramble for all texts
   const triggerScramble = (el) => {
     if (!el) return;
-    const originalText = el.dataset.text; // store original text in data-text
+    const originalText = el.dataset.text;
     scrambleText(originalText, el);
   };
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const section = sectionRef.current;
+    let ctx;
 
-      // LEFT SIDE SCRAMBLE
-      const leftEl = leftTextRef.current;
-      triggerScramble(leftEl);
+    (async () => {
+      // Dynamically import GSAP and ScrollTrigger only in browser
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
 
-      // RIGHT SIDE SCRAMBLES
-      rightTextRefs.current.forEach((el) => triggerScramble(el));
+      gsap.registerPlugin(ScrollTrigger);
 
-      // PIN LEFT AREA
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "bottom bottom",
-        pin: leftAreaRef.current,
-        pinSpacing: false,
-      });
-    }, sectionRef);
+      ctx = gsap.context(() => {
+        const section = sectionRef.current;
 
-    return () => ctx.revert();
+        // LEFT SIDE SCRAMBLE
+        const leftEl = leftTextRef.current;
+        triggerScramble(leftEl);
+
+        // RIGHT SIDE SCRAMBLES
+        rightTextRefs.current.forEach((el) => triggerScramble(el));
+
+        // PIN LEFT AREA
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: "bottom bottom",
+          pin: leftAreaRef.current,
+          pinSpacing: false,
+        });
+      }, sectionRef);
+    })();
+
+    return () => ctx && ctx.revert();
   }, []);
 
   return (
