@@ -45,19 +45,17 @@ export default function AboutArea() {
   useEffect(() => {
     let ctx;
 
+    // Only run GSAP and ScrollTrigger on client
     (async () => {
-      // Dynamically import GSAP and ScrollTrigger only in browser
       const { gsap } = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-
       gsap.registerPlugin(ScrollTrigger);
 
       ctx = gsap.context(() => {
         const section = sectionRef.current;
 
         // LEFT SIDE SCRAMBLE
-        const leftEl = leftTextRef.current;
-        triggerScramble(leftEl);
+        triggerScramble(leftTextRef.current);
 
         // RIGHT SIDE SCRAMBLES
         rightTextRefs.current.forEach((el) => triggerScramble(el));
@@ -77,19 +75,10 @@ export default function AboutArea() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-black text-white py-28 px-6 md:px-16 lg:px-28 overflow-hidden"
-    >
+    <section ref={sectionRef} className="bg-black text-white py-28 px-6 md:px-16 lg:px-28 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-start justify-between">
-        {/* LEFT SIDE (Pinned Area) */}
-        <div
-          ref={leftAreaRef}
-          className="lg:w-1/2 flex flex-col justify-start sticky top-0 self-start"
-        >
-          <p className="text-sm text-gray-400 uppercase tracking-widest mb-4">
-            Our Thesis
-          </p>
+        <div ref={leftAreaRef} className="lg:w-1/2 flex flex-col justify-start sticky top-0 self-start">
+          <p className="text-sm text-gray-400 uppercase tracking-widest mb-4">Our Thesis</p>
           <h2
             ref={leftTextRef}
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-snug inline-block"
@@ -98,19 +87,12 @@ export default function AboutArea() {
             Building the Robotic Foundation Model for Defense
           </h2>
         </div>
-
-        {/* RIGHT SIDE (Scroll Texts) */}
         <div className="lg:w-1/2 flex flex-col space-y-8 text-gray-300 text-2xl leading-relaxed">
           {[
             "The fundamental problem isn’t hardware, it’s intelligence. Robots aren’t pervasive today because they’re unintelligent. Most autonomy systems are brittle, limited, and disconnected from the real-world complexity that warfighters face.",
             "To unlock truly transformative capability, we need robots that think, adapt, and act with human-level intelligence. That’s why we’re building Fury, the first foundation model for defense robotics: an embodied AI brain that allows machines to perceive the world, understand natural language, and coordinate action autonomously across any domain.",
           ].map((para, i) => (
-            <p
-              key={i}
-              ref={(el) => (rightTextRefs.current[i] = el)}
-              className="opacity-90 inline-block"
-              data-text={para}
-            >
+            <p key={i} ref={(el) => (rightTextRefs.current[i] = el)} data-text={para} className="opacity-90 inline-block">
               {para}
             </p>
           ))}
