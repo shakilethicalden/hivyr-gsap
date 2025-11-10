@@ -15,6 +15,7 @@ const AboutHome = () => {
       <AboutBanner />
       <AboutArea />
       <Team />
+      
       <Footer />
     </div>
   );
