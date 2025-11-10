@@ -162,7 +162,7 @@ const PricingArea = () => {
 
                             <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">{plan.description}</p>
 
-                            <button className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-gray-800 transition duration-200 mb-6">
+                            <button className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-[#f7b518] hover:text-black transition duration-200 mb-6">
                                 Get started
                             </button>
 
@@ -228,7 +228,7 @@ const PricingArea = () => {
                             placeholder="Enter your email"
                             className="w-full mb-4 p-2 border rounded-lg text-sm sm:text-base"
                         />
-                        <button className="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-gray-800 transition duration-200 mb-4">
+                        <button className="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-[#f7b518] hover:text-black transition duration-200 mb-4">
                             Continue
                         </button>
 

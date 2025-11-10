@@ -16,7 +16,6 @@ const ServiceHome = () => {
             </div>
             <ServiceBanner />
             <ServiceArea />
-            <ServiceVideo />
             <ServiceArea2 />
             <ClientSection />
             <CTA />

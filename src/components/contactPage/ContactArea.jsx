@@ -11,7 +11,7 @@ const ContactArea = () => {
       <div className="flex flex-col lg:flex-row max-w-6xl w-full gap-8 lg:gap-12">
         {/* Left Section - Contact Form */}
         <div className="w-full lg:w-2/3 p-6 sm:p-12 bg-white shadow-lg rounded-lg">
-          <h1 className="text-3xl sm:text-4xl font-serif text-[#333] mb-8 text-center lg:text-left">
+          <h1 className="text-3xl sm:text-4xl text-[#333] mb-8 text-center lg:text-left">
             Contact Us
           </h1>
 

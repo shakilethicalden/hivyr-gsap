@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { FiArrowUpRight } from "react-icons/fi";
 
@@ -14,21 +14,38 @@ const AboutTeam = () => {
   const imageRefs = useRef({});
   const rowRefs = useRef({});
   const arrowRefs = useRef({});
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Check window width only on client side
+    const checkDevice = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    // Initial check
+    checkDevice();
+
+    // Add event listener for resize
+    window.addEventListener('resize', checkDevice);
+
     // Hide images and arrows initially
     gsap.set(Object.values(imageRefs.current), { autoAlpha: 0, x: 50 });
     gsap.set(Object.values(arrowRefs.current), { autoAlpha: 0, x: 20 });
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkDevice);
+    };
   }, []);
 
   const handleEnter = (id) => {
-    if (window.innerWidth < 1024) return; // disable hover on mobile/tablet
+    if (!isDesktop) return; // Use state instead of direct window access
 
     gsap.killTweensOf([rowRefs.current[id], imageRefs.current[id], arrowRefs.current[id]]);
 
     gsap.to(rowRefs.current[id], {
       backgroundColor: "#111111",
-      color: "#fff",
+      color: "#f7b518",
       duration: 0.3,
     });
     gsap.to(imageRefs.current[id], {
@@ -46,7 +63,7 @@ const AboutTeam = () => {
   };
 
   const handleLeave = (id) => {
-    if (window.innerWidth < 1024) return;
+    if (!isDesktop) return; // Use state instead of direct window access
 
     gsap.killTweensOf([rowRefs.current[id], imageRefs.current[id], arrowRefs.current[id]]);
 
