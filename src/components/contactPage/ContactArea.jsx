@@ -11,14 +11,14 @@ const ContactArea = () => {
       <div className="flex flex-col lg:flex-row max-w-6xl w-full gap-8 lg:gap-12">
         {/* Left Section - Contact Form */}
         <div className="w-full lg:w-2/3 p-6 sm:p-12 bg-white shadow-lg rounded-lg">
-          <h1 className="text-3xl sm:text-4xl text-[#333] mb-8 text-center lg:text-left">
+          <h1 className="text-3xl sm:text-4xl text-black mb-8 text-center lg:text-left">
             Contact Us
           </h1>
 
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-[#333] mb-2">
+                <label htmlFor="firstName" className="block text-sm font-medium text-black mb-2">
                   First Name*
                 </label>
                 <input
@@ -29,7 +29,7 @@ const ContactArea = () => {
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-[#333] mb-2">
+                <label htmlFor="lastName" className="block text-sm font-medium text-black mb-2">
                   Last Name*
                 </label>
                 <input
@@ -43,7 +43,7 @@ const ContactArea = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-[#333] mb-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-black mb-2">
                   Phone Number *
                 </label>
                 <input
@@ -54,7 +54,7 @@ const ContactArea = () => {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#333] mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
                   Email*
                 </label>
                 <input
@@ -67,7 +67,7 @@ const ContactArea = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-[#333] mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-black mb-2">
                 Message
               </label>
               <textarea
@@ -84,9 +84,9 @@ const ContactArea = () => {
                 id="gdpr"
                 className="h-4 w-4 text-[#f7b518]/20 focus:ring-[#f7b518]/20 border-gray-300 rounded mt-1"
               />
-              <label htmlFor="gdpr" className="ml-2 block text-sm text-[#333]">
+              <label htmlFor="gdpr" className="ml-2 block text-sm text-black">
                 I agree to the processing of{' '}
-                <a href="#" className="underline text-[#333]">
+                <a href="#" className="underline text-black">
                   personal data
                 </a>{' '}
                 *
@@ -95,7 +95,7 @@ const ContactArea = () => {
 
             <button
               type="submit"
-              className="w-full lg:w-auto px-8 py-3 bg-[#4a4a4a] text-white rounded-md hover:bg-[#333] focus:outline-none focus:ring-2 focus:ring-[#f7b518]/20 focus:ring-offset-2 transition-all"
+              className="w-full lg:w-auto px-8 py-3 bg-black text-white rounded-md hover:bg-[#f7b518] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#f7b518]/20 focus:ring-offset-2 transition-all"
             >
               Send Message
             </button>
@@ -110,19 +110,19 @@ const ContactArea = () => {
 
         {/* Right Section - Contact Info and Map */}
         <div className="w-full lg:w-1/3 flex flex-col gap-6 p-6 sm:p-6 lg:p-0">
-          <div className="bg-[#333] text-white p-6 rounded-lg w-full lg:w-auto">
+          <div className="bg-black text-white p-6 rounded-lg w-full lg:w-auto">
             <h2 className="text-sm uppercase tracking-wider mb-2 opacity-75">Address</h2>
             <p className="text-lg">Topolova 1,</p>
             <p className="text-lg">039 52 Veľká Lomnica,</p>
             <p className="text-lg">Slovakia</p>
           </div>
 
-          <div className="bg-[#333] text-white p-6 rounded-lg w-full lg:w-auto">
+          <div className="bg-black text-white p-6 rounded-lg w-full lg:w-auto">
             <h2 className="text-sm uppercase tracking-wider mb-2 opacity-75">Email</h2>
             <p className="text-lg">info@hivyr.io</p>
           </div>
 
-          <div className="bg-[#333] text-white p-6 rounded-lg w-full lg:w-auto">
+          <div className="bg-black text-white p-6 rounded-lg w-full lg:w-auto">
             <h2 className="text-sm uppercase tracking-wider mb-2 opacity-75">Phone</h2>
             <p className="text-lg">+421 911 669 061</p>
           </div>
