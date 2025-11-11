@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -11,12 +11,30 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Team() {
   const sectionRef = useRef(null);
   const cardRefs = useRef([]);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  // Check screen size on client side
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    // Initial check
+    checkScreenSize();
+
+    // Add resize listener
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Only enable animation on large devices
-      if (window.innerWidth >= 1024) {
+      if (isLargeScreen) {
         cardRefs.current.forEach((card) => {
+          if (!card) return;
+          
           const tiles = card.querySelectorAll(".tile");
 
           gsap.set(tiles, { opacity: 1, scale: 1 });
@@ -38,7 +56,7 @@ export default function Team() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isLargeScreen]);
 
   const team = [
     {
@@ -92,7 +110,7 @@ export default function Team() {
                 />
 
                 {/* 9 tile masks overlay for large devices */}
-                {window.innerWidth >= 1024 &&
+                {isLargeScreen &&
                   Array.from({ length: 9 }).map((_, idx) => {
                     const col = idx % 3;
                     const row = Math.floor(idx / 3);
@@ -120,6 +138,7 @@ export default function Team() {
                   <a
                     href={member.linkedin}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-gray-200 transition-all"
                   >
                     <FaLinkedinIn />
@@ -128,6 +147,7 @@ export default function Team() {
                   <a
                     href={member.twitter}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-gray-200 transition-all"
                   >
                     <FaXTwitter />

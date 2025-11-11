@@ -14,7 +14,7 @@ const AboutHome = () => {
       <Navbar />
       <AboutBanner />
       <AboutArea />
-      {/* <Team /> */}
+      <Team />
       <Footer />
     </div>
   );
