@@ -16,7 +16,7 @@ const ServiceHome = () => {
             </div>
             <ServiceBanner />
             <ServiceArea />
-            <ServiceArea2 />
+            {/* <ServiceArea2 /> */}
             <ClientSection />
             <CTA />
             <Footer />
