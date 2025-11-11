@@ -48,38 +48,52 @@ const servicesData = [
 const ServiceItem = ({ service, index, activeId, setActiveId }) => {
     const containerRef = useRef(null);
     const contentRef = useRef(null);
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
     const isActive = activeId === service.id;
 
     const handleMouseEnter = () => setActiveId(service.id);
     const handleMouseLeave = () => setActiveId(null);
 
+    // Check screen size on client side
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsLargeScreen(window.innerWidth >= 1024);
+        };
+
+        // Initial check
+        checkScreenSize();
+
+        // Add resize listener
+        window.addEventListener('resize', checkScreenSize);
+        
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
     // Scroll-trigger animation for large devices
     useEffect(() => {
-        if (!containerRef.current) return;
-        if (window.innerWidth >= 1024) {
-            gsap.fromTo(
-                containerRef.current,
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: 'top 90%',
-                        toggleActions: 'play none none none',
-                    },
-                    delay: index * 0.1,
-                }
-            );
-        }
-    }, []);
+        if (!containerRef.current || !isLargeScreen) return;
+        
+        gsap.fromTo(
+            containerRef.current,
+            { y: 50, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none',
+                },
+                delay: index * 0.1,
+            }
+        );
+    }, [isLargeScreen, index]);
 
     // Hover animation for large devices only
     useEffect(() => {
-        if (!containerRef.current || !contentRef.current) return;
-        if (window.innerWidth < 1024) return; // skip animation on mobile/tablet
+        if (!containerRef.current || !contentRef.current || !isLargeScreen) return;
 
         if (isActive) {
             gsap.set(contentRef.current, { display: 'flex' });
@@ -98,7 +112,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
             });
             gsap.to(containerRef.current, { backgroundColor: '#1e1e1e', duration: 0.3 });
         }
-    }, [isActive]);
+    }, [isActive, isLargeScreen]);
 
     return (
         <div
@@ -107,7 +121,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
             onMouseLeave={handleMouseLeave}
             className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 mb-6 px-6 lg:px-8 py-6 rounded-2xl bg-[#1e1e1e] relative"
             style={{
-                minHeight: window.innerWidth >= 1024 ? '180px' : 'auto',
+                minHeight: isLargeScreen ? '180px' : 'auto',
             }}
         >
             {/* Title */}
@@ -124,7 +138,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
             <div
                 ref={contentRef}
                 className="flex flex-col lg:flex-row w-full items-center justify-between gap-6 lg:gap-20"
-                style={{ display: window.innerWidth >= 1024 ? 'none' : 'flex' }}
+                style={{ display: isLargeScreen ? 'none' : 'flex' }}
             >
                 {/* Image */}
                 <div className="w-full lg:w-1/2 flex justify-center items-center mb-4 lg:mb-0">
@@ -145,9 +159,11 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
             </div>
 
             {/* Icon only for large devices */}
-            <div className="hidden lg:flex ml-auto bg-[#f7b518] p-3 rounded-full text-black text-3xl items-center justify-center">
-                <MdArrowOutward />
-            </div>
+            {isLargeScreen && (
+                <div className="hidden lg:flex ml-auto bg-[#f7b518] p-3 rounded-full text-black text-3xl items-center justify-center">
+                    <MdArrowOutward />
+                </div>
+            )}
         </div>
     );
 };
