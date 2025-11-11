@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { FaMicrosoft, FaFacebookF, FaApple, FaSalesforce } from "react-icons/fa";
+import { FaMicrosoft, FaFacebookF, FaApple } from "react-icons/fa";
 
 const users = [
     { id: 1, name: "John Doe", avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
@@ -53,7 +53,7 @@ const plans = [
 ];
 
 const CheckIcon = () => (
-    <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-[#f7b518]">
+    <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#f7b518]">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-3 w-3 text-black"
@@ -70,13 +70,16 @@ const CheckIcon = () => (
 );
 
 const PricingArea = () => {
-    const [billingPeriod, setBillingPeriod] = useState("annual"); // default yearly
+    const [billingPeriod, setBillingPeriod] = useState("annual");
     const [showModal, setShowModal] = useState(false);
+    const [activePlan, setActivePlan] = useState(null);
 
     const formatPrice = (price) =>
         billingPeriod === "monthly" ? price : Math.round(price * 12 * 0.84);
 
-    const handleMonthlyClick = () => {
+    const handleMonthlyClick = () => setShowModal(true);
+    const handleGetStarted = (e) => {
+        e.stopPropagation(); // prevent card click
         setShowModal(true);
     };
 
@@ -116,8 +119,8 @@ const PricingArea = () => {
                     <button
                         onClick={handleMonthlyClick}
                         className={`py-3 px-6 rounded-lg font-semibold border ${billingPeriod === "monthly"
-                            ? "bg-black text-white border-black"
-                            : "bg-white text-black border-gray-300"
+                                ? "bg-black text-white border-black"
+                                : "bg-white text-black border-gray-300"
                             }`}
                     >
                         Monthly billing
@@ -125,8 +128,8 @@ const PricingArea = () => {
                     <button
                         onClick={() => setBillingPeriod("annual")}
                         className={`py-3 px-6 rounded-lg font-semibold border ${billingPeriod === "annual"
-                            ? "bg-black text-white border-black"
-                            : "bg-white text-black border-gray-300"
+                                ? "bg-black text-white border-black"
+                                : "bg-white text-black border-gray-300"
                             }`}
                     >
                         Annual billing{" "}
@@ -138,10 +141,14 @@ const PricingArea = () => {
 
                 {/* Pricing Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    {plans.map((plan) => (
+                    {plans.map((plan, index) => (
                         <div
                             key={plan.name}
-                            className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col border border-gray-200 hover:shadow-xl transition duration-300"
+                            onClick={() => setActivePlan(activePlan === index ? null : index)}
+                            className={`bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col border cursor-pointer ${activePlan === index
+                                    ? "border-[#f7b518] shadow-xl"
+                                    : "border-gray-200 hover:shadow-xl transition duration-300"
+                                }`}
                         >
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg sm:text-xl font-semibold">{plan.name}</h3>
@@ -162,12 +169,17 @@ const PricingArea = () => {
 
                             <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">{plan.description}</p>
 
-                            <button className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-[#f7b518] hover:text-black transition duration-200 mb-6">
+                            <button
+                                onClick={handleGetStarted}
+                                className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-[#f7b518] hover:text-black transition duration-200 mb-6"
+                            >
                                 Get started
                             </button>
 
                             <div className="mt-auto pt-4 sm:pt-6 border-t border-gray-200">
-                                <h4 className="font-semibold mb-3 sm:mb-4 text-gray-800 text-sm sm:text-base">Features</h4>
+                                <h4 className="font-semibold mb-3 sm:mb-4 text-gray-800 text-sm sm:text-base">
+                                    Features
+                                </h4>
                                 <ul className="space-y-2 sm:space-y-3">
                                     {plan.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-center text-gray-700 text-xs sm:text-sm">
@@ -182,6 +194,45 @@ const PricingArea = () => {
                 </div>
             </div>
 
+            {/* Compare Plans Section */}
+            {activePlan !== null && (
+                <div className="max-w-7xl mx-auto mt-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200 transition-all duration-500">
+                    <h2 className="text-2xl font-bold mb-6 text-center">Compare Plans</h2>
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full border-collapse text-sm sm:text-base">
+                            <thead>
+                                <tr className="bg-gray-100 text-gray-700 text-left">
+                                    <th className="p-3 font-semibold">Feature</th>
+                                    {plans.map((plan) => (
+                                        <th key={plan.name} className="p-3 font-semibold text-center">
+                                            {plan.name}
+                                        </th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {[
+                                    ["Total Users", "Up to 10", "Up to 20", "Unlimited"],
+                                    ["Storage", "20GB/user", "40GB/user", "Unlimited"],
+                                    ["Integrations", "Basic", "200+", "All integrations"],
+                                    ["Analytics", "Basic", "Advanced", "Full suite"],
+                                    ["Support", "Community", "Email", "Priority"],
+                                ].map((row, idx) => (
+                                    <tr key={idx} className="border-t border-gray-200">
+                                        <td className="p-3 font-medium text-gray-800">{row[0]}</td>
+                                        {row.slice(1).map((cell, cIdx) => (
+                                            <td key={cIdx} className="p-3 text-center text-gray-600">
+                                                {cell}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )}
+
             {/* Modal */}
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
@@ -192,7 +243,7 @@ const PricingArea = () => {
                         >
                             &times;
                         </button>
-                        <h2 className="text-2xl font-bold mb-2">Sign Up Now to See Monthly Prices</h2>
+                        <h2 className="text-2xl font-bold mb-2">Sign Up Now to Get Started</h2>
                         <p className="text-gray-600 mb-6 text-sm sm:text-base">
                             Collect information, payments, and signatures with custom online forms.
                         </p>
@@ -214,8 +265,6 @@ const PricingArea = () => {
                             ))}
                         </div>
 
-
-
                         <div className="flex items-center my-4 text-gray-400">
                             <hr className="flex-1" />
                             <span className="px-2 text-xs sm:text-sm">OR</span>
@@ -233,7 +282,8 @@ const PricingArea = () => {
                         </button>
 
                         <p className="text-center text-gray-500 text-xs sm:text-sm">
-                            Already have an account? <span className="text-black font-semibold cursor-pointer">Log in</span>
+                            Already have an account?{" "}
+                            <span className="text-black font-semibold cursor-pointer">Log in</span>
                         </p>
                     </div>
                 </div>
