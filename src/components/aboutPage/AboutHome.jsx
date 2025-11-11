@@ -12,9 +12,9 @@ const AboutHome = () => {
   return (
     <div>
       <Navbar />
-      {/* <AboutBanner /> */}
-      {/* <AboutArea /> */}
-      <Team />
+      <AboutBanner />
+      <AboutArea />
+      {/* <Team /> */}
       <Footer />
     </div>
   );
