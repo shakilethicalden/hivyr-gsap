@@ -122,7 +122,7 @@ const AgentArea = () => {
                               hoveredIndex === cardIndex ? "scale-95" : "scale-100"
                             }`}
                           />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/60 to-transparent p-5">
                             <p className="text-white text-lg font-semibold">{card.text}</p>
                           </div>
                           <div
@@ -151,7 +151,7 @@ const AgentArea = () => {
                 className="relative rounded-2xl overflow-hidden cursor-pointer h-[430px]"
               >
                 <Image src={card.image} alt={card.text} fill className="object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/60 to-transparent p-5">
                   <p className="text-white text-lg font-semibold">{card.text}</p>
                 </div>
               </div>
