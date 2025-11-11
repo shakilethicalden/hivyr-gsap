@@ -12,8 +12,8 @@ const AboutHome = () => {
   return (
     <div>
       <Navbar />
-      <AboutBanner />
-      <AboutArea />
+      {/* <AboutBanner /> */}
+      {/* <AboutArea /> */}
       <Team />
       <Footer />
     </div>
