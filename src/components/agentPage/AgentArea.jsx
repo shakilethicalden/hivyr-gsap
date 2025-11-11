@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import AgentDemoModal from "./AgentDemoModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,13 +23,14 @@ const agentCards = [
   { image: "/images/ai-agents/agent.jpg", text: "Sales Lead Intelligence" },
 ];
 
-const AgentArea = () => {
+export default function AgentArea() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [selectedAgentIndex, setSelectedAgentIndex] = useState(null);
+
   const titleRef = useRef(null);
   const paragraphRef = useRef(null);
 
-  // Detect desktop screens
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
     handleResize();
@@ -36,7 +38,7 @@ const AgentArea = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // GSAP animations
+  // Scroll Animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -53,11 +55,10 @@ const AgentArea = () => {
       );
       gsap.fromTo(
         paragraphRef.current,
-        { y: -40, opacity: 0, clipPath: "inset(0% 0% 100% 0%)" },
+        { y: -40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          clipPath: "inset(0% 0% 0% 0%)",
           duration: 1.2,
           ease: "power3.out",
           delay: 0.2,
@@ -68,11 +69,14 @@ const AgentArea = () => {
     return () => ctx.revert();
   }, []);
 
+  const openModal = (index) => setSelectedAgentIndex(index);
+  const closeModal = () => setSelectedAgentIndex(null);
+
   return (
     <section className="w-full py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        {/* Heading */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10 ">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10">
           <div ref={titleRef} className="flex items-center gap-3 overflow-hidden md:pb-8 xl:pb-0">
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-[#f7b518] leading-tight">
               EXPLORE
@@ -91,9 +95,8 @@ const AgentArea = () => {
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Agent Cards */}
         {isDesktop ? (
-          // Desktop: flex rows with hover width animation
           <div className="flex flex-col gap-6">
             {Array.from({ length: Math.ceil(agentCards.length / 4) }).map((_, rowIndex) => {
               const rowCards = agentCards.slice(rowIndex * 4, rowIndex * 4 + 4);
@@ -111,29 +114,33 @@ const AgentArea = () => {
                         key={cardIndex}
                         onMouseEnter={() => setHoveredIndex(cardIndex)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                        className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-in-out h-[430px] ${flexClass}`}
+                        className={`relative rounded-2xl overflow-hidden  transition-all duration-700 ease-in-out h-[430px] ${flexClass}`}
                       >
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={card.image}
-                            alt={card.text}
-                            fill
-                            className={`object-cover transition-transform duration-700 ease-in-out ${
-                              hoveredIndex === cardIndex ? "scale-95" : "scale-100"
+                        <Image
+                          src={card.image}
+                          alt={card.text}
+                          fill
+                          className={`object-cover transition-transform duration-700 ease-in-out ${hoveredIndex === cardIndex ? "scale-95" : "scale-100"
                             }`}
-                          />
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/60 to-transparent p-5">
-                            <p className="text-white text-lg font-semibold">{card.text}</p>
-                          </div>
-                          <div
-                            className={`absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-500 ${
-                              hoveredIndex === cardIndex ? "opacity-100" : "opacity-0"
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-5">
+                          <p className="text-white text-lg font-semibold">{card.text}</p>
+                        </div>
+
+                        {/* Hover Buttons */}
+                        <div
+                          className={`absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/50 backdrop-blur-sm transition-opacity duration-500 ${hoveredIndex === cardIndex ? "opacity-100" : "opacity-0"
                             }`}
+                        >
+                          <button className="flex items-center gap-2 bg-white text-black font-semibold px-5 py-3 rounded-full hover:bg-[#f7b518] cursor-pointer">
+                            View Agent <ArrowRight size={18} />
+                          </button>
+                          <button
+                            onClick={() => openModal(cardIndex)}
+                            className="flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-3 rounded-full hover:bg-[#ffffff] hover:text-black cursor-pointer"
                           >
-                            <button className="flex items-center gap-2 bg-white text-black font-semibold px-5 py-3 rounded-full hover:bg-gray-200">
-                              Use Agent <ArrowRight size={18} />
-                            </button>
-                          </div>
+                            Try Demo <ArrowRight size={18} />
+                          </button>
                         </div>
                       </div>
                     );
@@ -143,24 +150,34 @@ const AgentArea = () => {
             })}
           </div>
         ) : (
-          // Mobile/Tablet: simple grid 1-2 columns, no hover animation
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {agentCards.map((card, index) => (
-              <div
-                key={index}
-                className="relative rounded-2xl overflow-hidden cursor-pointer h-[430px]"
-              >
+              <div key={index} className="relative rounded-2xl overflow-hidden cursor-pointer h-[430px]">
                 <Image src={card.image} alt={card.text} fill className="object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/60 to-transparent p-5">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5">
                   <p className="text-white text-lg font-semibold">{card.text}</p>
                 </div>
+                <button
+                  onClick={() => openModal(index)}
+                  className="absolute top-4 right-4 flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-4 py-2 rounded-full text-sm hover:bg-[#ffffff] hover:text-black"
+                >
+                  Try Demo <ArrowRight size={16} />
+                </button>
               </div>
             ))}
           </div>
         )}
       </div>
+
+      {/* Agent Demo Modal */}
+      {selectedAgentIndex !== null && (
+        <AgentDemoModal
+          isOpen={selectedAgentIndex !== null}
+          onClose={closeModal}
+          agents={agentCards}
+          initialIndex={selectedAgentIndex}
+        />
+      )}
     </section>
   );
-};
-
-export default AgentArea;
+}
