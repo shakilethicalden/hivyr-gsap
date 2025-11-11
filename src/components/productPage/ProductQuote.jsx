@@ -34,12 +34,12 @@ export default function ProductQuote() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[90vh] sm:h-[100vh] overflow-hidden"
+      className="relative w-full h-[90vh] sm:h-[95vh] overflow-hidden"
     >
       {/* Background */}
       <div
         ref={bgRef}
-        className="absolute top-0 left-0 w-full h-full bg-cover bg-center will-change-transform transition-transform duration-[800ms] ease-out"
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center will-change-transform transition-transform duration-[2s] ease-out"
         style={{
           backgroundImage: "url('/images/product/quote.jpg')",
           backgroundSize: "cover",
@@ -48,7 +48,7 @@ export default function ProductQuote() {
       ></div>
 
       {/* Overlay for contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
+      <div className="absolute inset-0  bg-gradient-to from-black/40 via-black/20 to-transparent" />
 
       {/* Quote Text */}
       <div className="absolute inset-0 flex items-center justify-center px-6 sm:px-10">
