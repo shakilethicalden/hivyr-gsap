@@ -71,7 +71,7 @@ const HoverCard = ({ title, description, image, alwaysVisible }) => {
       </div>
 
       {/* Overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent transition-opacity duration-500 ease-in-out
+      <div className={`absolute inset-0 bg-gradient-to from-black/40 via-black/10 to-transparent transition-opacity duration-500 ease-in-out
         ${alwaysVisible ? "opacity-100" : "lg:opacity-0 group-hover:opacity-100"}
       `}></div>
 
