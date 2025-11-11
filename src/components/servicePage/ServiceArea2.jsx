@@ -10,37 +10,37 @@ const servicesData = [
     {
         id: 1,
         title: 'AI Strategy & Implementation',
-        image: '/images/service/ai-strategy.jpg',
+        image: '/images/service/service.jpg',
         features: ['AI Opportunity Assessment', 'Use Case Identification', 'ROI Analysis', 'Implementation Roadmap'],
     },
     {
         id: 2,
         title: 'Custom AI Agent Development',
-        image: '/images/service/ai-development.jpg',
+        image: '/images/service/service.jpg',
         features: ['Conversational AI Design', 'Workflow Automation', 'Multi-agent Systems', 'API Integration'],
     },
     {
         id: 3,
         title: 'Natural Language Processing',
-        image: '/images/service/nlp-services.jpg',
+        image: '/images/service/service.jpg',
         features: ['Chatbot Development', 'Sentiment Analysis', 'Text Classification', 'Language Translation'],
     },
     {
         id: 4,
         title: 'AI Training & Fine-tuning',
-        image: '/images/service/ai-training.jpg',
+        image: '/images/service/service.jpg',
         features: ['Data Preparation', 'Model Fine-tuning', 'Performance Optimization', 'Continuous Learning'],
     },
     {
         id: 5,
         title: 'AI Analytics & Insights',
-        image: '/images/service/ai-analytics.jpg',
+        image: '/images/service/service.jpg',
         features: ['Performance Monitoring', 'User Behavior Analysis', 'Predictive Analytics', 'Decision Support'],
     },
     {
         id: 6,
         title: 'AI Integration Services',
-        image: '/images/service/ai-integration.jpg',
+        image: '/images/service/service.jpg',
         features: ['Legacy System Integration', 'API Development', 'Cloud Deployment', 'Scalability Solutions'],
     }
 ];

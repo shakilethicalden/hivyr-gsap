@@ -196,7 +196,7 @@ const PricingArea = () => {
 
             {/* Compare Plans Section */}
             {activePlan !== null && (
-                <div className="max-w-7xl mx-auto mt-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200 transition-all duration-500">
+                <div className="max-w-7xl mx-auto mt-16 mb-4 bg-white rounded-2xl shadow-lg p-8 border border-gray-200 transition-all duration-500">
                     <h2 className="text-2xl font-bold mb-6 text-center">Compare Plans</h2>
                     <div className="overflow-x-auto">
                         <table className="min-w-full border-collapse text-sm sm:text-base">
