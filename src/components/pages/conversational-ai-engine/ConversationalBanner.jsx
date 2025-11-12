@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 
 export default function ConversationalBanner() {
@@ -14,7 +13,7 @@ export default function ConversationalBanner() {
             Conversational AI Engine
           </h1>
           <p className="text-gray-400 leading-relaxed mb-8">
-            Gain AI models the ability to understand and respond naturally
+            Hivyr AI models the ability to understand and respond naturally
             through speech—even in challenging network conditions and noisy
             environments.
           </p>
@@ -30,12 +29,12 @@ export default function ConversationalBanner() {
 
         {/* Right Image Section */}
         <div className="w-full lg:w-1/2 flex justify-center">
-          <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px]">
+          <div className="relative w-full h-[400px] md:h-[500px] lg:h-[550px]">
             <Image
               src="/images/ai-agents/conversational.png"
               alt="AI Engine"
               fill
-              className="object-contain rounded-full"
+              className="object-contain "
               priority
             />
           </div>

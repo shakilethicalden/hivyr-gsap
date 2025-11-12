@@ -1,26 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import { Volume2, Wifi, Rocket } from "lucide-react";
+import { Rocket, Settings, ShieldCheck } from "lucide-react";
 
-export default function BuildVoiceAI() {
+export default function RealTimeVideo() {
   const items = [
-    {
-      icon: <Volume2 className="w-8 h-8 text-white" />,
-      title: "Make AI voice conversations more natural",
-      desc: "Give any AI model the ability to clearly understand and respond to human speech with ultra-low latency for lifelike conversations. Agora’s conversational AI platform features built-in interruption handling, AI echo cancellation and background noise suppression to ensure accurate voice processing in any environment.",
-      color: "bg-[#f7b518]/20",
-    },
-    {
-      icon: <Wifi className="w-8 h-8 text-white" />,
-      title: "Eliminate latency and scalability challenges",
-      desc: "Prevent common issues with latency and packet loss by using Agora’s global network with intelligent routing and advanced optimizations to ensure optimal real-time performance, anywhere on any device—even under poor network conditions.",
-      color: "bg-[#f7b518]/20",
-    },
     {
       icon: <Rocket className="w-8 h-8 text-white" />,
       title: "Get to market faster",
-      desc: "Integrate voice AI agents into your application in minutes, with support for all device types and major development platforms. Leverage Agora’s existing real-time infrastructure to quickly deploy reliable and responsive voice AI experiences.",
+      desc: "Increase development speed and get your video chat experience to market faster with tools like our no-code App Builder and library of extensions like recording, noise suppression, and more.",
+      color: "bg-[#f7b518]/20",
+    },
+    {
+      icon: <Settings className="w-8 h-8 text-white" />,
+      title: "Customize for your use case",
+      desc: "Agora’s flexible, cross-platform live video SDK gives you full control over the user experience so you can build video calling for any use case from telehealth to live shopping.",
+      color: "bg-[#f7b518]/20",
+    },
+    {
+      icon: <ShieldCheck className="w-8 h-8 text-white" />,
+      title: "Ensure reliability and quality",
+      desc: "Deliver a seamless and uninterrupted video call experience for your users on the world’s only network built to power real-time video with ultra-low latency and intelligent routing.",
       color: "bg-[#f7b518]/20",
     },
   ];
@@ -29,11 +29,11 @@ export default function BuildVoiceAI() {
     <section className="bg-black text-white py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-4">
-          Build natural and scalable voice AI—fast
+        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
+          Boost in-app engagement with real-time video
         </h2>
         <p className="text-gray-400 text-center mb-12">
-          Enable natural conversation with AI agents
+          Adding real-time video to your app keeps users engaged longer—on any platform or device.
         </p>
 
         {/* Content Grid */}
@@ -41,8 +41,8 @@ export default function BuildVoiceAI() {
           {/* Left Image */}
           <div className="flex justify-center items-stretch">
             <Image
-              src="/images/ai-agents/buildvoice.png"
-              alt="Voice AI"
+              src="/images/ai-agents/Videochat.webp"
+              alt="Real-time Video"
               width={520}
               height={420}
               className="rounded-2xl w-full h-full object-cover"

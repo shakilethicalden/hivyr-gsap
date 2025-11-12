@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const agentCards = [
   { image: "/images/ai-agents/agent.jpg", text: "Conversational AI Engine", link: "/products/conversational-ai-engine" },
-  { image: "/images/ai-agents/agent.jpg", text: "Customer Support Automation" },
+  { image: "/images/ai-agents/agent.jpg", text: "Video Calling", link: "/products/video-call" },
   { image: "/images/ai-agents/agent.jpg", text: "Data-driven Decision Making" },
   { image: "/images/ai-agents/agent.jpg", text: "Task Scheduling & Management" },
   { image: "/images/ai-agents/agent.jpg", text: "AI-driven Research Assistant" },

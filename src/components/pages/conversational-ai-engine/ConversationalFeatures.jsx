@@ -1,5 +1,3 @@
-"use client";
-
 import { Cpu, ShieldCheck, Zap, WifiOff, Lock, Server } from "lucide-react";
 
 export default function ConversationalFeatures() {
