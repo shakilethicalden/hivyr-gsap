@@ -12,15 +12,15 @@ const agentCards = [
   { image: "/images/ai-agents/agent.jpg", text: "Conversational AI Engine", link: "/products/conversational-ai-engine" },
   { image: "/images/ai-agents/agent.jpg", text: "Video Calling", link: "/products/video-call" },
   { image: "/images/ai-agents/agent.jpg", text: "Voice Calling", link: "/products/voice-call" },
-  { image: "/images/ai-agents/agent.jpg", text: "Task Scheduling & Management" },
-  { image: "/images/ai-agents/agent.jpg", text: "AI-driven Research Assistant" },
-  { image: "/images/ai-agents/agent.jpg", text: "Predictive Analytics Engine" },
-  { image: "/images/ai-agents/agent.jpg", text: "Voice Command Integration" },
-  { image: "/images/ai-agents/agent.jpg", text: "Customer Data Processing" },
-  { image: "/images/ai-agents/agent.jpg", text: "Automated Report Generation" },
-  { image: "/images/ai-agents/agent.jpg", text: "Content Recommendation System" },
-  { image: "/images/ai-agents/agent.jpg", text: "Workflow Streamlining Agent" },
-  { image: "/images/ai-agents/agent.jpg", text: "Sales Lead Intelligence" },
+  { image: "/images/ai-agents/agent.jpg", text: "Chat", link: "/products/chat" },
+  // { image: "/images/ai-agents/agent.jpg", text: "AI-driven Research Assistant" },
+  // { image: "/images/ai-agents/agent.jpg", text: "Predictive Analytics Engine" },
+  // { image: "/images/ai-agents/agent.jpg", text: "Voice Command Integration" },
+  // { image: "/images/ai-agents/agent.jpg", text: "Customer Data Processing" },
+  // { image: "/images/ai-agents/agent.jpg", text: "Automated Report Generation" },
+  // { image: "/images/ai-agents/agent.jpg", text: "Content Recommendation System" },
+  // { image: "/images/ai-agents/agent.jpg", text: "Workflow Streamlining Agent" },
+  // { image: "/images/ai-agents/agent.jpg", text: "Sales Lead Intelligence" },
 ];
 
 export default function AgentArea() {
@@ -132,14 +132,14 @@ export default function AgentArea() {
                           className={`absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/50 backdrop-blur-sm transition-opacity duration-500 ${hoveredIndex === cardIndex ? "opacity-100" : "opacity-0"
                             }`}
                         >
-                          <button className=" bg-white text-black font-semibold px-5 py-3 rounded-full hover:bg-[#f7b518] cursor-pointer">
+                          <button className=" bg-white text-black font-semibold px-5 py-3 rounded-full  cursor-pointer">
                             <a className="flex items-center gap-2" href={card.link}>
                               View Agent <ArrowRight size={18} />
                             </a>
                           </button>
                           <button
                             onClick={() => openModal(cardIndex)}
-                            className="flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-3 rounded-full hover:bg-[#ffffff] hover:text-black cursor-pointer"
+                            className="flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-3 rounded-full  cursor-pointer"
                           >
                             Try Demo <ArrowRight size={18} />
                           </button>

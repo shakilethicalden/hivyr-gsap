@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FaAndroid, FaApple, FaChrome, FaLinux, FaWindows } from "react-icons/fa";
 
-export default function VoiceCallBanner() {
+export default function ChatBanner() {
   const platforms = [
     { icon: <FaApple className="w-5 h-5 text-white" />, color: "bg-[#f7b518]/20" },
     { icon: <FaWindows className="w-5 h-5 text-white" />, color: "bg-[#f7b518]/20" },
@@ -19,10 +19,10 @@ export default function VoiceCallBanner() {
             Platform
           </p>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Voice Calling
+            Chat SDK
           </h1>
           <p className="text-gray-400 leading-relaxed mb-8">
-            Easily embed real-time voice chat into any application with cross-platform voice API.
+            Add customized messaging experiences to your real-time video and voice apps with Agora’s chat SDK
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-6">
             <button className="bg-white text-black font-semibold px-6 py-2.5 rounded-full hover:bg-[#f7b518] hover:text-black transition">
@@ -53,7 +53,7 @@ export default function VoiceCallBanner() {
         <div className="w-full lg:w-1/2 flex justify-center">
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[550px]">
             <Image
-              src="/images/ai-agents/voice-call-banner.webp"
+              src="/images/ai-agents/chat-banner.webp"
               alt="AI Engine"
               fill
               className="object-contain"

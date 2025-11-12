@@ -53,7 +53,7 @@ export default function VideoCallBanner() {
         <div className="w-full lg:w-1/2 flex justify-center">
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[550px]">
             <Image
-              src="/images/ai-agents/video-call.jpg"
+              src="/images/ai-agents/video-call-banner.webp"
               alt="AI Engine"
               fill
               className="object-contain"
