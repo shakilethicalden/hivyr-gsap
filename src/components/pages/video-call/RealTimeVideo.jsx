@@ -29,7 +29,7 @@ export default function RealTimeVideo() {
     <section className="bg-black text-white py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-12">
+        <h2 className="text-2xl md:text-3xl lg:text-5xl font-semibold lg:font-bold text-center mb-12">
           Boost in-app engagement with real-time video
         </h2>
         <p className="text-gray-400 text-center mb-12">

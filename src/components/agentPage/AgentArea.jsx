@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const agentCards = [
   { image: "/images/ai-agents/agent.jpg", text: "Conversational AI Engine", link: "/products/conversational-ai-engine" },
   { image: "/images/ai-agents/agent.jpg", text: "Video Calling", link: "/products/video-call" },
-  { image: "/images/ai-agents/agent.jpg", text: "Data-driven Decision Making" },
+  { image: "/images/ai-agents/agent.jpg", text: "Voice Calling", link: "/products/voice-call" },
   { image: "/images/ai-agents/agent.jpg", text: "Task Scheduling & Management" },
   { image: "/images/ai-agents/agent.jpg", text: "AI-driven Research Assistant" },
   { image: "/images/ai-agents/agent.jpg", text: "Predictive Analytics Engine" },
@@ -123,7 +123,7 @@ export default function AgentArea() {
                           className={`object-cover transition-transform duration-700 ease-in-out ${hoveredIndex === cardIndex ? "scale-95" : "scale-100"
                             }`}
                         />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-5">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/70 to-transparent p-5">
                           <p className="text-white text-lg font-semibold">{card.text}</p>
                         </div>
 
@@ -156,7 +156,7 @@ export default function AgentArea() {
             {agentCards.map((card, index) => (
               <div key={index} className="relative rounded-2xl overflow-hidden cursor-pointer h-[430px]">
                 <Image src={card.image} alt={card.text} fill className="object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/60 to-transparent p-5">
                   <p className="text-white text-lg font-semibold">{card.text}</p>
                 </div>
                 <button
