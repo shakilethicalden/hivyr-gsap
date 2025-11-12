@@ -9,7 +9,7 @@ import AgentDemoModal from "./AgentDemoModal";
 gsap.registerPlugin(ScrollTrigger);
 
 const agentCards = [
-  { image: "/images/ai-agents/agent.jpg", text: "AI Workflow Optimization" },
+  { image: "/images/ai-agents/agent.jpg", text: "Conversational AI Engine", link: "/products/conversational-ai-engine" },
   { image: "/images/ai-agents/agent.jpg", text: "Customer Support Automation" },
   { image: "/images/ai-agents/agent.jpg", text: "Data-driven Decision Making" },
   { image: "/images/ai-agents/agent.jpg", text: "Task Scheduling & Management" },
@@ -132,8 +132,10 @@ export default function AgentArea() {
                           className={`absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/50 backdrop-blur-sm transition-opacity duration-500 ${hoveredIndex === cardIndex ? "opacity-100" : "opacity-0"
                             }`}
                         >
-                          <button className="flex items-center gap-2 bg-white text-black font-semibold px-5 py-3 rounded-full hover:bg-[#f7b518] cursor-pointer">
-                            View Agent <ArrowRight size={18} />
+                          <button className=" bg-white text-black font-semibold px-5 py-3 rounded-full hover:bg-[#f7b518] cursor-pointer">
+                            <a className="flex items-center gap-2" href={card.link}>
+                              View Agent <ArrowRight size={18} />
+                            </a>
                           </button>
                           <button
                             onClick={() => openModal(cardIndex)}
