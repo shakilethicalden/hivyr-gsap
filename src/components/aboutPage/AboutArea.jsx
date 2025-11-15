@@ -26,7 +26,8 @@ export default function AboutArea() {
       frame++;
       const progress = frame / totalFrames;
       for (let i = 0; i < finalText.length; i++) {
-        if (!revealProgress[i] && Math.random() < progress) revealProgress[i] = true;
+        if (!revealProgress[i] && Math.random() < progress)
+          revealProgress[i] = true;
       }
 
       if (frame < totalFrames) requestAnimationFrame(animate);
@@ -45,7 +46,6 @@ export default function AboutArea() {
   useEffect(() => {
     let ctx;
 
-    // Only run GSAP and ScrollTrigger on client
     (async () => {
       const { gsap } = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
@@ -54,13 +54,12 @@ export default function AboutArea() {
       ctx = gsap.context(() => {
         const section = sectionRef.current;
 
-        // LEFT SIDE SCRAMBLE
+        // LEFT SIDE
         triggerScramble(leftTextRef.current);
 
-        // RIGHT SIDE SCRAMBLES
+        // RIGHT SIDE
         rightTextRefs.current.forEach((el) => triggerScramble(el));
 
-        // PIN LEFT AREA
         ScrollTrigger.create({
           trigger: section,
           start: "top top",
@@ -75,24 +74,39 @@ export default function AboutArea() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-black text-white py-28 px-6 md:px-16 lg:px-28 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="bg-black text-white py-28 px-6 md:px-16 lg:px-28 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-start justify-between">
-        <div ref={leftAreaRef} className="lg:w-1/2 flex flex-col justify-start sticky top-0 self-start">
-          <p className="text-sm text-gray-400 uppercase tracking-widest mb-4">Our Thesis</p>
+        <div
+          ref={leftAreaRef}
+          className="lg:w-1/2 flex flex-col justify-start sticky top-0 self-start"
+        >
+          <p className="text-sm text-gray-400 uppercase tracking-widest mb-4">
+            Our Perspective
+          </p>
+
           <h2
             ref={leftTextRef}
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-snug inline-block"
-            data-text="Building the Robotic Foundation Model for Defense"
+            data-text="Building the Intelligence Layer for Autonomous AI Agents"
           >
-            Building the Robotic Foundation Model for Defense
+            Building the Intelligence Layer for Autonomous AI Agents
           </h2>
         </div>
+
         <div className="lg:w-1/2 flex flex-col space-y-8 text-gray-300 text-2xl leading-relaxed">
           {[
-            "The fundamental problem isn’t hardware, it’s intelligence. Robots aren’t pervasive today because they’re unintelligent. Most autonomy systems are brittle, limited, and disconnected from the real-world complexity that warfighters face.",
-            "To unlock truly transformative capability, we need robots that think, adapt, and act with human-level intelligence. That’s why we’re building Fury, the first foundation model for defense robotics: an embodied AI brain that allows machines to perceive the world, understand natural language, and coordinate action autonomously across any domain.",
+            "The limitations in automation today aren’t caused by workflows or interfaces—they’re caused by intelligence. Businesses rely on static software that can’t reason, adapt, or make decisions. Traditional automation is brittle because it doesn’t understand context.",
+            "To unlock true autonomy, organizations need agents that can perceive situations, understand goals, and take action in real time. That’s why we’re building the next generation of AI Agents—systems that operate independently, learn continuously, and collaborate seamlessly across tools, teams, and environments.",
           ].map((para, i) => (
-            <p key={i} ref={(el) => (rightTextRefs.current[i] = el)} data-text={para} className="opacity-90 inline-block">
+            <p
+              key={i}
+              ref={(el) => (rightTextRefs.current[i] = el)}
+              data-text={para}
+              className="opacity-90 inline-block"
+            >
               {para}
             </p>
           ))}

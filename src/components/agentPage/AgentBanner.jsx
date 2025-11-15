@@ -22,6 +22,7 @@ const AgentBanner = () => {
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center items-center -mt-26">
+
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -30,8 +31,14 @@ const AgentBanner = () => {
         }}
       />
 
-      {/* Dark Overlay */}
+      {/* Dark Global Overlay */}
       <div className="absolute inset-0 bg-black/50" />
+
+      {/* Strong Gradient Behind Main Heading */}
+      <div className="absolute inset-x-0 top-0 h-[55%]  from-black/70 via-black/40 to-transparent" />
+
+      {/* Strong Gradient Behind Marquee */}
+      <div className="absolute inset-x-0 bottom-0 h-[45%]  from-black/80 via-black/40 to-transparent" />
 
       {/* Centered Content */}
       <div className="relative z-10 text-center text-white flex flex-col items-center justify-center px-6">
@@ -42,6 +49,7 @@ const AgentBanner = () => {
           From AI-driven workflow automation to intelligent business optimization—
           our agents deliver speed, reliability, and results anywhere in the world.
         </p>
+
         <button className="inline-flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full text-sm sm:text-base md:text-lg transition-all">
           Request an Agent
           <span className="text-xl md:text-2xl">↗</span>
@@ -49,10 +57,10 @@ const AgentBanner = () => {
       </div>
 
       {/* Moving Text (Marquee) */}
-      <div className="absolute bottom-5 left-0 w-full overflow-hidden">
+      <div className="absolute bottom-5 left-0 w-full overflow-hidden z-10">
         <div
           ref={marqueeRef}
-          className="flex whitespace-nowrap text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] xl:text-[110px] font-extrabold text-white uppercase tracking-wider"
+          className="flex whitespace-nowrap text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] xl:text-[110px] font-extrabold text-white uppercase tracking-wider opacity-90"
         >
           <span className="px-6 sm:px-8">AI-AGENT-SYSTEMS-AI-AGENT-SYSTEMS-</span>
           <span className="px-6 sm:px-8">AI-AGENT-SYSTEMS-AI-AGENT-SYSTEMS-</span>

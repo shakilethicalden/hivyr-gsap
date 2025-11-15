@@ -34,15 +34,12 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
     <div className="fixed inset-0 z-99 flex items-center justify-center bg-black/90 backdrop-blur-sm">
       <div className="relative w-full max-w-7xl bg-[#0a0a0a] text-white rounded-3xl shadow-2xl p-6 sm:p-10 transition-all duration-300 ease-in-out">
 
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-300 hover:text-white"
-        >
+        {/* Close */}
+        <button onClick={onClose} className="absolute top-4 right-4 text-gray-300 hover:text-white">
           <X size={28} />
         </button>
 
-        {/* Arrows */}
+        {/* Left/Right Arrows */}
         <button
           onClick={prevAgent}
           className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition"
@@ -56,39 +53,71 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
           <ArrowRight size={22} />
         </button>
 
-        {/* Title and Description */}
+        {/* Title */}
         <div className="text-center mb-6 transition-all duration-300">
-          <h2 className="text-3xl font-semibold">{currentAgent.text}</h2>
+          <h2 className="text-3xl font-semibold text-[#f7b518]">{currentAgent.text}</h2>
           <p className="text-gray-400 mt-2">
-            A demonstration of <span className="text-[#f7b518]">{currentAgent.text}</span> capabilities.
+            A demonstration of <span className="">{currentAgent.text}</span> capabilities.
           </p>
         </div>
 
-        {/* Demo Preview */}
+        {/* --- NEW DEMO PREVIEW (NO IMAGE) --- */}
         <div
-          className={`flex justify-center items-center w-full h-[400px] sm:h-[500px] bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-inner transition-opacity duration-300 ${
+          className={`flex flex-col justify-between items-center w-full h-[400px] sm:h-[500px] bg-[#0f0f0f] rounded-2xl overflow-hidden border border-white/10 shadow-inner transition-opacity duration-300 ${
             fade ? "opacity-0" : "opacity-100"
           }`}
         >
-          <img
-            src={currentAgent.image}
-            alt={currentAgent.text}
-            className="object-contain w-full h-full"
-          />
+          {/* Agent Header */}
+          <div className="flex items-center gap-4 p-6 w-full border-b border-white/10 bg-[#151515]">
+            <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-[#f7b518] text-xl font-bold">
+              {currentAgent.text[0]}
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-white">{currentAgent.text}</h3>
+              <p className="text-gray-400 text-sm">Demo Preview</p>
+            </div>
+          </div>
+
+          {/* Chat Demo */}
+          <div className="flex-1 w-full px-6 py-4 overflow-y-auto space-y-4">
+            {/* User Bubble */}
+            <div className="flex justify-end">
+              <div className="bg-[#f7b518] text-black px-5 py-3 rounded-2xl max-w-[75%] text-sm shadow-lg">
+                {currentAgent.demo?.user || "Hi! Show me what you can do."}
+              </div>
+            </div>
+
+            {/* AI Bubble */}
+            <div className="flex justify-start">
+              <div className="bg-white/10 text-gray-200 px-5 py-3 rounded-2xl max-w-[75%] text-sm shadow-lg border border-white/5">
+                {currentAgent.demo?.ai || "Sure! Here is an example of how this agent works…"}
+              </div>
+            </div>
+
+            {/* Typing Indicator */}
+            <div className="flex items-center gap-2 text-gray-400 pl-1">
+              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></div>
+              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="p-4 w-full border-t border-white/10 bg-[#151515] text-center text-gray-400 text-sm">
+            Live demonstration panel
+          </div>
         </div>
 
-        {/* Action Buttons */}
+        {/* Buttons */}
         <div className="flex justify-center gap-4 mt-8">
-          <button className="bg-[#f7b518] hover:bg-[#ffffff] text-black font-semibold px-6 py-2 rounded-lg">
+          <button className="bg-[#f7b518] hover:bg-white text-black font-semibold px-6 py-2 rounded-lg">
             Use Agent
           </button>
-          <button
-            onClick={onClose}
-            className="bg-white hover:bg-black hover:text-white text-black px-6 py-2 rounded-lg"
-          >
+          <button onClick={onClose} className="bg-white hover:bg-black hover:text-white text-black px-6 py-2 rounded-lg">
             Close
           </button>
         </div>
+
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { Heart, Droplet, Sun, MessageCircle, Workflow, TrendingUp } from 'lucide-react';
+import { MessageCircle, Workflow, TrendingUp } from 'lucide-react';
 import { gsap } from 'gsap';
 
 const imagesLeft = [
@@ -35,7 +35,6 @@ const ClientSection = () => {
     if (!container) return;
     const children = Array.from(container.children);
 
-    // Duplicate for seamless loop
     children.forEach((child) => {
       const clone = child.cloneNode(true);
       container.appendChild(clone);
@@ -74,13 +73,13 @@ const ClientSection = () => {
         {images.map((src, i) => (
           <div
             key={i}
-            className="w-full h-25 -mb-16 md:mb-5 lg:mb-3  relative rounded-xl overflow-hidden flex items-center justify-center"
+            className="w-full h-25 -mb-16 md:mb-5 lg:mb-3 relative rounded-xl overflow-hidden flex items-center justify-center"
           >
             <Image
               src={src}
               alt={`Image ${i}`}
               fill
-              className="object-contain"
+              className="object-contain brightness-[0.95] contrast-110 saturate-0 opacity-80 mix-blend-screen"
             />
           </div>
         ))}
@@ -92,7 +91,7 @@ const ClientSection = () => {
     <section className="py-16 md:py-24 px-4 flex justify-center">
       <div className="max-w-7xl w-full flex flex-wrap lg:flex-nowrap items-start bg-gray-100 rounded-2xl shadow-sm">
         {/* Image Columns */}
-        <div className="flex w-full lg:w-1/3 xl:px-4   justify-between">
+        <div className="flex w-full lg:w-1/3 xl:px-4 justify-between">
           <ImageColumn images={imagesLeft} refProp={col1Ref} />
           <ImageColumn images={imagesMiddle} refProp={col2Ref} />
           <ImageColumn images={imagesRight} refProp={col3Ref} />
@@ -100,16 +99,15 @@ const ClientSection = () => {
 
         {/* Text Content */}
         <div className="w-full lg:w-2/3 flex flex-col justify-start space-y-6 lg:space-y-8 py-10 px-8">
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl  text-[#3f3f3f] leading-tight"
-          >
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-[#3f3f3f] leading-tight">
             Your AI Partner <br /> for Digital Transformation
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Leverage cutting-edge artificial intelligence to revolutionize your business processes.
-            From intelligent chatbots to predictive analytics, we build AI agents that work
-            tirelessly to elevate your customer experience and operational efficiency.
+            From intelligent chatbots to predictive analytics, we build AI agents that work tirelessly
+            to elevate your customer experience and operational efficiency.
           </p>
+
           <ul className="space-y-4 pt-2">
             <li className="flex items-center text-gray-700 text-lg">
               <MessageCircle className="mr-3 w-6 h-6 text-[#5b5b5b] shrink-0" />
