@@ -99,7 +99,7 @@ const ClientSection = () => {
 
         {/* Text Content */}
         <div className="w-full lg:w-2/3 flex flex-col justify-start space-y-6 lg:space-y-8 py-10 px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-[#3f3f3f] leading-tight">
+          <h1 className="serv_common_title">
             Your AI Partner <br /> for Digital Transformation
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">

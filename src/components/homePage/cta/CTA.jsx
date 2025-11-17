@@ -56,7 +56,7 @@ const CTA = () => {
     <section className="relative w-full bg-black py-24 px-6 flex flex-col justify-center items-center">
       <h2
         ref={h2Ref}
-        className="text-3xl md:text-5xl font-semibold max-w-4xl mx-auto text-center leading-snug select-none transition-all duration-300"
+        className="text-3xl md:text-5xl font-bold max-w-5xl mx-auto text-center leading-snug select-none transition-all duration-300"
         style={{
           WebkitBackgroundClip: "text",
           backgroundClip: "text",

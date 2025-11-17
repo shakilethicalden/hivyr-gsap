@@ -20,12 +20,12 @@ export default function ServiceBanner() {
       {/* Centered Content */}
       <div className="relative z-20 max-w-4xl px-6 sm:px-8 md:px-12 lg:px-16">
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 md:mb-8">
+        <h1 className="serv_common_title mb-4 sm:mb-6 md:mb-8">
           Empower Your Business with AI Agents
         </h1>
 
         {/* Description */}
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 md:mb-10">
+        <p className="serv_common_desc mb-6 sm:mb-8 md:mb-10">
           Automate tasks, analyze data, and make smarter decisions with our intelligent AI solutions designed for modern businesses.
         </p>
 

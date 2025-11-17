@@ -184,8 +184,8 @@ const ServiceArea2 = () => {
                         </p>
                     </div>
                     <div className="flex items-end justify-start md:justify-end">
-                        <h2 className="text-5xl lg:text-6xl font-bold leading-tight text-white">
-                            Intelligent solutions powered by AI
+                        <h2 className="serv_common_title text-white">
+                            Intelligent solutions <span className="text-[#f7b518]">powered by AI</span>
                         </h2>
                     </div>
                 </div>

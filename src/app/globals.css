@@ -27,3 +27,13 @@ body {
   font-family: var(--font-manrope);
 }
 
+
+
+/* service page css */
+.serv_common_title {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold
+}
+
+.serv_common_desc {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl text-gray-200
+}

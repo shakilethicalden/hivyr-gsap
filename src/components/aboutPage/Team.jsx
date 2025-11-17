@@ -24,7 +24,7 @@ export default function Team() {
 
     // Add resize listener
     window.addEventListener('resize', checkScreenSize);
-    
+
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
@@ -34,7 +34,7 @@ export default function Team() {
       if (isLargeScreen) {
         cardRefs.current.forEach((card) => {
           if (!card) return;
-          
+
           const tiles = card.querySelectorAll(".tile");
 
           gsap.set(tiles, { opacity: 1, scale: 1 });
@@ -60,16 +60,16 @@ export default function Team() {
 
   const team = [
     {
-      name: "Colby Adcock",
-      title: "CEO & Co-founder",
-      img: "/images/about/ceo.avif",
+      name: "Fardeen",
+      title: "CEO & Founder",
+      img: "/images/team/Fardeen.webp",
       linkedin: "#",
       twitter: "#",
     },
     {
-      name: "Collin Otis",
-      title: "CTO & Co-founder",
-      img: "/images/about/co.avif",
+      name: "Arihant",
+      title: "Co-founder",
+      img: "/images/team/arihant.webp",
       linkedin: "#",
       twitter: "#",
     },
@@ -105,9 +105,10 @@ export default function Team() {
                   src={member.img}
                   alt={member.name}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
+
 
                 {/* 9 tile masks overlay for large devices */}
                 {isLargeScreen &&
