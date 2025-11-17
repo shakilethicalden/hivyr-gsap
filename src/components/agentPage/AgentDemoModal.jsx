@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { X, ArrowLeft, ArrowRight } from "lucide-react";
+import { X, ArrowLeft, ArrowRight, Video, Mic } from "lucide-react";
 
 export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex = 0 }) {
   const [current, setCurrent] = useState(initialIndex);
@@ -30,6 +30,8 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
 
   const currentAgent = agents[current];
 
+  const isChatAgent = !["Video Calling", "Voice Calling"].includes(currentAgent.text);
+
   return (
     <div className="fixed inset-0 z-99 flex items-center justify-center bg-black/90 backdrop-blur-sm">
       <div className="relative w-full max-w-7xl bg-[#0a0a0a] text-white rounded-3xl shadow-2xl p-6 sm:p-10 transition-all duration-300 ease-in-out">
@@ -39,7 +41,7 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
           <X size={28} />
         </button>
 
-        {/* Left/Right Arrows */}
+        {/* Arrows */}
         <button
           onClick={prevAgent}
           className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition"
@@ -57,11 +59,11 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
         <div className="text-center mb-6 transition-all duration-300">
           <h2 className="text-3xl font-semibold text-[#f7b518]">{currentAgent.text}</h2>
           <p className="text-gray-400 mt-2">
-            A demonstration of <span className="">{currentAgent.text}</span> capabilities.
+            A demonstration of <span>{currentAgent.text}</span> capabilities.
           </p>
         </div>
 
-        {/* --- NEW DEMO PREVIEW (NO IMAGE) --- */}
+        {/* Demo Panel */}
         <div
           className={`flex flex-col justify-between items-center w-full h-[400px] sm:h-[500px] bg-[#0f0f0f] rounded-2xl overflow-hidden border border-white/10 shadow-inner transition-opacity duration-300 ${
             fade ? "opacity-0" : "opacity-100"
@@ -78,29 +80,55 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
             </div>
           </div>
 
-          {/* Chat Demo */}
-          <div className="flex-1 w-full px-6 py-4 overflow-y-auto space-y-4">
-            {/* User Bubble */}
-            <div className="flex justify-end">
-              <div className="bg-[#f7b518] text-black px-5 py-3 rounded-2xl max-w-[75%] text-sm shadow-lg">
-                {currentAgent.demo?.user || "Hi! Show me what you can do."}
+          {/* Chat / Call Demo */}
+          {isChatAgent ? (
+            <div className="flex-1 w-full px-6 py-4 overflow-y-auto space-y-4">
+              <div className="flex justify-end">
+                <div className="bg-[#f7b518] text-black px-5 py-3 rounded-2xl max-w-[75%] text-sm shadow-lg">
+                  {currentAgent.demo?.user || "Hi! Show me what you can do."}
+                </div>
+              </div>
+              <div className="flex justify-start">
+                <div className="bg-white/10 text-gray-200 px-5 py-3 rounded-2xl max-w-[75%] text-sm shadow-lg border border-white/5">
+                  {currentAgent.demo?.ai || "Sure! Here is an example of how this agent works…"}
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-gray-400 pl-1">
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></div>
               </div>
             </div>
-
-            {/* AI Bubble */}
-            <div className="flex justify-start">
-              <div className="bg-white/10 text-gray-200 px-5 py-3 rounded-2xl max-w-[75%] text-sm shadow-lg border border-white/5">
-                {currentAgent.demo?.ai || "Sure! Here is an example of how this agent works…"}
+          ) : currentAgent.text === "Video Calling" ? (
+            <div className="flex-1 w-full flex flex-col items-center justify-center gap-4 relative">
+              <Video size={48} className="text-[#f7b518]" />
+              <div className="w-3/4 h-60 bg-gray-800 rounded-lg relative overflow-hidden border border-white/20">
+                {/* Simulated participant rectangles */}
+                <div className="absolute top-4 left-4 w-16 h-16 bg-[#f7b518]/50 rounded-md animate-pulse"></div>
+                <div className="absolute bottom-4 right-4 w-16 h-16 bg-[#f7b518]/50 rounded-md animate-pulse delay-200"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-400 text-sm">
+                  Live video feed simulation
+                </div>
+                {/* Recording dot */}
+                <div className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
               </div>
             </div>
-
-            {/* Typing Indicator */}
-            <div className="flex items-center gap-2 text-gray-400 pl-1">
-              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></div>
-              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></div>
+          ) : (
+            <div className="flex-1 w-full flex flex-col items-center justify-center gap-4">
+              <Mic size={48} className="text-[#f7b518]" />
+              <div className="w-3/4 h-20 bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden border border-white/20">
+                {/* Animated waveform bars */}
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 mx-1 bg-[#f7b518] rounded animate-pulse`}
+                    style={{ animationDelay: `${i * 100}ms`, height: `${Math.random() * 40 + 10}px` }}
+                  ></div>
+                ))}
+              </div>
+              <p className="text-gray-400 text-lg">Voice call in progress...</p>
             </div>
-          </div>
+          )}
 
           {/* Footer */}
           <div className="p-4 w-full border-t border-white/10 bg-[#151515] text-center text-gray-400 text-sm">

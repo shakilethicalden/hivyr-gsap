@@ -9,36 +9,32 @@ import AgentDemoModal from "./AgentDemoModal";
 gsap.registerPlugin(ScrollTrigger);
 
 const agentCards = [
-  { image: "/images/ai-agents/agent.jpg", text: "Conversational AI Engine", link: "/products/conversational-ai-engine" },
-  { image: "/images/ai-agents/agent.jpg", text: "Video Calling", link: "/products/video-call" },
-  { image: "/images/ai-agents/agent.jpg", text: "Voice Calling", link: "/products/voice-call" },
-  { image: "/images/ai-agents/agent.jpg", text: "Chat", link: "/products/chat" },
-  // { image: "/images/ai-agents/agent.jpg", text: "AI-driven Research Assistant" },
-  // { image: "/images/ai-agents/agent.jpg", text: "Predictive Analytics Engine" },
-  // { image: "/images/ai-agents/agent.jpg", text: "Voice Command Integration" },
-  // { image: "/images/ai-agents/agent.jpg", text: "Customer Data Processing" },
-  // { image: "/images/ai-agents/agent.jpg", text: "Automated Report Generation" },
-  // { image: "/images/ai-agents/agent.jpg", text: "Content Recommendation System" },
-  // { image: "/images/ai-agents/agent.jpg", text: "Workflow Streamlining Agent" },
-  // { image: "/images/ai-agents/agent.jpg", text: "Sales Lead Intelligence" },
+  { image: "/images/ai-agents/conversational.jpg", text: "Conversational AI Engine", link: "/products/conversational-ai-engine" },
+  { image: "/images/ai-agents/video-calling.jpg", text: "Video Calling", link: "/products/video-call" },
+  { image: "/images/ai-agents/voice-calling.jpg", text: "Voice Calling", link: "/products/voice-call" },
+  { image: "/images/ai-agents/chat.jpg", text: "Chat", link: "/products/chat" },
+  { image: "/images/ai-agents/hr.jpg", text: "HR Management", link: "/products/hr-management" },
 ];
 
 export default function AgentArea() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isDesktop, setIsDesktop] = useState(false);
   const [selectedAgentIndex, setSelectedAgentIndex] = useState(null);
+
+  // Determine initial isDesktop without causing a render jump
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window !== "undefined") return window.innerWidth >= 1024;
+    return true; // default to desktop in SSR
+  });
 
   const titleRef = useRef(null);
   const paragraphRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
-    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Scroll Animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -78,12 +74,8 @@ export default function AgentArea() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10">
           <div ref={titleRef} className="flex items-center gap-3 overflow-hidden md:pb-8 xl:pb-0">
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-[#f7b518] leading-tight">
-              EXPLORE
-            </h2>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-black leading-tight">
-              AGENTS
-            </h2>
+            <h2 className="agnt_common_title text-[#f7b518] leading-tight">Explore</h2>
+            <h2 className="agnt_common_title text-black leading-tight">Agents</h2>
           </div>
           <p
             ref={paragraphRef}
@@ -98,15 +90,15 @@ export default function AgentArea() {
         {/* Agent Cards */}
         {isDesktop ? (
           <div className="flex flex-col gap-6">
-            {Array.from({ length: Math.ceil(agentCards.length / 4) }).map((_, rowIndex) => {
-              const rowCards = agentCards.slice(rowIndex * 4, rowIndex * 4 + 4);
+            {Array.from({ length: Math.ceil(agentCards.length / 3) }).map((_, rowIndex) => {
+              const rowCards = agentCards.slice(rowIndex * 3, rowIndex * 3 + 3);
               return (
                 <div key={rowIndex} className="flex gap-6">
                   {rowCards.map((card, index) => {
-                    const cardIndex = rowIndex * 4 + index;
+                    const cardIndex = rowIndex * 3 + index;
                     let flexClass = "flex-1";
                     if (hoveredIndex === cardIndex) flexClass = "flex-[1.4]";
-                    else if (hoveredIndex !== null && Math.floor(hoveredIndex / 4) === rowIndex)
+                    else if (hoveredIndex !== null && Math.floor(hoveredIndex / 3) === rowIndex)
                       flexClass = "flex-[0.9]";
 
                     return (
@@ -114,32 +106,25 @@ export default function AgentArea() {
                         key={cardIndex}
                         onMouseEnter={() => setHoveredIndex(cardIndex)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                        className={`relative rounded-2xl overflow-hidden  transition-all duration-700 ease-in-out h-[430px] ${flexClass}`}
+                        className={`relative rounded-2xl overflow-hidden transition-all duration-700 ease-in-out h-[430px] ${flexClass}`}
                       >
-                        <Image
-                          src={card.image}
-                          alt={card.text}
-                          fill
-                          className={`object-cover transition-transform duration-700 ease-in-out ${hoveredIndex === cardIndex ? "scale-95" : "scale-100"
-                            }`}
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/70 to-transparent p-5">
+                        <Image src={card.image} alt={card.text} fill className="object-cover" />
+                        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-5">
                           <p className="text-white text-lg font-semibold">{card.text}</p>
                         </div>
 
-                        {/* Hover Buttons */}
                         <div
-                          className={`absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/50 backdrop-blur-sm transition-opacity duration-500 ${hoveredIndex === cardIndex ? "opacity-100" : "opacity-0"
-                            }`}
+                          className={`absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/50 backdrop-blur-sm transition-opacity duration-500 ${hoveredIndex === cardIndex ? "opacity-100" : "opacity-0"}`}
                         >
-                          <button className=" bg-white text-black font-semibold px-5 py-3 rounded-full  cursor-pointer">
+                          <button className="bg-white text-black font-semibold px-5 py-3 rounded-full cursor-pointer">
                             <a className="flex items-center gap-2" href={card.link}>
                               View Agent <ArrowRight size={18} />
                             </a>
                           </button>
                           <button
                             onClick={() => openModal(cardIndex)}
-                            className="flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-3 rounded-full  cursor-pointer"
+                            className="flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-3 rounded-full cursor-pointer"
                           >
                             Try Demo <ArrowRight size={18} />
                           </button>
@@ -156,7 +141,8 @@ export default function AgentArea() {
             {agentCards.map((card, index) => (
               <div key={index} className="relative rounded-2xl overflow-hidden cursor-pointer h-[430px]">
                 <Image src={card.image} alt={card.text} fill className="object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to from-black/60 to-transparent p-5">
+                <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
                   <p className="text-white text-lg font-semibold">{card.text}</p>
                 </div>
                 <button

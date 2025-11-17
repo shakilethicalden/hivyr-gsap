@@ -42,7 +42,7 @@ const AgentBanner = () => {
 
       {/* Centered Content */}
       <div className="relative z-10 text-center text-white flex flex-col items-center justify-center px-6">
-        <h1 className="text-4xl sm:text-5xl md:text-5xl xl:text-6xl font-extrabold mb-6 leading-tight">
+        <h1 className="agnt_common_title mb-6 leading-tight">
           Empower Your Business with <br /> Intelligent AI Agents
         </h1>
         <p className="text-sm sm:text-base md:text-lg max-w-xl md:max-w-2xl mb-8 text-gray-200">

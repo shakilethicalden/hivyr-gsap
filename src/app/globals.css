@@ -28,6 +28,10 @@ body {
 }
 
 
+/* agent page css */
+.agnt_common_title {
+  @apply text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold
+}
 
 /* service page css */
 .serv_common_title {
