@@ -27,6 +27,10 @@ body {
   font-family: var(--font-manrope);
 }
 
+/* product page css */
+.prod_common_title {
+  @apply text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold
+}
 
 /* agent page css */
 .agnt_common_title {

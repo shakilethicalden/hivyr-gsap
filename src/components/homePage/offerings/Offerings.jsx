@@ -16,73 +16,72 @@ const Offerings = () => {
             title: "Phone Agent",
             description:
                 "A smart voice-based AI that handles calls, schedules appointments, and supports customers with natural, human-like conversation flow anytime.",
-            image: "/images/ai-agents/offering-1.avif",
+            image: "/images/meet-the-inteligent/phone-2.png",
         },
         {
             id: 2,
             title: "Chatbot Agent",
             description:
                 "An intelligent chatbot that instantly answers queries, guides users, and improves engagement through seamless, context-aware conversations.",
-            image: "/images/ai-agents/offering-2.avif",
+            image: "/images/meet-the-inteligent/chatbot.jpg",
         },
         {
             id: 3,
             title: "Voice Agent",
             description:
                 "A lifelike virtual assistant that understands voice commands and responds naturally, creating smooth and interactive communication experiences.",
-            image: "/images/ai-agents/offering-3.avif",
+            image: "/images/meet-the-inteligent/voice-agent.jpg",
         },
         {
             id: 4,
             title: "WhatsApp Agent",
             description:
                 "Automate WhatsApp chats, send updates, and assist customers 24/7 with personalized, AI-driven responses that enhance satisfaction and sales.",
-            image: "/images/ai-agents/offering-1.avif",
+            image: "/images/meet-the-inteligent/whatsapp.jpg",
         },
         {
             id: 5,
             title: "Messenger Agent",
             description:
                 "Engage your Facebook audience instantly using AI automation that answers FAQs, manages promotions, and boosts real-time interaction.",
-            image: "/images/ai-agents/offering-2.avif",
+            image: "/images/meet-the-inteligent/messenger.jpg",
         },
         {
             id: 6,
             title: "Instagram Agent",
             description:
                 "Automate Instagram DMs, handle product queries, and respond to comments to increase engagement and convert followers into loyal customers.",
-            image: "/images/ai-agents/offering-3.avif",
+            image: "/images/meet-the-inteligent/instagram-2.png",
         },
         {
             id: 7,
             title: "Shopify Agent",
             description:
                 "An AI sales assistant that helps customers, tracks orders, and recommends products, streamlining eCommerce operations and boosting revenue.",
-            image: "/images/ai-agents/offering-1.avif",
+            image: "/images/meet-the-inteligent/shopify-2.jpg",
         },
         {
             id: 8,
             title: "Gmail Agent",
             description:
                 "A smart inbox assistant that reads, categorizes, and replies to emails automatically, helping you manage communication effortlessly.",
-            image: "/images/ai-agents/offering-2.avif",
+            image: "/images/meet-the-inteligent/gmail.jpg",
         },
         {
             id: 9,
             title: "Presentation Agent",
             description:
                 "Create stunning presentations from text or ideas in seconds. The AI formats slides with design and content precision automatically.",
-            image: "/images/ai-agents/offering-3.avif",
+            image: "/images/meet-the-inteligent/presentation.jpg",
         },
         {
             id: 10,
             title: "SMS Agent",
             description:
                 "Send automated reminders, alerts, and promotional texts instantly to maintain timely customer communication and increase engagement.",
-            image: "/images/ai-agents/offering-1.avif",
+            image: "/images/meet-the-inteligent/sms.jpg",
         },
     ];
-
 
     useEffect(() => {
         const section = sectionRef.current;
@@ -91,7 +90,6 @@ const Offerings = () => {
 
         if (!section || !content || !cardsContainer) return;
 
-        // Calculate dimensions
         const totalWidth = cardsContainer.scrollWidth;
         const visibleWidth = section.offsetWidth;
 
@@ -117,7 +115,6 @@ const Offerings = () => {
 
         return () => ctx.revert();
     }, []);
-
 
     return (
         <section
@@ -151,7 +148,7 @@ const Offerings = () => {
                                 Meet the Intelligent Agents Powering Your Business
                             </h2>
                             <p className="text-lg lg:text-2xl font-medium text-gray-600 leading-relaxed">
-                                Discover how each specialized AI agent helps automate communication, streamline workflows, and enhance customer experiences across every platform. From voice and chat to email and social media, these agents empower your business to operate smarter and faster than ever before.
+                                Discover how each specialized AI agent helps automate communication, streamline workflows, and enhance customer experiences across every platform.
                             </p>
                         </div>
                     </div>
@@ -161,25 +158,27 @@ const Offerings = () => {
                         {cards.map((card) => (
                             <div
                                 key={card.id}
-                                className="bg-gray-100 rounded-3xl p-10 w-[400px] flex-shrink-0 flex flex-col justify-between h-[600px]"
+                                className="bg-gray-100 rounded-3xl p-10 w-[400px] flex-shrink-0 flex flex-col h-[600px]"
                             >
                                 <div className="flex items-center justify-start mb-6">
                                     <span className="bg-[#fdd204] text-black w-10 h-10 flex items-center justify-center rounded-full font-semibold text-lg">
                                         {card.id}
                                     </span>
                                 </div>
-                                <div className="relative w-full h-[400px] mb-8">
+
+                                {/* PERFECT MATCHING IMAGE HEIGHT */}
+                                <div className="relative w-full h-[240px] mb-8 rounded-2xl overflow-hidden flex-shrink-0">
                                     <Image
                                         src={card.image}
                                         alt={card.title}
                                         fill
-                                        className="object-contain rounded-2xl scale-105"
+                                        priority={true}
+                                        className="absolute inset-0 w-full h-full object-cover object-center !h-[240px]"
                                     />
                                 </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                                        {card.title}
-                                    </h3>
+
+                                <div className="flex flex-col flex-grow">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{card.title}</h3>
                                     <p className="text-gray-600 text-lg font-medium leading-relaxed">
                                         {card.description}
                                     </p>

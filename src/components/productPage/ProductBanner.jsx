@@ -19,32 +19,35 @@ export default function ProductBanner() {
   ];
 
   useEffect(() => {
-    // --- TEXT ANIMATION ---
-    const letters = headingRef.current.querySelectorAll(".letter");
-    gsap.set(letters, { opacity: 0, y: 50 });
-    gsap.to(letters, {
-      opacity: 1,
-      y: 0,
-      stagger: 0.05,
-      duration: 0.8,
-      ease: "power3.out",
-      delay: 0.5,
-    });
+    // --- TEXT ANIMATION (letters inside words) ---
+    if (headingRef.current) {
+      const letters = headingRef.current.querySelectorAll(".letter");
+      gsap.set(letters, { opacity: 0, y: 50 });
+      gsap.to(letters, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.03,
+        duration: 0.7,
+        ease: "power3.out",
+        delay: 0.5,
+      });
+    }
 
     gsap.fromTo(
       subtextRef.current,
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 1.5 }
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 1.2 }
     );
 
     gsap.fromTo(
       buttonRef.current,
-      { opacity: 0, scale: 0.9 },
-      { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)", delay: 2 }
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 0.9, ease: "back.out(1.5)", delay: 1.8 }
     );
 
     // --- ICON BACKGROUND COLOR ANIMATION ---
     iconRefs.current.forEach((icon, i) => {
+      if (!icon) return;
       const colors = [
         "linear-gradient(135deg, #ffffff, #d6f8ff)",
         "linear-gradient(135deg, #ffecd2, #fcb69f)",
@@ -68,10 +71,21 @@ export default function ProductBanner() {
     });
   }, []);
 
+  // Split by words; wrap each word in a no-wrap span, animate letters inside
   const renderAnimatedText = (text) => {
-    return text.split("").map((char, i) => (
-      <span key={i} className="inline-block letter">
-        {char === " " ? "\u00A0" : char}
+    const words = text.split(" ");
+    return words.map((word, wi) => (
+      <span
+        key={`w-${wi}`}
+        className="inline-block whitespace-nowrap mr-2 word"
+        aria-hidden="true"
+        // small right margin so words separate nicely; accessible text below
+      >
+        {word.split("").map((char, i) => (
+          <span key={`${wi}-${i}`} className="inline-block letter">
+            {char}
+          </span>
+        ))}
       </span>
     ));
   };
@@ -101,12 +115,19 @@ export default function ProductBanner() {
             INNOVATE. AUTOMATE. SCALE.
           </p>
 
+          {/* Visible heading for animations (note: keep an accessible text duplicate for screen readers) */}
           <h1
             ref={headingRef}
-            className=" font-light leading-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl"
+            className="prod_common_title max-w-5xl  leading-tight "
+            role="presentation"
           >
             {renderAnimatedText("The Ultimate AI Agent for Modern Businesses")}
           </h1>
+
+          {/* Accessible, plain text fallback (screen readers) */}
+          <span className="sr-only">
+            The Ultimate AI Agent for Modern Businesses
+          </span>
 
           <div
             ref={buttonRef}

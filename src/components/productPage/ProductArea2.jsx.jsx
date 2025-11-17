@@ -156,7 +156,7 @@ const ProductArea2 = () => {
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-semibold text-center text-[#2e2a27] leading-tight">
+        <h2 className="prod_common_title text-center">
           Explore Our AI Agent Products
         </h2>
 

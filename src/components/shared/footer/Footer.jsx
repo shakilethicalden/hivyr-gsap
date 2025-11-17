@@ -23,7 +23,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-12 text-center">
-        <h1 className="text-[18vw] md:text-[10vw] font-extrabold leading-none">
+        <h1 className="text-[35vw] md:text-[38vw] xl:text-[35vw] -mb-24 md:-mb-28 lg:-mb-36 xl:-mb-48 2xl:-mb-56  font-extrabold leading-none">
           Hivyr
         </h1>
       </div>
