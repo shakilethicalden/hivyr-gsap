@@ -22,6 +22,7 @@ const plans = [
             "Basic reporting and analytics",
             "Up to 10 individual users",
             "20GB individual data each user",
+            "✔ Bonus – Email ticket support",  // ADDED NEW LIST
         ],
     },
     {
@@ -74,23 +75,27 @@ const PricingArea = () => {
     const [showModal, setShowModal] = useState(false);
     const [activePlan, setActivePlan] = useState(null);
 
+    // MONTHLY price now works correctly
     const formatPrice = (price) =>
         billingPeriod === "monthly" ? price : Math.round(price * 12 * 0.84);
 
-    const handleMonthlyClick = () => setShowModal(true);
+    // FIXED: Monthly now toggles and DOES NOT open modal
+    const handleMonthlyClick = () => setBillingPeriod("monthly");
+
+    // FIXED: Modal only opens from Get Started
     const handleGetStarted = (e) => {
-        e.stopPropagation(); // prevent card click
+        e.stopPropagation();
         setShowModal(true);
     };
 
     return (
         <div className="min-h-screen bg-[#f7b518]/10 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
+
+                {/* HEADER */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight">
-                        We've got a plan<br />
-                        that's perfect for you
+                        We've got a plan<br /> that's perfect for you
                     </h1>
 
                     <div className="flex items-center gap-4">
@@ -114,23 +119,26 @@ const PricingArea = () => {
                     </div>
                 </div>
 
-                {/* Billing Toggle */}
+                {/* BILLING TOGGLE */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-start gap-4 mb-8">
                     <button
                         onClick={handleMonthlyClick}
-                        className={`py-3 px-6 rounded-lg font-semibold border ${billingPeriod === "monthly"
+                        className={`py-3 px-6 rounded-lg font-semibold border ${
+                            billingPeriod === "monthly"
                                 ? "bg-black text-white border-black"
                                 : "bg-white text-black border-gray-300"
-                            }`}
+                        }`}
                     >
                         Monthly billing
                     </button>
+
                     <button
                         onClick={() => setBillingPeriod("annual")}
-                        className={`py-3 px-6 rounded-lg font-semibold border ${billingPeriod === "annual"
+                        className={`py-3 px-6 rounded-lg font-semibold border ${
+                            billingPeriod === "annual"
                                 ? "bg-black text-white border-black"
                                 : "bg-white text-black border-gray-300"
-                            }`}
+                        }`}
                     >
                         Annual billing{" "}
                         <span className="ml-2 bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full font-semibold">
@@ -139,16 +147,17 @@ const PricingArea = () => {
                     </button>
                 </div>
 
-                {/* Pricing Cards */}
+                {/* PRICING CARDS */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {plans.map((plan, index) => (
                         <div
                             key={plan.name}
                             onClick={() => setActivePlan(activePlan === index ? null : index)}
-                            className={`bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col border cursor-pointer ${activePlan === index
+                            className={`bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col border cursor-pointer ${
+                                activePlan === index
                                     ? "border-[#f7b518] shadow-xl"
                                     : "border-gray-200 hover:shadow-xl transition duration-300"
-                                }`}
+                            }`}
                         >
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg sm:text-xl font-semibold">{plan.name}</h3>
@@ -169,17 +178,17 @@ const PricingArea = () => {
 
                             <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">{plan.description}</p>
 
+                            {/* FIX: Modal ONLY opens here */}
                             <button
                                 onClick={handleGetStarted}
-                                className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-[#f7b518] hover:text-black transition duration-200 mb-6"
+                                className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium 
+                                           hover:bg-[#f7b518] hover:text-black transition duration-200 mb-6"
                             >
                                 Get started
                             </button>
 
                             <div className="mt-auto pt-4 sm:pt-6 border-t border-gray-200">
-                                <h4 className="font-semibold mb-3 sm:mb-4 text-gray-800 text-sm sm:text-base">
-                                    Features
-                                </h4>
+                                <h4 className="font-semibold mb-3 sm:mb-4 text-gray-800 text-sm sm:text-base">Features</h4>
                                 <ul className="space-y-2 sm:space-y-3">
                                     {plan.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-center text-gray-700 text-xs sm:text-sm">
@@ -194,9 +203,9 @@ const PricingArea = () => {
                 </div>
             </div>
 
-            {/* Compare Plans Section */}
+            {/* COMPARE TABLE */}
             {activePlan !== null && (
-                <div className="max-w-7xl mx-auto mt-16 mb-4 bg-white rounded-2xl shadow-lg p-8 border border-gray-200 transition-all duration-500">
+                <div className="max-w-7xl mx-auto mt-16 mb-4 bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
                     <h2 className="text-2xl font-bold mb-6 text-center">Compare Plans</h2>
                     <div className="overflow-x-auto">
                         <table className="min-w-full border-collapse text-sm sm:text-base">
@@ -233,7 +242,7 @@ const PricingArea = () => {
                 </div>
             )}
 
-            {/* Modal */}
+            {/* MODAL */}
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
                     <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 relative">

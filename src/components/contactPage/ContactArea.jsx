@@ -5,7 +5,7 @@ const ContactArea = () => {
     <div className="min-h-screen bg-[#f7b518]/10 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-12">
       <Head>
         <title>Contact Us</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link relName="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex flex-col lg:flex-row max-w-6xl w-full gap-8 lg:gap-12">
@@ -112,31 +112,31 @@ const ContactArea = () => {
         <div className="w-full lg:w-1/3 flex flex-col gap-6 p-6 sm:p-6 lg:p-0">
           <div className="bg-black text-white p-6 rounded-lg w-full lg:w-auto">
             <h2 className="text-sm uppercase tracking-wider mb-2 opacity-75">Address</h2>
-            <p className="text-lg">Topolova 1,</p>
-            <p className="text-lg">039 52 Veľká Lomnica,</p>
-            <p className="text-lg">Slovakia</p>
+            <p className="text-lg">Nokia Care Building,</p>
+            <p className="text-lg">South Dumdum, Kolkata,</p>
+            <p className="text-lg">India</p>
           </div>
 
           <div className="bg-black text-white p-6 rounded-lg w-full lg:w-auto">
             <h2 className="text-sm uppercase tracking-wider mb-2 opacity-75">Email</h2>
-            <p className="text-lg">info@hivyr.io</p>
+            <p className="text-lg">info@hivyr.ai</p>
           </div>
 
           <div className="bg-black text-white p-6 rounded-lg w-full lg:w-auto">
             <h2 className="text-sm uppercase tracking-wider mb-2 opacity-75">Phone</h2>
-            <p className="text-lg">+421 911 669 061</p>
+            <p className="text-lg">+91 9547578920</p>
           </div>
 
           {/* Map Section */}
           <div className="relative w-full h-64 sm:h-80 rounded-lg overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2581.428456801946!2d20.370878515715836!3d49.07221087930814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47392e9c2e0f316b%3A0x6b4c1e4c7d0e9b92!2sTopolova%201%2C%20039%2052%20Ve%C4%BEk%C3%A1%20Lomnica%2C%20Slovensko!5e0!3m2!1sen!2ssk!4v1678912345678!5m2!1sen!2ssk"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: 'grayscale(1) contrast(1) brightness(0.2)' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31507.123456789!2d88.4000!3d22.6400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88b0abc12345%3A0xabcdef1234567890!2sYour+New+Address+Here!5e0!3m2!1sen!2sin!4v0000000000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0, filter: "grayscale(1) contrast(1) brightness(0.2)" }} 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade" 
               className="absolute inset-0"
             ></iframe>
           </div>
