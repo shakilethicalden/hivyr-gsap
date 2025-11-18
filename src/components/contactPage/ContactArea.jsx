@@ -1,11 +1,17 @@
+'use client'
 import Head from "next/head";
+import { useState } from "react";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 const ContactArea = () => {
+  const [phone, setPhone] = useState();
+
   return (
     <div className="min-h-screen bg-[#f7b518]/10 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-12">
       <Head>
         <title>Contact Us</title>
-        <link relName="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex flex-col lg:flex-row max-w-6xl w-full gap-8 lg:gap-12">
@@ -46,13 +52,16 @@ const ContactArea = () => {
                 <label htmlFor="phone" className="block text-sm font-medium text-black mb-2">
                   Phone Number *
                 </label>
-                <input
-                  type="text"
-                  id="phone"
-                  className="w-full p-3 bg-[#f7b518]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#f7b518]/20"
-                  placeholder="e.g. +421"
+
+                <PhoneInput
+                  international
+                  defaultCountry="SK"
+                  value={phone}
+                  onChange={setPhone}
+                  className="custom-phone-input w-full"
                 />
               </div>
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
                   Email*
@@ -130,13 +139,13 @@ const ContactArea = () => {
           {/* Map Section */}
           <div className="relative w-full h-64 sm:h-80 rounded-lg overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31507.123456789!2d88.4000!3d22.6400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88b0abc12345%3A0xabcdef1234567890!2sYour+New+Address+Here!5e0!3m2!1sen!2sin!4v0000000000000!5m2!1sen!2sin" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0, filter: "grayscale(1) contrast(1) brightness(0.2)" }} 
-              allowFullScreen 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31507.123456789!2d88.4000!3d22.6400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88b0abc12345%3A0xabcdef1234567890!2sYour+New+Address+Here!5e0!3m2!1sen!2sin!4v0000000000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: "grayscale(1) contrast(1) brightness(0.2)" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
               className="absolute inset-0"
             ></iframe>
           </div>

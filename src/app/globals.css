@@ -45,3 +45,46 @@ body {
 .serv_common_desc {
   @apply text-sm sm:text-base md:text-lg lg:text-xl text-gray-200
 }
+
+
+
+/* contact field */
+/* WRAPPER */
+.custom-phone-input {
+  width: 100%;
+}
+
+/* THE INPUT BOX */
+.custom-phone-input .PhoneInputInput {
+  width: 100%;
+  padding: 12px;
+  background: rgba(247, 181, 24, 0.1);
+  border: 1px solid #e0ddd8;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.2s ease;
+  color: black;
+}
+
+/* COUNTRY SELECT AREA */
+.custom-phone-input .PhoneInputCountry {
+  padding: 8px;
+  background: rgba(247, 181, 24, 0.1);
+  border: 1px solid #e0ddd8;
+  border-radius: 6px;
+  margin-right: 6px;
+}
+
+/* FLAG + DROPDOWN */
+.custom-phone-input .PhoneInputCountryIcon {
+  width: 22px;
+  height: 16px;
+}
+
+/* INPUT FOCUS STATE */
+.custom-phone-input .PhoneInputInput:focus,
+.custom-phone-input .PhoneInputCountry:focus-within {
+  box-shadow: 0 0 0 1px rgba(247, 181, 24, 0.3);
+  border-color: rgba(247, 181, 24, 0.5);
+}
+
