@@ -55,13 +55,12 @@ const ContactArea = () => {
 
                 <PhoneInput
                   international
-                  defaultCountry="SK"
+                  defaultCountry="IN"
                   value={phone}
                   onChange={setPhone}
                   className="custom-phone-input w-full"
                 />
               </div>
-
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
                   Email*
