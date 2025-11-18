@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { FiSettings, FiBarChart2 } from "react-icons/fi";
@@ -46,9 +47,9 @@ const Pricing = () => {
                                 </li>
                             </ul>
                         </div>
-                        <button className="bg-black text-white font-semibold py-3 rounded-xl hover:bg-[#fdd204] hover:text-black transition">
+                        <Link href={'/pricing'} className="bg-black text-white font-semibold py-3 text-center rounded-xl hover:bg-[#fdd204] hover:text-black transition">
                             Get Started
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Pro */}
@@ -83,9 +84,9 @@ const Pricing = () => {
                                 </li>
                             </ul>
                         </div>
-                        <button className="bg-black text-white font-semibold py-3 rounded-xl hover:bg-[#fdd204] hover:text-black transition">
+                        <Link href={'/pricing'} className="bg-black text-white font-semibold py-3 text-center rounded-xl hover:bg-[#fdd204] hover:text-black transition">
                             Get Started
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Enterprise */}
@@ -120,9 +121,9 @@ const Pricing = () => {
                                 </li>
                             </ul>
                         </div>
-                        <button className="bg-black text-white font-semibold py-3 rounded-xl hover:bg-[#fdd204] hover:text-black transition">
+                        <Link href={'/pricing'} className="bg-black text-white font-semibold py-3 text-center rounded-xl hover:bg-[#fdd204] hover:text-black transition">
                             Get Started
-                        </button>
+                        </Link>
                     </div>
                 </div>
 
@@ -146,9 +147,9 @@ const Pricing = () => {
                     </div>
                     <div className="flex items-center gap-6 mt-6 md:mt-0">
                         <p className="text-3xl font-bold">$2,000</p>
-                        <button className="bg-[#fdd204] text-black font-semibold py-3 px-6 rounded-xl hover:bg-gray-100 transition">
-                            Get Started
-                        </button>
+                        <Link href={'/pricing'} className="bg-[#fdd204] text-black font-semibold py-3 px-6 text-center rounded-xl transition">
+                           Get Started
+                        </Link>
                     </div>
                 </div>
             </div>
