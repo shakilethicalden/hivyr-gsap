@@ -54,7 +54,7 @@ const plans = [
 ];
 
 const CheckIcon = () => (
-    <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#f7b518]">
+    <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#fdd204]">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-3 w-3 text-black"
@@ -89,7 +89,7 @@ const PricingArea = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#f7b518]/10 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-[#fdd204]/10 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
 
                 {/* HEADER */}
@@ -155,7 +155,7 @@ const PricingArea = () => {
                             onClick={() => setActivePlan(activePlan === index ? null : index)}
                             className={`bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col border cursor-pointer ${
                                 activePlan === index
-                                    ? "border-[#f7b518] shadow-xl"
+                                    ? "border-[#fdd204] shadow-xl"
                                     : "border-gray-200 hover:shadow-xl transition duration-300"
                             }`}
                         >
@@ -182,7 +182,7 @@ const PricingArea = () => {
                             <button
                                 onClick={handleGetStarted}
                                 className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium 
-                                           hover:bg-[#f7b518] hover:text-black transition duration-200 mb-6"
+                                           hover:bg-[#fdd204] hover:text-black transition duration-200 mb-6"
                             >
                                 Get started
                             </button>
@@ -286,7 +286,7 @@ const PricingArea = () => {
                             placeholder="Enter your email"
                             className="w-full mb-4 p-2 border rounded-lg text-sm sm:text-base"
                         />
-                        <button className="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-[#f7b518] hover:text-black transition duration-200 mb-4">
+                        <button className="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-[#fdd204] hover:text-black transition duration-200 mb-4">
                             Continue
                         </button>
 

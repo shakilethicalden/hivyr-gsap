@@ -13,7 +13,7 @@ export default function HowConversationalWorks() {
         <div className="relative bg-[#0a0a0a] border border-neutral-800 rounded-2xl p-8 md:p-12">
           {/* Engine label */}
           <div className="text-center mb-12">
-            <span className="text-[#f7b518] text-sm font-medium tracking-wider">
+            <span className="text-[#fdd204] text-sm font-medium tracking-wider">
               CONVERSATIONAL AI ENGINE
             </span>
           </div>
@@ -41,8 +41,8 @@ export default function HowConversationalWorks() {
               {/* ASR */}
               <div className="text-center mb-8 md:mb-0">
                 <div className="bg-black border border-neutral-800 p-6 rounded-xl min-w-[140px]">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <span className="text-[#f7b518] text-lg font-bold">A</span>
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <span className="text-[#fdd204] text-lg font-bold">A</span>
                   </div>
                   <p className="font-semibold text-white">ASR</p>
                   <p className="text-xs text-gray-400 mt-1">Speech to Text</p>
@@ -59,8 +59,8 @@ export default function HowConversationalWorks() {
               {/* LLM */}
               <div className="text-center mb-8 md:mb-0">
                 <div className="bg-black border border-neutral-800 p-6 rounded-xl min-w-[140px]">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <span className="text-[#f7b518] text-lg font-bold">L</span>
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <span className="text-[#fdd204] text-lg font-bold">L</span>
                   </div>
                   <p className="font-semibold text-white">LLM</p>
                   <p className="text-xs text-gray-400 mt-1">AI Processing</p>
@@ -77,8 +77,8 @@ export default function HowConversationalWorks() {
               {/* TTS */}
               <div className="text-center mb-8 md:mb-0">
                 <div className="bg-black border border-neutral-800 p-6 rounded-xl min-w-[140px]">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <span className="text-[#f7b518] text-lg font-bold">T</span>
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <span className="text-[#fdd204] text-lg font-bold">T</span>
                   </div>
                   <p className="font-semibold text-white">TTS</p>
                   <p className="text-xs text-gray-400 mt-1">Text to Speech</p>
@@ -94,8 +94,8 @@ export default function HowConversationalWorks() {
 
               {/* AI Output */}
               <div className="flex flex-col items-center">
-                <div className="w-14 h-14 bg-black border-2 border-[#f7b518] rounded-full flex items-center justify-center mb-3">
-                  <div className="w-2 h-2 bg-[#f7b518] rounded-full"></div>
+                <div className="w-14 h-14 bg-black border-2 border-[#fdd204] rounded-full flex items-center justify-center mb-3">
+                  <div className="w-2 h-2 bg-[#fdd204] rounded-full"></div>
                 </div>
                 <p className="text-sm text-gray-300 font-medium">AI Response</p>
                 <p className="text-xs text-gray-500 mt-1">Voice</p>
@@ -141,8 +141,8 @@ export default function HowConversationalWorks() {
             <div className="border-t border-neutral-800 pt-12">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-3 bg-black border border-neutral-800 rounded-full px-6 py-3">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-[#f7b518]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center">
+                    <svg className="w-4 h-4 text-[#fdd204]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
                     </svg>
                   </div>
@@ -171,7 +171,7 @@ export default function HowConversationalWorks() {
           {/* Status indicator */}
           <div className="text-center mt-12 pt-6 border-t border-neutral-800">
             <div className="inline-flex items-center gap-2 text-xs text-gray-500">
-              <div className="w-2 h-2 bg-[#f7b518] rounded-full"></div>
+              <div className="w-2 h-2 bg-[#fdd204] rounded-full"></div>
               Real-time Processing • Low Latency • Enterprise Ready
             </div>
           </div>

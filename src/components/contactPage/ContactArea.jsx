@@ -8,7 +8,7 @@ const ContactArea = () => {
   const [phone, setPhone] = useState();
 
   return (
-    <div className="min-h-screen bg-[#f7b518]/10 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-12">
+    <div className="min-h-screen bg-[#fdd204]/10 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-12">
       <Head>
         <title>Contact Us</title>
         <link rel="icon" href="/favicon.ico" />
@@ -30,7 +30,7 @@ const ContactArea = () => {
                 <input
                   type="text"
                   id="firstName"
-                  className="w-full p-3 bg-[#f7b518]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#f7b518]/20"
+                  className="w-full p-3 bg-[#fdd204]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#fdd204]/20"
                   placeholder="Your first name"
                 />
               </div>
@@ -41,7 +41,7 @@ const ContactArea = () => {
                 <input
                   type="text"
                   id="lastName"
-                  className="w-full p-3 bg-[#f7b518]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#f7b518]/20"
+                  className="w-full p-3 bg-[#fdd204]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#fdd204]/20"
                   placeholder="Your last name"
                 />
               </div>
@@ -68,7 +68,7 @@ const ContactArea = () => {
                 <input
                   type="email"
                   id="email"
-                  className="w-full p-3 bg-[#f7b518]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#f7b518]/20"
+                  className="w-full p-3 bg-[#fdd204]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#fdd204]/20"
                   placeholder="Your email address"
                 />
               </div>
@@ -81,7 +81,7 @@ const ContactArea = () => {
               <textarea
                 id="message"
                 rows="6"
-                className="w-full p-3 bg-[#f7b518]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#f7b518]/20"
+                className="w-full p-3 bg-[#fdd204]/10 border border-[#e0ddd8] rounded-md focus:outline-none focus:ring-1 focus:ring-[#fdd204]/20"
                 placeholder="Write your message here..."
               ></textarea>
             </div>
@@ -90,7 +90,7 @@ const ContactArea = () => {
               <input
                 type="checkbox"
                 id="gdpr"
-                className="h-4 w-4 text-[#f7b518]/20 focus:ring-[#f7b518]/20 border-gray-300 rounded mt-1"
+                className="h-4 w-4 text-[#fdd204]/20 focus:ring-[#fdd204]/20 border-gray-300 rounded mt-1"
               />
               <label htmlFor="gdpr" className="ml-2 block text-sm text-black">
                 I agree to the processing of{' '}
@@ -103,7 +103,7 @@ const ContactArea = () => {
 
             <button
               type="submit"
-              className="w-full lg:w-auto px-8 py-3 bg-black text-white rounded-md hover:bg-[#f7b518] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#f7b518]/20 focus:ring-offset-2 transition-all"
+              className="w-full lg:w-auto px-8 py-3 bg-black text-white rounded-md hover:bg-[#fdd204] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#fdd204]/20 focus:ring-offset-2 transition-all"
             >
               Send Message
             </button>
@@ -122,7 +122,7 @@ const ContactArea = () => {
             <h2 className="text-sm uppercase tracking-wider mb-2 opacity-75">Address</h2>
             <p className="text-lg">Nokia Care Building,</p>
             <p className="text-lg">South Dumdum, Kolkata,</p>
-            <p className="text-lg">India</p>
+            <p className="text-lg">India .</p>
           </div>
 
           <div className="bg-black text-white p-6 rounded-lg w-full lg:w-auto">

@@ -17,7 +17,7 @@ export default function HrManagementBanner() {
             Our HR management platform simplifies employee onboarding, payroll, leave management, and performance tracking — all in one centralized system.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-6">
-            <button className="bg-white text-black font-semibold px-6 py-2.5 rounded-full hover:bg-[#f7b518] hover:text-black transition">
+            <button className="bg-white text-black font-semibold px-6 py-2.5 rounded-full hover:bg-[#fdd204] hover:text-black transition">
               Request a Demo
             </button>
             <button className="border border-white px-6 py-2.5 rounded-full hover:bg-white hover:text-black transition">

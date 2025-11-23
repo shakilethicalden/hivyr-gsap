@@ -66,7 +66,7 @@ const WhyHivyr = () => {
         <>
             <section
                 ref={sectionRef}
-                className="relative bg-[#f7b518] text-black py-32 overflow-hidden z-10"
+                className="relative bg-[#fdd204] text-black py-32 overflow-hidden z-10"
             >
                 {/* Text Section */}
                 <div className="text-center max-w-2xl mx-auto">

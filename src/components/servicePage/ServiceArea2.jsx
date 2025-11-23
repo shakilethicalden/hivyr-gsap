@@ -126,10 +126,10 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
         >
             {/* Title */}
             <div className="w-full flex items-center gap-4 mb-4 lg:mb-0">
-                <span className={`text-xl font-bold ${isActive ? 'text-[#f7b518]' : 'text-gray-500'}`}>
+                <span className={`text-xl font-bold ${isActive ? 'text-[#fdd204]' : 'text-gray-500'}`}>
                     {index}.
                 </span>
-                <h4 className={`text-2xl font-semibold truncate ${isActive ? 'text-[#f7b518]' : 'text-gray-400'}`}>
+                <h4 className={`text-2xl font-semibold truncate ${isActive ? 'text-[#fdd204]' : 'text-gray-400'}`}>
                     {service.title}
                 </h4>
             </div>
@@ -151,7 +151,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
                 <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-2 text-sm text-gray-200">
                     {service.features.map((feature, i) => (
                         <div key={i} className="flex items-start">
-                            <span className="text-[#f7b518] text-2xl leading-none mr-2 mt-[-3px] font-bold">&bull;</span>
+                            <span className="text-[#fdd204] text-2xl leading-none mr-2 mt-[-3px] font-bold">&bull;</span>
                             {feature}
                         </div>
                     ))}
@@ -160,7 +160,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
 
             {/* Icon only for large devices */}
             {isLargeScreen && (
-                <div className="hidden lg:flex ml-auto bg-[#f7b518] p-3 rounded-full text-black text-3xl items-center justify-center">
+                <div className="hidden lg:flex ml-auto bg-[#fdd204] p-3 rounded-full text-black text-3xl items-center justify-center">
                     <MdArrowOutward />
                 </div>
             )}
@@ -185,7 +185,7 @@ const ServiceArea2 = () => {
                     </div>
                     <div className="flex items-end justify-start md:justify-end">
                         <h2 className="serv_common_title text-white">
-                            Intelligent solutions <span className="text-[#f7b518]">powered by AI</span>
+                            Intelligent solutions <span className="text-[#fdd204]">powered by AI</span>
                         </h2>
                     </div>
                 </div>

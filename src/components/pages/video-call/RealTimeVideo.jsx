@@ -9,19 +9,19 @@ export default function RealTimeVideo() {
       icon: <Rocket className="w-8 h-8 text-white" />,
       title: "Get to market faster",
       desc: "Increase development speed and get your video chat experience to market faster with tools like our no-code App Builder and library of extensions like recording, noise suppression, and more.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <Settings className="w-8 h-8 text-white" />,
       title: "Customize for your use case",
       desc: "Agora’s flexible, cross-platform live video SDK gives you full control over the user experience so you can build video calling for any use case from telehealth to live shopping.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <ShieldCheck className="w-8 h-8 text-white" />,
       title: "Ensure reliability and quality",
       desc: "Deliver a seamless and uninterrupted video call experience for your users on the world’s only network built to power real-time video with ultra-low latency and intelligent routing.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
   ];
 

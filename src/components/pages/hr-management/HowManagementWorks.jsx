@@ -13,7 +13,7 @@ export default function HowManagementWorks() {
         <div className="relative bg-[#0a0a0a] border border-neutral-800 rounded-2xl p-8 md:p-12">
           {/* Engine label */}
           <div className="text-center mb-12">
-            <span className="text-[#f7b518] text-sm font-medium tracking-wider">
+            <span className="text-[#fdd204] text-sm font-medium tracking-wider">
               HR MANAGEMENT PROCESS
             </span>
           </div>
@@ -40,8 +40,8 @@ export default function HowManagementWorks() {
               {/* Attendance & Leave */}
               <div className="text-center mb-8 md:mb-0">
                 <div className="bg-black border border-neutral-800 p-6 rounded-xl min-w-[140px]">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <span className="text-[#f7b518] text-lg font-bold">A</span>
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <span className="text-[#fdd204] text-lg font-bold">A</span>
                   </div>
                   <p className="font-semibold text-white">Attendance & Leave</p>
                   <p className="text-xs text-gray-400 mt-1">Track Hours & Approvals</p>
@@ -58,8 +58,8 @@ export default function HowManagementWorks() {
               {/* Payroll */}
               <div className="text-center mb-8 md:mb-0">
                 <div className="bg-black border border-neutral-800 p-6 rounded-xl min-w-[140px]">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <span className="text-[#f7b518] text-lg font-bold">P</span>
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <span className="text-[#fdd204] text-lg font-bold">P</span>
                   </div>
                   <p className="font-semibold text-white">Payroll</p>
                   <p className="text-xs text-gray-400 mt-1">Salaries & Benefits</p>
@@ -76,8 +76,8 @@ export default function HowManagementWorks() {
               {/* Performance Monitoring */}
               <div className="text-center mb-8 md:mb-0">
                 <div className="bg-black border border-neutral-800 p-6 rounded-xl min-w-[140px]">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <span className="text-[#f7b518] text-lg font-bold">M</span>
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <span className="text-[#fdd204] text-lg font-bold">M</span>
                   </div>
                   <p className="font-semibold text-white">Performance Monitoring</p>
                   <p className="text-xs text-gray-400 mt-1">Track Goals & Reviews</p>
@@ -93,8 +93,8 @@ export default function HowManagementWorks() {
 
               {/* Employee Feedback */}
               <div className="flex flex-col items-center">
-                <div className="w-14 h-14 bg-black border-2 border-[#f7b518] rounded-full flex items-center justify-center mb-3">
-                  <div className="w-2 h-2 bg-[#f7b518] rounded-full"></div>
+                <div className="w-14 h-14 bg-black border-2 border-[#fdd204] rounded-full flex items-center justify-center mb-3">
+                  <div className="w-2 h-2 bg-[#fdd204] rounded-full"></div>
                 </div>
                 <p className="text-sm text-gray-300 font-medium text-center">Employee Feedback</p>
                 <p className="text-xs text-gray-500 mt-1 text-center">Surveys & Engagement</p>
@@ -140,8 +140,8 @@ export default function HowManagementWorks() {
             <div className="border-t border-neutral-800 pt-12">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-3 bg-black border border-neutral-800 rounded-full px-6 py-3">
-                  <div className="w-8 h-8 bg-black border border-[#f7b518] rounded-lg flex items-center justify-center">
-                    <span className="text-[#f7b518] text-lg font-bold">H</span>
+                  <div className="w-8 h-8 bg-black border border-[#fdd204] rounded-lg flex items-center justify-center">
+                    <span className="text-[#fdd204] text-lg font-bold">H</span>
                   </div>
                   <span className="text-white font-semibold">HR Infrastructure</span>
                 </div>
@@ -168,7 +168,7 @@ export default function HowManagementWorks() {
           {/* Status */}
           <div className="text-center mt-12 pt-6 border-t border-neutral-800">
             <div className="inline-flex items-center gap-2 text-xs text-gray-500">
-              <div className="w-2 h-2 bg-[#f7b518] rounded-full"></div>
+              <div className="w-2 h-2 bg-[#fdd204] rounded-full"></div>
               Real-time HR • Automated Processes • Employee Engagement
             </div>
           </div>

@@ -9,19 +9,19 @@ export default function VoiceCallExperience() {
       icon: <Settings className="w-8 h-8 text-white" />,
       title: "Create a fully customized live voice chat experience",
       desc: "Flexible cross-platform SDKs give you full control over the experiences you create so you can differentiate your live voice chat app.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <ShieldCheck className="w-8 h-8 text-white" />,
       title: "Eliminate lag and stutter",
       desc: "The world’s largest global real-time network provides ultra-low latency and intelligent routing to deliver the best streaming audio experience to your users, no matter where they are located.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <AudioWaveform className="w-8 h-8 text-white" />,
       title: "Easily add advanced audio enhancement features",
       desc: "Easily add audio enhancements like AI Noise Suppression and 3D Spatial Audio to provide an immersive voice experience. Use Real-Time Speech to Text to provide live audio captioning and transcription.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
   ];
 

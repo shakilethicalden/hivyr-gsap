@@ -15,7 +15,7 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#f7b518]/10 px-6  sm:px-10 lg:px-16 xl:px-20 py-16 ">
+        <div className="min-h-screen flex items-center justify-center bg-[#fdd204]/10 px-6  sm:px-10 lg:px-16 xl:px-20 py-16 ">
             <div className="bg-white rounded-2xl shadow-lg flex flex-col lg:flex-row w-full max-w-5xl overflow-hidden">
 
                 {/* Left Side */}

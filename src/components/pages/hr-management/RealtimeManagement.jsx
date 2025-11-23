@@ -9,19 +9,19 @@ export default function RealTimeManagement() {
       icon: <Users className="w-8 h-8 text-white" />,
       title: "Real-time Employee Tracking",
       desc: "Monitor attendance, check-ins, and active hours in real time to ensure workforce productivity and transparency.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <CalendarCheck className="w-8 h-8 text-white" />,
       title: "Instant Leave & Approval Management",
       desc: "Approve or reject leave requests, track absences, and update schedules instantly from anywhere.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <FileText className="w-8 h-8 text-white" />,
       title: "Up-to-date Payroll & Benefits",
       desc: "Automatically process salaries, bonuses, and benefits in real time, reducing errors and ensuring timely payments.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
   ];
 

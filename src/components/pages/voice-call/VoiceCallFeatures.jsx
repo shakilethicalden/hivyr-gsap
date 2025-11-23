@@ -49,7 +49,7 @@ export default function VoiceCallFeatures() {
               className="bg-neutral-900 p-6 rounded-2xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 text-left"
             >
               {/* Icon on top (aligned left) */}
-              <div className="bg-[#f7b518]/20 w-12 h-12 flex items-center justify-center rounded-full mb-4">
+              <div className="bg-[#fdd204]/20 w-12 h-12 flex items-center justify-center rounded-full mb-4">
                 {feature.icon}
               </div>
 

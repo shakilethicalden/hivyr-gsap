@@ -44,7 +44,7 @@ export default function About() {
           <div
             className="absolute inset-0 rounded-[2rem]"
             style={{
-              background: 'linear-gradient(to bottom right, #fdd204, #f7b518)',
+              background: 'linear-gradient(to bottom right, #fdd204, #fdd204)',
               filter: 'blur(10px)',
               opacity: '0.5',     
               zIndex: '-1',
@@ -70,7 +70,7 @@ export default function About() {
         <p className="text-gray-600 text-base sm:text-2xl font-medium mb-8 max-w-3xl mx-auto">
           Intelligently designed to streamline workflows and boost efficiency.
         </p>
-        <button className="bg-[#fdd204] text-black px-6 py-3 rounded-full hover:bg-[#f7b518] transition-all duration-300">
+        <button className="bg-[#fdd204] text-black px-6 py-3 rounded-full hover:bg-[#fdd204] transition-all duration-300">
           Get Started
         </button>
       </div>

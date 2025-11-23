@@ -9,19 +9,19 @@ export default function ChatExperience() {
       icon: <MessageCircle className="w-8 h-8 text-white" />,
       title: "Integrate messaging effortlessly",
       desc: "Build a truly immersive and engaging user experience with our web and mobile chat SDKs that work seamlessly with our video, voice, and streaming products.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <ShieldCheck className="w-8 h-8 text-white" />,
       title: "Safeguard your community",
       desc: "Protect users from unwanted profanity, offense, and inappropriate images or text with robust content moderation built into the chat platform.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <Lock className="w-8 h-8 text-white" />,
       title: "Ensure the highest level of security",
       desc: "Agora’s Chat APIs provide the flexibility to integrate powerful and interactive 3rd party solutions so you can fully customize the chat experience for your users.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
   ];
 

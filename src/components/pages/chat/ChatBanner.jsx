@@ -3,11 +3,11 @@ import { FaAndroid, FaApple, FaChrome, FaLinux, FaWindows } from "react-icons/fa
 
 export default function ChatBanner() {
   const platforms = [
-    { icon: <FaApple className="w-5 h-5 text-white" />, color: "bg-[#f7b518]/20" },
-    { icon: <FaWindows className="w-5 h-5 text-white" />, color: "bg-[#f7b518]/20" },
-    { icon: <FaAndroid className="w-5 h-5 text-white" />, color: "bg-[#f7b518]/20" },
-    { icon: <FaLinux className="w-5 h-5 text-white" />, color: "bg-[#f7b518]/20" },
-    { icon: <FaChrome className="w-5 h-5 text-white" />, color: "bg-[#f7b518]/20" },
+    { icon: <FaApple className="w-5 h-5 text-white" />, color: "bg-[#fdd204]/20" },
+    { icon: <FaWindows className="w-5 h-5 text-white" />, color: "bg-[#fdd204]/20" },
+    { icon: <FaAndroid className="w-5 h-5 text-white" />, color: "bg-[#fdd204]/20" },
+    { icon: <FaLinux className="w-5 h-5 text-white" />, color: "bg-[#fdd204]/20" },
+    { icon: <FaChrome className="w-5 h-5 text-white" />, color: "bg-[#fdd204]/20" },
   ];
 
   return (
@@ -25,7 +25,7 @@ export default function ChatBanner() {
             Add customized messaging experiences to your real-time video and voice apps with Agora’s chat SDK
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-6">
-            <button className="bg-white text-black font-semibold px-6 py-2.5 rounded-full hover:bg-[#f7b518] hover:text-black transition">
+            <button className="bg-white text-black font-semibold px-6 py-2.5 rounded-full hover:bg-[#fdd204] hover:text-black transition">
               Try the Demo
             </button>
             <button className="border border-white px-6 py-2.5 rounded-full hover:bg-white hover:text-black transition">

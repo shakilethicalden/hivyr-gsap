@@ -50,7 +50,7 @@ const AgentBanner = () => {
           our agents deliver speed, reliability, and results anywhere in the world.
         </p>
 
-        <button className="inline-flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full text-sm sm:text-base md:text-lg transition-all">
+        <button className="inline-flex items-center gap-2 bg-[#fdd204] text-black font-semibold px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full text-sm sm:text-base md:text-lg transition-all">
           Request an Agent
           <span className="text-xl md:text-2xl">↗</span>
         </button>

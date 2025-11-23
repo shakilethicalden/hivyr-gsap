@@ -67,7 +67,7 @@ const FaqItem = ({ item, isOpen, onClick }) => {
                 onClick={onClick}
             >
                 <span className="text-lg font-medium text-gray-800">{item.question}</span>
-                <span ref={iconRef} className="text-[#f7b518] flex-shrink-0">
+                <span ref={iconRef} className="text-[#fdd204] flex-shrink-0">
                     {isOpen ? (
                         <Minus className="w-6 h-6 stroke-2" />
                     ) : (
@@ -100,7 +100,7 @@ export default function FAQ() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16">
                 {/* Left Side - FAQ Text */}
                 <div className="h-fit">
-                    <p className="text-[#f7b518] font-semibold uppercase text-sm mb-4">
+                    <p className="text-[#fdd204] font-semibold uppercase text-sm mb-4">
                         FAQ
                     </p>
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">

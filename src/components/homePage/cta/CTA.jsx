@@ -65,7 +65,7 @@ const CTA = () => {
       >
          Automate. Optimize. Scale — with next-gen AI Agents built for your business.
       </h2>
-      <button className="mt-8 bg-[#fdd204] text-black px-6 py-3 rounded-full hover:bg-[#f7b518] transition-all duration-300">
+      <button className="mt-8 bg-[#fdd204] text-black px-6 py-3 rounded-full hover:bg-[#fdd204] transition-all duration-300">
         Get started
       </button>
     </section>

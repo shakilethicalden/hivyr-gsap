@@ -141,7 +141,7 @@ const Offerings = () => {
 
                         {/* Text */}
                         <div className="lg:w-1/2 flex flex-col justify-center items-center lg:items-start">
-                            <p className="text-[#f7b518] font-semibold uppercase tracking-widest text-sm mb-3">
+                            <p className="text-[#fdd204] font-semibold uppercase tracking-widest text-sm mb-3">
                                 AI Agents
                             </p>
                             <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-gray-900 mb-6">

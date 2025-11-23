@@ -74,7 +74,7 @@ export default function AgentArea() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10">
           <div ref={titleRef} className="flex items-center gap-3 overflow-hidden md:pb-8 xl:pb-0">
-            <h2 className="agnt_common_title text-[#f7b518] leading-tight">Explore</h2>
+            <h2 className="agnt_common_title text-[#fdd204] leading-tight">Explore</h2>
             <h2 className="agnt_common_title text-black leading-tight">Agents</h2>
           </div>
           <p
@@ -124,7 +124,7 @@ export default function AgentArea() {
                           </button>
                           <button
                             onClick={() => openModal(cardIndex)}
-                            className="flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-5 py-3 rounded-full cursor-pointer"
+                            className="flex items-center gap-2 bg-[#fdd204] text-black font-semibold px-5 py-3 rounded-full cursor-pointer"
                           >
                             Try Demo <ArrowRight size={18} />
                           </button>
@@ -147,7 +147,7 @@ export default function AgentArea() {
                 </div>
                 <button
                   onClick={() => openModal(index)}
-                  className="absolute top-4 right-4 flex items-center gap-2 bg-[#f7b518] text-black font-semibold px-4 py-2 rounded-full text-sm hover:bg-[#ffffff] hover:text-black"
+                  className="absolute top-4 right-4 flex items-center gap-2 bg-[#fdd204] text-black font-semibold px-4 py-2 rounded-full text-sm hover:bg-[#ffffff] hover:text-black"
                 >
                   Try Demo <ArrowRight size={16} />
                 </button>

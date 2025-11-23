@@ -9,19 +9,19 @@ export default function BuildVoiceAI() {
       icon: <Volume2 className="w-8 h-8 text-white" />,
       title: "Make AI voice conversations more natural",
       desc: "Give any AI model the ability to clearly understand and respond to human speech with ultra-low latency for lifelike conversations. Agora’s conversational AI platform features built-in interruption handling, AI echo cancellation and background noise suppression to ensure accurate voice processing in any environment.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <Wifi className="w-8 h-8 text-white" />,
       title: "Eliminate latency and scalability challenges",
       desc: "Prevent common issues with latency and packet loss by using Agora’s global network with intelligent routing and advanced optimizations to ensure optimal real-time performance, anywhere on any device—even under poor network conditions.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
     {
       icon: <Rocket className="w-8 h-8 text-white" />,
       title: "Get to market faster",
       desc: "Integrate voice AI agents into your application in minutes, with support for all device types and major development platforms. Leverage Agora’s existing real-time infrastructure to quickly deploy reliable and responsive voice AI experiences.",
-      color: "bg-[#f7b518]/20",
+      color: "bg-[#fdd204]/20",
     },
   ];
 

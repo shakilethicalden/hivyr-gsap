@@ -72,7 +72,7 @@ export default function ProductArea() {
           {/* Row 1 */}
           <div
             ref={(el) => (cardsRef.current[0] = el)}
-            className="p-8 xl:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900 rounded-sm col-span-1"
+            className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[0].topText}
@@ -87,7 +87,7 @@ export default function ProductArea() {
           <div className="col-span-1 bg-white"></div>
           <div
             ref={(el) => (cardsRef.current[1] = el)}
-            className="p-8 xl:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900 rounded-sm col-span-1"
+            className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[1].topText}
@@ -102,7 +102,7 @@ export default function ProductArea() {
           <div className="col-span-2 bg-white"></div>
           <div
             ref={(el) => (cardsRef.current[2] = el)}
-            className="p-8 xl:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900 rounded-sm col-span-1"
+            className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[2].topText}
@@ -117,7 +117,7 @@ export default function ProductArea() {
           <div className="col-span-3 bg-white"></div>
           <div
             ref={(el) => (cardsRef.current[3] = el)}
-            className="p-8 xl:p-12 flex flex-col justify-between border border-[#f7b518] bg-[#f7b518]/10 text-gray-900 rounded-sm col-span-1"
+            className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
             <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
               {contentCards[3].topText}
@@ -133,7 +133,7 @@ export default function ProductArea() {
           {contentCards.map((card, i) => (
             <div
               key={i}
-              className="p-6 sm:p-8 border border-[#f7b518] bg-[#f7b518]/10 text-gray-900 rounded-md"
+              className="p-6 sm:p-8 border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-md"
             >
               <p className="text-sm sm:text-base text-gray-700 mb-4 font-light">
                 {card.topText}

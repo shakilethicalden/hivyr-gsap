@@ -18,7 +18,7 @@ export default function ConversationalBanner() {
             environments.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <button className="bg-white text-black font-semibold px-6 py-2.5 rounded-full hover:bg-[#f7b518] hover:text-black transition">
+            <button className="bg-white text-black font-semibold px-6 py-2.5 rounded-full hover:bg-[#fdd204] hover:text-black transition">
               Try the Demo
             </button>
             <button className="border border-white px-6 py-2.5 rounded-full hover:bg-white hover:text-black transition">
