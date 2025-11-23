@@ -22,8 +22,18 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-12 text-center">
-        <h1 className="text-[35vw] md:text-[38vw] xl:text-[35vw] -mb-24 md:-mb-28 lg:-mb-36 xl:-mb-48 2xl:-mb-56  font-extrabold leading-none">
+      <div className="mt-12 text-center relative">
+        <h1
+          className="text-[35vw] md:text-[38vw] xl:text-[35vw] pb-10 font-extrabold leading-none"
+          style={{
+            WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 90%)",
+            WebkitMaskRepeat: "no-repeat",
+            WebkitMaskSize: "100% 100%",
+            maskImage: "linear-gradient(to bottom, black 50%, transparent 90%)",
+            maskRepeat: "no-repeat",
+            maskSize: "100% 100%",
+          }}
+        >
           Hivyr
         </h1>
       </div>

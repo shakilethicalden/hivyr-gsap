@@ -27,7 +27,6 @@ const Service = () => {
       if (!card) return;
 
       gsap.to(card, {
-        scale: 0.95,
         scrollTrigger: {
           trigger: card,
           start: "top 20%",

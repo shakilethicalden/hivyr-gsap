@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <div>
       <Banner />
-      <About />
       <Service />
       <Offerings />
       <WhyHivyr />

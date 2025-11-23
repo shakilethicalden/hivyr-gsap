@@ -7,7 +7,7 @@ import BottomText from "./BottomText";
 gsap.registerPlugin(ScrollTrigger);
 
 const WhyHivyr = () => {
-    const textRef = useRef(null);
+    const sectionRef = useRef(null);
     const pillsRef = useRef(null);
     const leftPillRef = useRef(null);
     const centerPillRef = useRef(null);
@@ -16,90 +16,60 @@ const WhyHivyr = () => {
     useEffect(() => {
         const screenWidth = window.innerWidth;
 
-        // Disable scroll animations for mobile/tablet
+        // Disable scroll animations on mobile/tablet
         if (screenWidth < 1024) return;
 
-        const textEl = textRef.current;
+        const sectionEl = sectionRef.current;
         const pillsEl = pillsRef.current;
         const leftPill = leftPillRef.current;
         const centerPill = centerPillRef.current;
         const rightPill = rightPillRef.current;
-        const sectionEl = pillsEl.closest("section");
 
-        // Pin heading section
+        // Pin entire section (text + pills)
         ScrollTrigger.create({
-            trigger: textEl,
-            start: "top 10%",
-            endTrigger: pillsEl,
-            end: "top-=320 15%",
+            trigger: sectionEl,
+            start: "top top",
+            end: "bottom+=600 top",
             pin: true,
-            pinSpacing: false,
+            scrub: false,
         });
 
         const viewportCenter = window.innerWidth / 2;
 
-        // get each pill's current center
+        // Measure pills' center positions
         const leftRect = leftPill.getBoundingClientRect();
         const rightRect = rightPill.getBoundingClientRect();
 
         const leftCurrentCenter = leftRect.left + leftRect.width / 2;
         const rightCurrentCenter = rightRect.left + rightRect.width / 2;
 
-        // calculate how much each pill needs to move to reach viewport center
-        const leftMove = viewportCenter - leftCurrentCenter;  // positive: move right
-        const rightMove = viewportCenter - rightCurrentCenter; // negative: move left
+        // Movement needed to get both pills centered
+        const leftMove = viewportCenter - leftCurrentCenter;
+        const rightMove = viewportCenter - rightCurrentCenter;
 
-
-
-        // Pills animation
-        const pillsTl = gsap.timeline({
+        // Main pills movement animation (NO revert)
+        gsap.timeline({
             scrollTrigger: {
-                trigger: centerPill,
-                start: "center 70%",
-                end: "bottom+=300 center",
+                trigger: pillsEl,
+                start: "top center",
+                end: "bottom+=400 center",
                 scrub: 1,
-                pin: pillsEl,
-                anticipatePin: 1,
             },
-        });
-
-        pillsTl
+        })
             .to(leftPill, { x: leftMove, rotate: 0, ease: "none" }, 0)
             .to(rightPill, { x: rightMove, rotate: 0, ease: "none" }, 0)
             .to(centerPill, { rotate: 0, ease: "none" }, 0);
 
-
-        // Fade out background after animation
-        const revertTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: pillsEl,
-                start: "bottom 65%",
-                end: "bottom+=300 center",
-                scrub: 1,
-            },
-        });
-
-        revertTl
-            .to(leftPill, { x: 0, rotate: -20, ease: "power2.out" }, 0)
-            .to(rightPill, { x: 0, rotate: 15, ease: "power2.out" }, 0)
-            .to(centerPill, { rotate: 10, ease: "power2.out" }, 0)
-            .to(sectionEl, { backgroundColor: "rgba(247,181,24,1)", duration: 0 }, 0)
-            .to(
-                sectionEl,
-                {
-                    backgroundColor: "rgba(247,181,24,0)",
-                    ease: "power2.out",
-                    duration: 1.5,
-                },
-                0.2
-            );
     }, []);
 
     return (
         <>
-            <section className="relative bg-[#f7b518] text-black py-32 overflow-hidden z-10">
+            <section
+                ref={sectionRef}
+                className="relative bg-[#f7b518] text-black py-32 overflow-hidden z-10"
+            >
                 {/* Text Section */}
-                <div ref={textRef} className="text-center max-w-2xl mx-auto">
+                <div className="text-center max-w-2xl mx-auto">
                     <p className="uppercase tracking-wide text-sm mb-3">STATS</p>
                     <h2 className="text-4xl xl:text-6xl font-bold mb-6">Why Hivyr?</h2>
                     <p className="text-lg leading-relaxed text-black/90">
@@ -113,7 +83,7 @@ const WhyHivyr = () => {
                 {/* Pills Section */}
                 <div
                     ref={pillsRef}
-                    className="relative w-full pt-20 md:pt-28 py-0 lg:py-40  lg:mt-[400px] flex flex-col md:flex-col lg:block items-center gap-8"
+                    className="relative w-full pt-20 md:pt-28 py-0 lg:pt-40  lg:pb-20 lg:mt-[200px] flex flex-col md:flex-col lg:block items-center gap-8"
                 >
                     {/* Left Pill */}
                     <div
