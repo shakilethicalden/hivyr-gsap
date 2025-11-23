@@ -26,10 +26,11 @@ const Footer = () => {
         <h1
           className="text-[35vw] md:text-[38vw] xl:text-[35vw] pb-10 font-extrabold leading-none"
           style={{
-            WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 90%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, black 50%, rgba(0,0,0,0.1) 80%, transparent 100%)",
             WebkitMaskRepeat: "no-repeat",
             WebkitMaskSize: "100% 100%",
-            maskImage: "linear-gradient(to bottom, black 50%, transparent 90%)",
+            maskImage: "linear-gradient(to bottom, black 50%, rgba(0,0,0,0.1) 80%, transparent 100%)",
             maskRepeat: "no-repeat",
             maskSize: "100% 100%",
           }}
