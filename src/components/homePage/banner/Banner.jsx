@@ -114,7 +114,7 @@ export default function Banner() {
 
         <p
           ref={subTextRef}
-          className="text-base sm:text-lg lg:text-xl mt-6 text-gray-100 leading-relaxed transition-opacity duration-700 flex flex-wrap gap-2 justify-center text-center"
+          className="text-lg lg:text-xl mt-6 text-gray-100 leading-relaxed transition-opacity duration-700 flex flex-wrap gap-0.5 md:gap-1 lg:gap-2 justify-center text-center"
         ></p>
 
       </div>

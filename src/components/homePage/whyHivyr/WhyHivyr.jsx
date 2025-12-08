@@ -66,13 +66,13 @@ const WhyHivyr = () => {
         <>
             <section
                 ref={sectionRef}
-                className="relative bg-[#fdd204] text-black py-32 overflow-hidden z-10"
+                className="relative bg-[#fdd204] text-black py-20 lg:py-24 overflow-hidden z-10"
             >
                 {/* Text Section */}
                 <div className="text-center max-w-2xl mx-auto">
-                    <p className="uppercase tracking-wide text-sm mb-3">STATS</p>
-                    <h2 className="text-4xl xl:text-6xl font-bold mb-6">Why Hivyr?</h2>
-                    <p className="text-lg leading-relaxed text-black/90">
+                    <p className="uppercase tracking-wide text-lg font-medium mb-3">STATS</p>
+                    <h2 className="common-title mb-6">Why Hivyr?</h2>
+                    <p className="text-lg lg:text-xl leading-relaxed text-black/90">
                         At Hivyr, we harness the power of AI to streamline complex processes
                         and automate repetitive tasks. Our solutions free up your time so
                         you can focus on what truly matters—making smarter decisions,

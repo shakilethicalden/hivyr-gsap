@@ -73,7 +73,7 @@ const BottomText = () => {
     return (
         <section
             ref={fadeTextRef}
-            className="relative bg-black text-center py-32 flex justify-center overflow-hidden"
+            className="relative bg-black text-center py-20 lg:py-24 flex justify-center overflow-hidden"
         >
             <h2
                 ref={h2Ref}

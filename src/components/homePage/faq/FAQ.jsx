@@ -96,17 +96,17 @@ export default function FAQ() {
     };
 
     return (
-        <section className=" py-20 bg-white z-20 mt-20">
+        <section className=" bg-white z-20 mt-20 lg:mt-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16">
                 {/* Left Side - FAQ Text */}
                 <div className="h-fit">
-                    <p className="text-[#fdd204] font-semibold uppercase text-sm mb-4">
+                    <p className="text-[#fdd204] font-semibold uppercase text-lg mb-4">
                         FAQ
                     </p>
-                    <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                    <h1 className="common-title mb-6">
                         Frequently Asked Questions
                     </h1>
-                    <p className="mt-2 text-xl text-gray-600 max-w-md">
+                    <p className="mt-2 text-lg lg:text-xl text-gray-600 max-w-md">
                         Find answers to common questions about Hivyr AI Agents and how it can transform your business.
                     </p>
                 </div>

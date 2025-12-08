@@ -29,7 +29,7 @@ const Service = () => {
       gsap.to(card, {
         scrollTrigger: {
           trigger: card,
-          start: "top 20%",
+          start: "top 15%",
           endTrigger: lastCard,
           end: "center center",
           pin: true,
@@ -84,30 +84,30 @@ const Service = () => {
   ];
 
   return (
-    <section className="bg-white py-20 z-30">
+    <section className="bg-white py-20 lg:py-24 z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-[#fdd204] text-sm font-semibold text-center uppercase mb-2">
+        <p className="text-[#fdd204] text-lg font-semibold text-center uppercase mb-2">
           SERVICES
         </p>
-        <h2 className="text-4xl xl:text-6xl font-bold text-black text-center mb-20">
-          Powerful tools to elevate your <br /> real-time communication
+        <h2 className="common-title text-center max-w-5xl mx-auto xl:max-w-7xl px-4 sm:px-8 mb-10 lg:mb-20">
+          Powerful tools to elevate your real-time communication
         </h2>
 
         {services.map((service, i) => (
           <div
             key={i}
             ref={(el) => (cardRefs.current[i] = el)}
-            className={`relative bg-gray-100 rounded-3xl p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-start overflow-hidden shadow-lg h-auto lg:h-[600px] mt-10 z-[${i + 10}]`}
+            className={`relative bg-gray-100 rounded-3xl p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-start overflow-hidden  h-auto lg:h-[600px] mt-10 z-[${i + 10}]`}
           >
             {/* Left side content */}
             <div className="w-full lg:w-1/2 lg:pr-10 pt-4 lg:pt-8">
               <p className="text-xl text-black bg-[#fdd204] rounded-full w-fit p-4 mb-6">
                 {service.icon}
               </p>
-              <h3 className="text-3xl lg:text-5xl font-bold text-black mb-6">
+              <h3 className="text-3xl lg:text-5xl font-bold leading-tight mb-6">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-base md:text-lg lg:text-2xl max-w-md font-medium">
+              <p className="text-gray-600 text-lg lg:text-2xl max-w-md font-medium">
                 {service.description}
               </p>
             </div>

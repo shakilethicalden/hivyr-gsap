@@ -53,7 +53,7 @@ const CTA = () => {
   }, []);
 
   return (
-    <section className="relative w-full bg-black py-24 px-6 flex flex-col justify-center items-center">
+    <section className="relative w-full bg-black py-20 lg:py-24 px-6 flex flex-col justify-center items-center">
       <h2
         ref={h2Ref}
         className="text-3xl md:text-5xl font-bold max-w-5xl mx-auto text-center leading-snug select-none transition-all duration-300"

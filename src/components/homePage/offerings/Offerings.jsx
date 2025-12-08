@@ -84,42 +84,56 @@ const Offerings = () => {
     ];
 
     useEffect(() => {
-        const section = sectionRef.current;
-        const content = contentRef.current;
-        const cardsContainer = content?.querySelector(".cards-container");
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    const cardsContainer = content?.querySelector(".cards-container");
 
-        if (!section || !content || !cardsContainer) return;
+    if (!section || !content || !cardsContainer) return;
 
-        const totalWidth = cardsContainer.scrollWidth;
-        const visibleWidth = section.offsetWidth;
+    const totalWidth = cardsContainer.scrollWidth;
+    const visibleWidth = section.offsetWidth;
 
-        const scrollDistance = totalWidth - visibleWidth + 2000;
+    // ⭐ Dynamic scroll distance based on device width
+    let extraScroll = 0;
 
-        const ctx = gsap.context(() => {
-            gsap.set(content, { x: 0 });
+    if (window.innerWidth >= 1280) {
+        extraScroll = 2000;   // large screens
+    } else if (window.innerWidth >= 1024) {
+        extraScroll = 1200;    // medium-large screens
+    } else if (window.innerWidth >= 768) {
+        extraScroll = 900;    // tablets
+    } else {
+        extraScroll = 0;      // mobile → NO extra scroll
+    }
 
-            gsap.to(content, {
-                x: -scrollDistance,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top top",
-                    end: () => `+=${scrollDistance * 1.0}`,
-                    scrub: 1.3,
-                    pin: true,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                },
-            });
-        }, section);
+    const scrollDistance = Math.max(totalWidth - visibleWidth + extraScroll, 0);
 
-        return () => ctx.revert();
-    }, []);
+    const ctx = gsap.context(() => {
+        gsap.set(content, { x: 0 });
+
+        gsap.to(content, {
+            x: -scrollDistance,
+            ease: "none",
+            scrollTrigger: {
+                trigger: section,
+                start: "top 15%",
+                end: () => `+=${scrollDistance}`,
+                scrub: 1.3,
+                pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+            },
+        });
+    }, section);
+
+    return () => ctx.revert();
+}, []);
+
 
     return (
         <section
             ref={sectionRef}
-            className="relative bg-white py-24 lg:py-40 overflow-hidden z-10"
+            className="relative bg-white mb-20 lg:mb-24 overflow-hidden z-10"
         >
             <div className="relative max-w-7xl mx-auto overflow-hidden px-6">
                 <div ref={contentRef} className="flex items-start gap-20">
@@ -141,7 +155,7 @@ const Offerings = () => {
 
                         {/* Text */}
                         <div className="lg:w-1/2 flex flex-col justify-center items-center lg:items-start">
-                            <p className="text-[#fdd204] font-semibold uppercase tracking-widest text-sm mb-3">
+                            <p className="text-[#fdd204] font-semibold uppercase tracking-widest text-lg mb-3">
                                 AI Agents
                             </p>
                             <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-gray-900 mb-6">

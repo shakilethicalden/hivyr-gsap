@@ -7,12 +7,12 @@ import { MdSmartToy } from "react-icons/md";
 
 const Pricing = () => {
     return (
-        <section className="bg-white text-black py-20 flex justify-center">
+        <section className="bg-white text-black py-20 lg:py-24 flex justify-center">
             <div className="max-w-7xl w-full px-6">
                 {/* Top heading section */}
                 <div className="flex flex-col md:flex-row items-center justify-between mb-12">
-                    <h2 className="text-4xl font-bold mb-4 md:mb-0">Plans</h2>
-                    <p className="text-gray-600 text-center md:text-right max-w-md">
+                    <h2 className="common-title mb-4 md:mb-0">Plans</h2>
+                    <p className="text-gray-600 text-lg lg:text-xl text-center md:text-right max-w-md">
                         Choose an AI Agent plan that scales with your business. Automate,
                         analyze, and accelerate with Script Runner.
                     </p>
