@@ -96,7 +96,7 @@ export default function Navbar() {
         });
     }, []);
 
-    const navItems = ["Products", "Agents", "Services +", "About", "Pricing"];
+    const navItems = ["Products", "Agents", "Services", "About", "Pricing"];
 
     return (
         <nav className="w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 py-4 relative z-50 bg-transparent">
