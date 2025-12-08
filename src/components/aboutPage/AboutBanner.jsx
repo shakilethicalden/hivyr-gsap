@@ -65,14 +65,14 @@ const AboutBanner = () => {
 
       {/* Text Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-0">
-        <p className="text-xs sm:text-sm md:text-base tracking-widest text-gray-300 mb-3">
+        <p className="text-lg tracking-widest text-gray-100 mb-6">
           ABOUT OUR AI AGENT PLATFORM
         </p>
 
         <h1
           ref={titleRef}
           data-text="We build autonomous AI agents that think, act, and collaborate—empowering businesses to operate at machine speed."
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight max-w-full md:max-w-6xl mx-auto inline-block"
+          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl  font-bold leading-tight max-w-full md:max-w-6xl mx-auto inline-block"
         >
           We build autonomous AI agents that think, act, and collaborate—empowering businesses to operate at machine speed.
         </h1>

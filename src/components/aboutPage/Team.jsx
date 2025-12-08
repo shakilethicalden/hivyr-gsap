@@ -47,7 +47,7 @@ export default function Team() {
             stagger: { each: 0.1, from: "random" },
             scrollTrigger: {
               trigger: card,
-              start: "top 15%",
+              start: "top 40%",
               toggleActions: "play none none reverse",
             },
           });
@@ -78,12 +78,12 @@ export default function Team() {
   return (
     <section
       ref={sectionRef}
-      className="bg-black text-white py-16 px-6 md:px-12 lg:px-28 overflow-hidden"
+      className="bg-black text-white py-16 common-px overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="mb-12 text-center lg:text-left">
-          <p className="text-sm text-gray-400 uppercase tracking-widest">
+          <p className="text-lg text-gray-400 uppercase tracking-widest">
             Meet the Team
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-2">
