@@ -48,17 +48,12 @@ export default function ProductBanner() {
     // --- ICON BACKGROUND COLOR ANIMATION ---
     iconRefs.current.forEach((icon, i) => {
       if (!icon) return;
-      const colors = [
-        "linear-gradient(135deg, #ffffff, #d6f8ff)",
-        "linear-gradient(135deg, #ffecd2, #fcb69f)",
-        "linear-gradient(135deg, #c2e9fb, #a1c4fd)",
-        "linear-gradient(135deg, #f6d365, #fda085)",
-      ];
+      const colors = ["#ffffff", "#f7b518", "#fdd204"];
 
       let colorIndex = 0;
       const animateColor = () => {
         gsap.to(icon, {
-          background: colors[colorIndex],
+          backgroundColor: colors[colorIndex],
           duration: 3,
           ease: "power1.inOut",
           onComplete: () => {
@@ -69,6 +64,7 @@ export default function ProductBanner() {
       };
       animateColor();
     });
+
   }, []);
 
   // Split by words; wrap each word in a no-wrap span, animate letters inside
@@ -79,7 +75,7 @@ export default function ProductBanner() {
         key={`w-${wi}`}
         className="inline-block whitespace-nowrap mr-2 word"
         aria-hidden="true"
-        // small right margin so words separate nicely; accessible text below
+      // small right margin so words separate nicely; accessible text below
       >
         {word.split("").map((char, i) => (
           <span key={`${wi}-${i}`} className="inline-block letter">
@@ -110,7 +106,7 @@ export default function ProductBanner() {
         <div className="mt-auto mb-[10vh] sm:mb-[15vh] text-left">
           <p
             ref={subtextRef}
-            className="text-xs sm:text-sm uppercase tracking-[0.2em] mb-4 text-gray-300"
+            className="text-lg uppercase  mb-4 text-gray-100"
           >
             INNOVATE. AUTOMATE. SCALE.
           </p>
@@ -118,7 +114,7 @@ export default function ProductBanner() {
           {/* Visible heading for animations (note: keep an accessible text duplicate for screen readers) */}
           <h1
             ref={headingRef}
-            className="prod_common_title max-w-5xl  leading-tight "
+            className="common-title max-w-5xl  leading-tight "
             role="presentation"
           >
             {renderAnimatedText("The Ultimate AI Agent for Modern Businesses")}
@@ -143,33 +139,33 @@ export default function ProductBanner() {
         </div>
 
         {/* Feature Bar */}
-        <div className="w-full border-t border-white/20 pt-6 sm:pt-8">
-          <p className="text-sm sm:text-base mb-6 text-gray-200">
+        <div className="w-full border-t border-white/20 pt-6 sm:pt-8 pb-5">
+          <p className="text-lg lg:text-xl mb-6 text-gray-100">
             Key Features of Our AI Agent
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 w-full">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center space-x-3 sm:w-auto w-full"
+                className="flex items-center space-x-3 w-full"
               >
                 <div
                   ref={(el) => (iconRefs.current[index] = el)}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-1000 shadow-lg"
+                  className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-1000 shadow-lg"
                   style={{
-                    background:
-                      "linear-gradient(135deg, #ffffff, #d6f8ff)",
+                    background: "linear-gradient(135deg, #ffffff, #d6f8ff)",
                   }}
                 >
                   <div className="text-black">{feature.icon}</div>
                 </div>
-                <p className="text-xs sm:text-sm leading-snug opacity-90 max-w-[200px]">
+                <p className="text-lg leading-snug opacity-90">
                   {feature.text}
                 </p>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </div>
   );

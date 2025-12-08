@@ -65,7 +65,7 @@ export default function ProductArea() {
   }, []);
 
   return (
-    <section className="relative w-full flex flex-col items-center py-12 sm:py-20 lg:py-28 bg-white overflow-hidden">
+    <section className="relative w-full flex flex-col items-center pb-20 lg:py-24 bg-white overflow-hidden">
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Desktop Grid */}
         <div className="hidden lg:grid grid-cols-4 gap-6 auto-rows-[320px] lg:auto-rows-[380px]">
@@ -74,7 +74,7 @@ export default function ProductArea() {
             ref={(el) => (cardsRef.current[0] = el)}
             className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
-            <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
+            <p className="text-lg text-gray-700 mb-6 ">
               {contentCards[0].topText}
             </p>
             <h3 className="text-3xl mt-auto">
@@ -89,7 +89,7 @@ export default function ProductArea() {
             ref={(el) => (cardsRef.current[1] = el)}
             className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
-            <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
+            <p className="text-lg text-gray-700 mb-6 ">
               {contentCards[1].topText}
             </p>
             <h3 className="text-3xl mt-auto">
@@ -104,7 +104,7 @@ export default function ProductArea() {
             ref={(el) => (cardsRef.current[2] = el)}
             className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
-            <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
+            <p className="text-lg text-gray-700 mb-6 ">
               {contentCards[2].topText}
             </p>
             <h3 className="text-3xl mt-auto">
@@ -119,7 +119,7 @@ export default function ProductArea() {
             ref={(el) => (cardsRef.current[3] = el)}
             className="p-8 xl:p-12 flex flex-col justify-between border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-sm col-span-1"
           >
-            <p className="text-base xl:text-lg text-gray-700 mb-6 font-light">
+            <p className="text-lg text-gray-700 mb-6 ">
               {contentCards[3].topText}
             </p>
             <h3 className="text-3xl mt-auto">
@@ -135,7 +135,7 @@ export default function ProductArea() {
               key={i}
               className="p-6 sm:p-8 border border-[#fdd204] bg-[#fdd204]/10 text-gray-900 rounded-md"
             >
-              <p className="text-sm sm:text-base text-gray-700 mb-4 font-light">
+              <p className="text-sm sm:text-base text-gray-700 mb-4 ">
                 {card.topText}
               </p>
               <h3 className="text-2xl sm:text-3xl">{card.title}</h3>

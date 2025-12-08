@@ -72,7 +72,7 @@ const WhyHivyr = () => {
                 <div className="text-center max-w-2xl mx-auto">
                     <p className="uppercase tracking-wide text-lg font-medium mb-3">STATS</p>
                     <h2 className="common-title mb-6">Why Hivyr?</h2>
-                    <p className="text-lg lg:text-xl leading-relaxed text-black/90">
+                    <p className="text-lg lg:text-xl leading-relaxed text-black/90 common-px">
                         At Hivyr, we harness the power of AI to streamline complex processes
                         and automate repetitive tasks. Our solutions free up your time so
                         you can focus on what truly matters—making smarter decisions,

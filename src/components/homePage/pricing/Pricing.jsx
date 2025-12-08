@@ -21,7 +21,7 @@ const Pricing = () => {
                 {/* Pricing Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                     {/* Starter */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg flex flex-col justify-between">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col justify-between">
                         <div>
                             <h3 className="text-xl font-semibold mb-4">Starter</h3>
                             <p className="text-4xl font-bold mb-6">
@@ -53,7 +53,7 @@ const Pricing = () => {
                     </div>
 
                     {/* Pro */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg flex flex-col justify-between">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col justify-between">
                         <div>
                             <div className="flex items-center justify-between mb-2">
                                 <h3 className="text-xl font-semibold">Pro</h3>
@@ -90,7 +90,7 @@ const Pricing = () => {
                     </div>
 
                     {/* Enterprise */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg flex flex-col justify-between">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col justify-between">
                         <div>
                             <div className="flex items-center justify-between mb-2">
                                 <h3 className="text-xl font-semibold">Enterprise</h3>
@@ -128,30 +128,37 @@ const Pricing = () => {
                 </div>
 
                 {/* Bottom Add-on */}
-                <div className="bg-black text-white rounded-2xl p-8 flex flex-col md:flex-row justify-between items-center shadow-lg">
-                    <div>
-                        <h3 className="text-lg font-semibold mb-2">Custom AI Agent Setup</h3>
-                        <p className="text-gray-400 text-sm flex items-center space-x-4">
+                <div className="bg-black text-white rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row justify-between items-start md:items-center shadow-lg">
+                    {/* Left Section */}
+                    <div className="w-full md:w-auto mb-6 md:mb-0">
+                        <h3 className="text-lg font-semibold mb-3 md:mb-2">Custom AI Agent Setup</h3>
+                        <p className="text-gray-400 text-sm flex flex-col md:flex-row md:items-center md:space-x-4 space-y-2 md:space-y-0">
                             <span className="flex items-center space-x-1">
                                 <FiSettings /> <span>Workflow mapping</span>
                             </span>
-                            <span>•</span>
+                            <span className="hidden md:inline">•</span>
                             <span className="flex items-center space-x-1">
                                 <MdSmartToy /> <span>Model fine-tuning</span>
                             </span>
-                            <span>•</span>
+                            <span className="hidden md:inline">•</span>
                             <span className="flex items-center space-x-1">
                                 <FiBarChart2 /> <span>Analytics dashboard</span>
                             </span>
                         </p>
                     </div>
-                    <div className="flex items-center gap-6 mt-6 md:mt-0">
+
+                    {/* Right Section */}
+                    <div className="w-full md:w-auto flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
                         <p className="text-3xl font-bold">$2,000</p>
-                        <Link href={'/pricing'} className="bg-[#fdd204] text-black font-semibold py-3 px-6 text-center rounded-xl transition">
-                           Get Started
+                        <Link
+                            href={'/pricing'}
+                            className="bg-[#fdd204] text-black font-semibold py-3 px-6 text-center rounded-xl transition w-full md:w-auto"
+                        >
+                            Get Started
                         </Link>
                     </div>
                 </div>
+
             </div>
         </section>
     );

@@ -51,11 +51,11 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="py-16 sm:py-20 overflow-hidden bg-white">
+    <section className="py-20 lg:py-24 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading + Summary */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12">
-          <h2 className="prod_common_title">
+          <h2 className="common-title">
             What Our <br />
             <span className="text-[#fdd204]">Users Say</span>
           </h2>

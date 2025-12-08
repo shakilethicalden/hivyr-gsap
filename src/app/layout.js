@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import ClientWrapper from "@/components/utils/ClientWrapper";
 
 const manrope = localFont({
   src: [
@@ -37,7 +38,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${manrope.variable} font-sans antialiased`}>
-        {children}
+        <ClientWrapper>
+          {children}
+        </ClientWrapper>
       </body>
     </html>
   );
