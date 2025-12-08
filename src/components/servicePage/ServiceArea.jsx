@@ -18,7 +18,7 @@ const ServiceArea = () => {
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <h2 className="serv_common_title mb-16 lg:mb-20 max-w-xl text-black">
+        <h2 className="common-title mb-16 text-center lg:text-left lg:mb-20 max-w-2xl text-black">
           Explore Our <span className="text-[#fdd204]">AI-Powered</span> Services
         </h2>
 
@@ -75,9 +75,9 @@ const HoverCard = ({ title, description, image, alwaysVisible }) => {
       ></div>
 
       {/* TEXT */}
-      <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-end h-full">
+      <div className="relative z-10 p-6 lg:p-8 flex flex-col justify-end h-full">
         <h3
-          className={`text-lg sm:text-xl font-semibold transition-transform duration-700 ease-in-out
+          className={`text-2xl lg:text-2xl font-semibold transition-transform duration-700 ease-in-out
             ${alwaysVisible ? "text-white translate-y-0" : "text-black group-hover:text-white group-hover:translate-y-16"}
           `}
         >
@@ -85,7 +85,7 @@ const HoverCard = ({ title, description, image, alwaysVisible }) => {
         </h3>
 
         <p
-          className={`text-xs sm:text-sm mt-2 leading-relaxed
+          className={`text-sm lg:text-lg mt-2 leading-relaxed
             ${alwaysVisible ? "text-white" : "text-[#6e655d] group-hover:opacity-0"}
           `}
         >

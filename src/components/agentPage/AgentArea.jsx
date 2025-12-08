@@ -69,17 +69,17 @@ export default function AgentArea() {
   const closeModal = () => setSelectedAgentIndex(null);
 
   return (
-    <section className="w-full py-20 bg-white overflow-hidden">
+    <section className="w-full py-20 lg:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10">
+        <div className="flex flex-col lg:flex-row items-center lg:justify-between mb-10">
           <div ref={titleRef} className="flex items-center gap-3 overflow-hidden md:pb-8 xl:pb-0">
-            <h2 className="agnt_common_title text-[#fdd204] leading-tight">Explore</h2>
-            <h2 className="agnt_common_title text-black leading-tight">Agents</h2>
+            <h2 className="common-title text-[#fdd204] leading-tight">Explore</h2>
+            <h2 className="common-title text-black leading-tight">Agents</h2>
           </div>
           <p
             ref={paragraphRef}
-            className="text-gray-600 mt-4 md:mt-0 max-w-md text-sm md:text-base overflow-hidden"
+            className="text-gray-600 mt-4 md:mt-0 max-w-md text-lg lg:text-xl text-center lg:text-start overflow-hidden"
           >
             Whether you're building your first AI workflow or scaling intelligent
             systems for enterprise, our AI agents keep your business connected,

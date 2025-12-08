@@ -10,8 +10,8 @@ const Footer = () => {
           <p className="cursor-pointer hover:underline">Privacy Policy</p>
         </div>
         <div className="flex flex-col lg:flex-row flex-wrap justify-start lg:justify-center gap-5 items-center mt-10 lg:mt-0">
-          <a href="mailto:hivyrsales@.ai" className="hover:underline" target="_blank">
-            sales@hivyr.ai ↗
+          <a href="mailto:hivyrinfo@.ai" className="hover:underline" target="_blank">
+            info@hivyr.ai ↗
           </a>
           <a href="#" className="hover:underline" target="_blank">
             Book a demo ↗

@@ -5,9 +5,13 @@ import { X, ArrowLeft, ArrowRight, Video, Mic } from "lucide-react";
 export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex = 0 }) {
   const [current, setCurrent] = useState(initialIndex);
   const [fade, setFade] = useState(false);
+  const [showCallDemo, setShowCallDemo] = useState(false);
 
   useEffect(() => {
-    if (isOpen) setCurrent(initialIndex);
+    if (isOpen) {
+      setCurrent(initialIndex);
+      setShowCallDemo(false); // reset when modal opens
+    }
   }, [isOpen, initialIndex]);
 
   if (!isOpen || !agents || agents.length === 0) return null;
@@ -17,6 +21,7 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
     setTimeout(() => {
       setCurrent((prev) => (prev + 1) % agents.length);
       setFade(false);
+      setShowCallDemo(false); // reset demo on agent change
     }, 250);
   };
 
@@ -25,12 +30,12 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
     setTimeout(() => {
       setCurrent((prev) => (prev - 1 + agents.length) % agents.length);
       setFade(false);
+      setShowCallDemo(false); // reset demo on agent change
     }, 250);
   };
 
   const currentAgent = agents[current];
-
-  const isChatAgent = !["Video Calling", "Voice Calling"].includes(currentAgent.text);
+  const isCallAgent = ["Video Calling", "Voice Calling"].includes(currentAgent.text);
 
   return (
     <div className="fixed inset-0 z-99 flex items-center justify-center bg-black/90 backdrop-blur-sm">
@@ -65,9 +70,8 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
 
         {/* Demo Panel */}
         <div
-          className={`flex flex-col justify-between items-center w-full h-[400px] sm:h-[500px] bg-[#0f0f0f] rounded-2xl overflow-hidden border border-white/10 shadow-inner transition-opacity duration-300 ${
-            fade ? "opacity-0" : "opacity-100"
-          }`}
+          className={`flex flex-col justify-between items-center w-full h-[400px] sm:h-[500px] bg-[#0f0f0f] rounded-2xl overflow-hidden border border-white/10 shadow-inner transition-opacity duration-300 ${fade ? "opacity-0" : "opacity-100"
+            }`}
         >
           {/* Agent Header */}
           <div className="flex items-center gap-4 p-6 w-full border-b border-white/10 bg-[#151515]">
@@ -81,7 +85,66 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
           </div>
 
           {/* Chat / Call Demo */}
-          {isChatAgent ? (
+          {isCallAgent ? (
+            !showCallDemo ? (
+              <div className="flex-1 w-full flex flex-col items-center justify-center gap-4">
+                <button
+                  onClick={() => setShowCallDemo(true)}
+                  className="bg-[#fdd204] text-black font-semibold px-6 py-3 rounded-lg hover:bg-white transition"
+                >
+                  {currentAgent.text === "Video Calling" ? "Start Video Call" : "Start Voice Call"}
+                </button>
+              </div>
+            ) : currentAgent.text === "Video Calling" ? (
+              <div className="flex-1 w-full flex flex-col items-center justify-center gap-4 relative px-2 sm:px-0">
+                <Video size={48} className="text-[#fdd204]" />
+
+                <div className="w-full sm:w-3/4 h-60 sm:h-60 bg-gray-800 rounded-lg relative overflow-hidden border border-white/20 flex flex-col sm:flex-row items-center sm:justify-around p-4 gap-4">
+
+                  {/* Participant 1 */}
+                  <div className="w-24 h-24 sm:w-20 sm:h-20 bg-gray-700 rounded-lg overflow-hidden flex items-center justify-center border border-white/20">
+                    <img
+                      src="/images/ai-agents/person-1.jpg"
+                      alt="Participant 1"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Participant 2 */}
+                  <div className="w-24 h-24 sm:w-20 sm:h-20 bg-gray-700 rounded-lg overflow-hidden flex items-center justify-center border border-white/20">
+                    <img
+                      src="/images/ai-agents/person-2.jpg"
+                      alt="Participant 2"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Optional overlay text */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none text-center">
+                    Live video feed simulation
+                  </div>
+                </div>
+
+                {/* Recording dot */}
+                <div className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+              </div>
+            )
+              : (
+                <div className="flex-1 w-full flex flex-col items-center justify-center gap-4">
+                  <Mic size={48} className="text-[#fdd204]" />
+                  <div className="w-3/4 h-20 bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden border border-white/20">
+                    {Array.from({ length: 10 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`w-2 mx-1 bg-[#fdd204] rounded animate-pulse`}
+                        style={{ animationDelay: `${i * 100}ms`, height: `${Math.random() * 40 + 10}px` }}
+                      ></div>
+                    ))}
+                  </div>
+                  <p className="text-gray-400 text-lg">Voice call in progress...</p>
+                </div>
+              )
+          ) : (
             <div className="flex-1 w-full px-6 py-4 overflow-y-auto space-y-4">
               <div className="flex justify-end">
                 <div className="bg-[#fdd204] text-black px-5 py-3 rounded-2xl max-w-[75%] text-sm shadow-lg">
@@ -98,35 +161,6 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
                 <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></div>
                 <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></div>
               </div>
-            </div>
-          ) : currentAgent.text === "Video Calling" ? (
-            <div className="flex-1 w-full flex flex-col items-center justify-center gap-4 relative">
-              <Video size={48} className="text-[#fdd204]" />
-              <div className="w-3/4 h-60 bg-gray-800 rounded-lg relative overflow-hidden border border-white/20">
-                {/* Simulated participant rectangles */}
-                <div className="absolute top-4 left-4 w-16 h-16 bg-[#fdd204]/50 rounded-md animate-pulse"></div>
-                <div className="absolute bottom-4 right-4 w-16 h-16 bg-[#fdd204]/50 rounded-md animate-pulse delay-200"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-400 text-sm">
-                  Live video feed simulation
-                </div>
-                {/* Recording dot */}
-                <div className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
-              </div>
-            </div>
-          ) : (
-            <div className="flex-1 w-full flex flex-col items-center justify-center gap-4">
-              <Mic size={48} className="text-[#fdd204]" />
-              <div className="w-3/4 h-20 bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden border border-white/20">
-                {/* Animated waveform bars */}
-                {Array.from({ length: 10 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`w-2 mx-1 bg-[#fdd204] rounded animate-pulse`}
-                    style={{ animationDelay: `${i * 100}ms`, height: `${Math.random() * 40 + 10}px` }}
-                  ></div>
-                ))}
-              </div>
-              <p className="text-gray-400 text-lg">Voice call in progress...</p>
             </div>
           )}
 
@@ -145,7 +179,6 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
             Close
           </button>
         </div>
-
       </div>
     </div>
   );

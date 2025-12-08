@@ -68,12 +68,12 @@ const ClientSection = () => {
   }, []);
 
   const ImageColumn = ({ images, refProp }) => (
-    <div className="overflow-hidden h-[400px] lg:h-[510px] w-1/3">
+    <div className="overflow-hidden w-full sm:w-1/3 h-60 sm:h-[400px] md:h-[550px] lg:h-[570px] xl:h-[520px] px-2">
       <div ref={refProp} className="flex flex-col">
         {images.map((src, i) => (
           <div
             key={i}
-            className="w-full h-25 -mb-16 md:mb-5 lg:mb-3 relative rounded-xl overflow-hidden flex items-center justify-center"
+            className="w-full h-20 sm:h-25 mb-4 md:mb-1.5 lg:mb-3 relative rounded-xl overflow-hidden flex items-center justify-center"
           >
             <Image
               src={src}
@@ -88,37 +88,37 @@ const ClientSection = () => {
   );
 
   return (
-    <section className="py-16 md:py-24 px-4 flex justify-center">
-      <div className="max-w-7xl w-full flex flex-wrap lg:flex-nowrap items-start bg-gray-100 rounded-2xl shadow-sm">
+    <section className="py-20 lg:py-24 ppx-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex justify-center">
+      <div className="  w-full flex flex-col md:flex-row items-start bg-gray-100 rounded-2xl shadow-sm">
         {/* Image Columns */}
-        <div className="flex w-full lg:w-1/3 xl:px-4 justify-between">
+        <div className="flex w-full lg:w-1/3 justify-between mb-8 md:mb-0 lg:mb-0">
           <ImageColumn images={imagesLeft} refProp={col1Ref} />
           <ImageColumn images={imagesMiddle} refProp={col2Ref} />
           <ImageColumn images={imagesRight} refProp={col3Ref} />
         </div>
 
         {/* Text Content */}
-        <div className="w-full lg:w-2/3 flex flex-col justify-start space-y-6 lg:space-y-8 py-10 px-8">
-          <h1 className="serv_common_title">
+        <div className="w-full lg:w-2/3 flex flex-col justify-start space-y-6 lg:space-y-8 py-6 lg:py-10 px-4 sm:px-8">
+          <h1 className="serv_common_title text-2xl sm:text-3xl lg:text-4xl">
             Your AI Partner <br /> for Digital Transformation
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             Leverage cutting-edge artificial intelligence to revolutionize your business processes.
             From intelligent chatbots to predictive analytics, we build AI agents that work tirelessly
             to elevate your customer experience and operational efficiency.
           </p>
 
           <ul className="space-y-4 pt-2">
-            <li className="flex items-center text-gray-700 text-lg">
-              <MessageCircle className="mr-3 w-6 h-6 text-[#5b5b5b] shrink-0" />
+            <li className="flex items-center text-gray-700 text-base sm:text-lg">
+              <MessageCircle className="mr-3 w-5 h-5 sm:w-6 sm:h-6 text-[#5b5b5b] shrink-0" />
               Smart Conversational AI
             </li>
-            <li className="flex items-center text-gray-700 text-lg">
-              <Workflow className="mr-3 w-6 h-6 text-[#5b5b5b] shrink-0" />
+            <li className="flex items-center text-gray-700 text-base sm:text-lg">
+              <Workflow className="mr-3 w-5 h-5 sm:w-6 sm:h-6 text-[#5b5b5b] shrink-0" />
               Process Automation
             </li>
-            <li className="flex items-center text-gray-700 text-lg">
-              <TrendingUp className="mr-3 w-6 h-6 text-[#5b5b5b] shrink-0" />
+            <li className="flex items-center text-gray-700 text-base sm:text-lg">
+              <TrendingUp className="mr-3 w-5 h-5 sm:w-6 sm:h-6 text-[#5b5b5b] shrink-0" />
               Data-Driven Decision Making
             </li>
           </ul>

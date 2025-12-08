@@ -10,39 +10,33 @@ const servicesData = [
     {
         id: 1,
         title: 'AI Strategy & Implementation',
-        image: '/images/service/service.jpg',
+        image: '/images/service/ai-strategy.jpg',
         features: ['AI Opportunity Assessment', 'Use Case Identification', 'ROI Analysis', 'Implementation Roadmap'],
     },
     {
         id: 2,
         title: 'Custom AI Agent Development',
-        image: '/images/service/service.jpg',
+        image: '/images/service/ai-development.jpg',
         features: ['Conversational AI Design', 'Workflow Automation', 'Multi-agent Systems', 'API Integration'],
     },
     {
         id: 3,
         title: 'Natural Language Processing',
-        image: '/images/service/service.jpg',
+        image: '/images/service/language.jpg',
         features: ['Chatbot Development', 'Sentiment Analysis', 'Text Classification', 'Language Translation'],
     },
     {
         id: 4,
         title: 'AI Training & Fine-tuning',
-        image: '/images/service/service.jpg',
+        image: '/images/service/ai-training.jpg',
         features: ['Data Preparation', 'Model Fine-tuning', 'Performance Optimization', 'Continuous Learning'],
     },
     {
         id: 5,
         title: 'AI Analytics & Insights',
-        image: '/images/service/service.jpg',
+        image: '/images/service/ai-analytics.jpg',
         features: ['Performance Monitoring', 'User Behavior Analysis', 'Predictive Analytics', 'Decision Support'],
     },
-    {
-        id: 6,
-        title: 'AI Integration Services',
-        image: '/images/service/service.jpg',
-        features: ['Legacy System Integration', 'API Development', 'Cloud Deployment', 'Scalability Solutions'],
-    }
 ];
 
 const ServiceItem = ({ service, index, activeId, setActiveId }) => {
@@ -65,14 +59,14 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
 
         // Add resize listener
         window.addEventListener('resize', checkScreenSize);
-        
+
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
 
     // Scroll-trigger animation for large devices
     useEffect(() => {
         if (!containerRef.current || !isLargeScreen) return;
-        
+
         gsap.fromTo(
             containerRef.current,
             { y: 50, opacity: 0 },
@@ -129,21 +123,25 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
                 <span className={`text-xl font-bold ${isActive ? 'text-[#fdd204]' : 'text-gray-500'}`}>
                     {index}.
                 </span>
-                <h4 className={`text-2xl font-semibold truncate ${isActive ? 'text-[#fdd204]' : 'text-gray-400'}`}>
+                <h4 className={`text-2xl font-semibold break-words ${isActive ? 'text-[#fdd204]' : 'text-gray-400'}`}>
                     {service.title}
                 </h4>
             </div>
+
 
             {/* Image + Feature List */}
             <div
                 ref={contentRef}
                 className="flex flex-col lg:flex-row w-full items-center justify-between gap-6 lg:gap-20"
-                style={{ display: isLargeScreen ? 'none' : 'flex' }}
             >
                 {/* Image */}
                 <div className="w-full lg:w-1/2 flex justify-center items-center mb-4 lg:mb-0">
-                    <div className="w-full h-full max-w-[280px] max-h-[120px] rounded-lg flex items-center justify-center shadow-xl overflow-hidden">
-                        <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                    <div className="w-full h-full rounded-lg flex items-center justify-center shadow-xl overflow-hidden">
+                        <img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-full h-full object-cover lg:max-w-[280px] lg:max-h-[120px]"
+                        />
                     </div>
                 </div>
 
@@ -165,6 +163,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
                 </div>
             )}
         </div>
+
     );
 };
 
@@ -173,9 +172,9 @@ const ServiceArea2 = () => {
 
     return (
         <section className="bg-[#272727] text-white min-h-screen py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 pb-12">
-                    <div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-2 lg:mb-16 pb-12">
+                    <div className='text-center md:text-left'>
                         <h3 className="text-white text-xl font-semibold tracking-wider uppercase mb-3">
                             AI Services
                         </h3>
@@ -183,8 +182,8 @@ const ServiceArea2 = () => {
                             Custom AI Agents, Intelligent Automation, Machine Learning, Predictive Analytics
                         </p>
                     </div>
-                    <div className="flex items-end justify-start md:justify-end">
-                        <h2 className="serv_common_title text-white">
+                    <div className="flex items-start justify-start md:justify-end">
+                        <h2 className="serv_common_title text-center md:text-left text-white">
                             Intelligent solutions <span className="text-[#fdd204]">powered by AI</span>
                         </h2>
                     </div>

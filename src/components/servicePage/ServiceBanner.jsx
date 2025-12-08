@@ -18,14 +18,14 @@ export default function ServiceBanner() {
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
 
       {/* Centered Content */}
-      <div className="relative z-20 max-w-4xl px-6 sm:px-8 md:px-12 lg:px-16">
+      <div className="relative z-20 max-w-5xl px-6 sm:px-8 md:px-12 lg:px-16">
         {/* Title */}
-        <h1 className="serv_common_title mb-4 sm:mb-6 md:mb-8">
+        <h1 className="common-title mb-4 sm:mb-6 md:mb-8">
           Empower Your Business with AI Agents
         </h1>
 
         {/* Description */}
-        <p className="serv_common_desc mb-6 sm:mb-8 md:mb-10">
+        <p className="text-lg lg:text-xl text-gray-100 font-semibold mb-6 sm:mb-8 md:mb-10">
           Automate tasks, analyze data, and make smarter decisions with our intelligent AI solutions designed for modern businesses.
         </p>
 
@@ -40,9 +40,9 @@ export default function ServiceBanner() {
         </div>
 
         {/* Bottom Description with Underline */}
-        <p className="text-gray-300 text-xs sm:text-sm md:text-base">
+        <p className="text-gray-300 text-base">
           Discover how our{" "}
-          <span className="underline decoration-white decoration-2">
+          <span className="underline decoration-white ">
             AI Agent services
           </span>{" "}
           can revolutionize your workflow.
