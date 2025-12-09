@@ -138,8 +138,6 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
                 <div className="w-full lg:w-1/2 flex justify-center items-center mb-4 lg:mb-0">
                     <div className="w-full h-full rounded-lg flex items-center justify-center shadow-xl overflow-hidden relative">
 
-                        {/* Black Overlay */}
-                        <div className="absolute inset-0 bg-black bg-opacity-70 z-10"></div>
 
                         {/* Image */}
                         <img

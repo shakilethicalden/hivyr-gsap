@@ -69,8 +69,8 @@ const HoverCard = ({ title, description, image, alwaysVisible }) => {
 
       {/* DARK OVERLAY FOR READABILITY */}
       <div
-        className={`absolute inset-0 bg-black/50 transition-opacity duration-700
-          ${alwaysVisible ? "opacity-60" : "lg:opacity-0 group-hover:opacity-60"}
+        className={`absolute inset-0 bg-black/70 transition-opacity duration-700
+          ${alwaysVisible ? "opacity-70" : "lg:opacity-0 group-hover:opacity-60"}
         `}
       ></div>
 
