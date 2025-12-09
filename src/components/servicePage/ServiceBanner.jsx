@@ -15,7 +15,7 @@ export default function ServiceBanner() {
       />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+      <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
 
       {/* Centered Content */}
       <div className="relative z-20 max-w-5xl px-6 sm:px-8 md:px-12 lg:px-16">
@@ -31,7 +31,7 @@ export default function ServiceBanner() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-6 sm:mb-8">
-          <button className="bg-white text-black px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition duration-300">
+          <button className="bg-white text-black px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold shadow-lg hover:bg-[#fdd204] transition duration-300">
             Get Started
           </button>
           <button className="bg-transparent border border-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-white font-semibold hover:bg-white hover:text-black transition duration-300">

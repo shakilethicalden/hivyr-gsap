@@ -3,8 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+
+import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa6";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,6 +66,7 @@ export default function Team() {
       title: "CEO & Founder",
       img: "/images/team/Fardeen.webp",
       linkedin: "#",
+      instagram: "#",
       twitter: "#",
     },
     {
@@ -71,9 +74,11 @@ export default function Team() {
       title: "Co-founder",
       img: "/images/team/arihant.webp",
       linkedin: "#",
+      instagram: "#",
       twitter: "#",
     },
   ];
+
 
   return (
     <section
@@ -136,6 +141,7 @@ export default function Team() {
                 <p className="text-gray-400 text-sm sm:text-base">{member.title}</p>
 
                 <div className="flex justify-center sm:justify-start items-center gap-5 mt-3 text-sm uppercase tracking-wider">
+                  {/* LinkedIn */}
                   <a
                     href={member.linkedin}
                     target="_blank"
@@ -145,16 +151,30 @@ export default function Team() {
                     <FaLinkedinIn />
                     <span>LinkedIn</span>
                   </a>
+
+                  {/* Instagram */}
+                  <a
+                    href={member.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-gray-200 transition-all"
+                  >
+                    <FaInstagram />
+                    <span>Instagram</span>
+                  </a>
+
+                  {/* X (Twitter) */}
                   <a
                     href={member.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-gray-200 transition-all"
                   >
-                    <FaXTwitter />
-                    <span>X</span>
+                    <FaTwitter />
+                    <span>Twitter</span>
                   </a>
                 </div>
+
               </div>
             </div>
           ))}

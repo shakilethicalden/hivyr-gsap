@@ -94,9 +94,9 @@ export default function Banner() {
           loop
           playsInline
         >
-          <source src="/video/banner/banner.mp4" type="video/mp4" />
+          <source src="/video/banner.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/45 rounded-2xl"></div>
+        <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
       </div>
 
       {/* Navbar */}

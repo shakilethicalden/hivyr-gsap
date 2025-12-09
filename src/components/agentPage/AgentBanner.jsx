@@ -32,7 +32,7 @@ const AgentBanner = () => {
       />
 
       {/* Dark Global Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/60" />
 
       {/* Strong Gradient Behind Main Heading */}
       <div className="absolute inset-x-0 top-0 h-[55%]  from-black/70 via-black/40 to-transparent" />
@@ -50,7 +50,7 @@ const AgentBanner = () => {
           our agents deliver speed, reliability, and results anywhere in the world.
         </p>
 
-        <button className="inline-flex items-center gap-2 bg-[#fdd204] text-black font-semibold px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full text-sm sm:text-base md:text-lg transition-all">
+        <button className="inline-flex items-center gap-2 bg-[#fdd204] text-black font-semibold px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full text-sm sm:text-base md:text-lg transition-all hover:bg-white">
           Request an Agent
           <span className="text-xl md:text-2xl">↗</span>
         </button>

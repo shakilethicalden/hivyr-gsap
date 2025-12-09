@@ -49,13 +49,13 @@ export default function AgentDemoModal({ isOpen, onClose, agents, initialIndex =
         {/* Arrows */}
         <button
           onClick={prevAgent}
-          className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition"
+          className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition z-30"
         >
           <ArrowLeft size={22} />
         </button>
         <button
           onClick={nextAgent}
-          className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition"
+          className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition z-30"
         >
           <ArrowRight size={22} />
         </button>

@@ -57,7 +57,7 @@ const AboutBanner = () => {
         muted
         playsInline
       >
-        <source src="/video/banner/banner.mp4" type="video/mp4" />
+        <source src="/video/about.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay */}

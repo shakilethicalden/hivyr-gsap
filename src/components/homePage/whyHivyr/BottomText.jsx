@@ -77,10 +77,10 @@ const BottomText = () => {
         >
             <h2
                 ref={h2Ref}
-                className="text-3xl md:text-4xl xl:text-6xl font-bold leading-snug max-w-6xl mx-auto"
+                className="text-3xl md:text-4xl xl:text-6xl font-bold leading-snug max-w-6xl mx-auto px-4 sm:px-8 lg:px-8"
             >
-                More time to focus on innovation<br />
-                More time to make smarter decisions<br />
+                More time to focus on innovation, 
+                More time to make smarter decisions, 
                 More time to grow your business
             </h2>
         </section>

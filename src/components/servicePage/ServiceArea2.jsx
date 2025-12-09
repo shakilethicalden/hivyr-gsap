@@ -136,7 +136,12 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
             >
                 {/* Image */}
                 <div className="w-full lg:w-1/2 flex justify-center items-center mb-4 lg:mb-0">
-                    <div className="w-full h-full rounded-lg flex items-center justify-center shadow-xl overflow-hidden">
+                    <div className="w-full h-full rounded-lg flex items-center justify-center shadow-xl overflow-hidden relative">
+
+                        {/* Black Overlay */}
+                        <div className="absolute inset-0 bg-black bg-opacity-70 z-10"></div>
+
+                        {/* Image */}
                         <img
                             src={service.image}
                             alt={service.title}
@@ -144,6 +149,7 @@ const ServiceItem = ({ service, index, activeId, setActiveId }) => {
                         />
                     </div>
                 </div>
+
 
                 {/* Feature List */}
                 <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-2 text-sm text-gray-200">

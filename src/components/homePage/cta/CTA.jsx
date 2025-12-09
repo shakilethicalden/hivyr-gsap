@@ -63,11 +63,12 @@ const CTA = () => {
           color: "transparent",
         }}
       >
-         Automate. Optimize. Scale — with next-gen AI Agents built for your business.
+        Automate. Optimize. Scale — with next-gen AI Agents built for your business.
       </h2>
-      <button className="mt-8 bg-[#fdd204] text-black px-6 py-3 rounded-full hover:bg-[#fdd204] transition-all duration-300">
-        Get started
-      </button>
+      
+        <a href="/contact" className="mt-8 bg-[#fdd204] text-black px-6 py-3 rounded-full hover:bg-[#fdd204] transition-all duration-300 cursor-pointer">
+          Get started
+        </a>
     </section>
   );
 };
