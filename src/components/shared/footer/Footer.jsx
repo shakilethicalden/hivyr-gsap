@@ -43,3 +43,67 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+// "use client";
+// import React from "react";
+
+// const Footer = () => {
+//   return (
+//     <footer className="w-full bg-[#f4f4f4] text-[#707070] px-6 md:px-12 pt-16 pb-0 overflow-hidden relative min-h-[600px] flex flex-col justify-between">
+//       {/* Top Section: Branding and Links */}
+//       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 z-10">
+        
+//         {/* Logo and Tagline */}
+//         <div className="md:col-span-5 lg:col-span-6">
+//           <div className="mb-4">
+//             {/* Replace with your actual SVG logo */}
+//             <div className="w-8 h-8 bg-[#707070] rounded-sm opacity-80" /> 
+//           </div>
+//           <p className="max-w-[280px] text-[15px] leading-relaxed font-medium">
+//             A more meaningful home for photography, built by photographers.
+//           </p>
+//         </div>
+
+//         {/* Navigation Links */}
+//         <div className="md:col-span-7 lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
+//           <div className="flex flex-col gap-2">
+//             <span className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Hivyr</span>
+//             <a href="#" className="hover:text-black transition-colors">About</a>
+//             <a href="#" className="hover:text-black transition-colors">Premium</a>
+//             <a href="#" className="hover:text-black transition-colors">Help</a>
+//           </div>
+          
+//           <div className="flex flex-col gap-2">
+//             <span className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Updates</span>
+//             <a href="#" className="hover:text-black transition-colors">Changelog</a>
+//             <a href="#" className="hover:text-black transition-colors">Roadmap</a>
+//             <a href="#" className="hover:text-black transition-colors">Discord</a>
+//           </div>
+
+//           <div className="flex flex-col gap-2">
+//             <span className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Legal</span>
+//             <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
+//             <a href="#" className="hover:text-black transition-colors">Privacy policy</a>
+//             <a href="#" className="hover:text-black transition-colors">Community Guidelines</a>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Large Background Text Section */}
+//       <div className="relative w-full flex items-end justify-center pointer-events-none select-none">
+//         <h1 
+//           className="text-[28vw] font-bold leading-[0.8] tracking-tighter text-[#e5e5e5] translate-y-[15%]"
+//           style={{
+//             // This creates the subtle transparent overlap effect seen in the screenshot
+//             mixBlendMode: 'multiply' 
+//           }}
+//         >
+//           HIVYR
+//         </h1>
+//       </div>
+//     </footer>
+//   );
+// };
+
+// export default Footer;

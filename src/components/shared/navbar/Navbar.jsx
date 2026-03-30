@@ -13,12 +13,48 @@ export default function Navbar() {
     const tl = useRef(null);
     const iconTl = useRef(null);
 
-    const getHref = (text) => {
-        const clean = text.replace(/\s*\+/, "").trim().toLowerCase();
-        if (clean === "log in") return "/login";
-        if (clean === "contact") return "/contact";
-        return `/${clean.replace(/\s+/g, "-")}`;
+    const handleNavigation = (sectionId) => {
+        // Close mobile menu if open
+        if (menuOpen) {
+            setMenuOpen(false);
+        }
+        
+        // Check if we're on the homepage
+        if (window.location.pathname === "/") {
+            // On homepage, scroll to the section
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        } else {
+            // Not on homepage, navigate to homepage with section hash
+            window.location.href = `/#${sectionId}`;
+        }
     };
+
+    useEffect(() => {
+        // Handle hash navigation when page loads
+        const handleHashNavigation = () => {
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1); // Remove #
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                }
+            }
+        };
+
+        handleHashNavigation();
+        
+        // Listen for hash changes
+        window.addEventListener("hashchange", handleHashNavigation);
+        
+        return () => {
+            window.removeEventListener("hashchange", handleHashNavigation);
+        };
+    }, []);
 
     useEffect(() => {
         // Menu slide animation
@@ -96,7 +132,13 @@ export default function Navbar() {
         });
     }, []);
 
-    const navItems = ["Products", "Agents", "Services", "About", "Pricing"];
+    const navItems = [
+        { name: "Products", id: "products" },
+        { name: "Agents", id: "agents" },
+        { name: "Services", id: "services" },
+        { name: "About", id: "about" },
+        { name: "Pricing", id: "pricing" }
+    ];
 
     return (
         <nav className="w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 py-4 relative z-50 bg-transparent">
@@ -104,7 +146,7 @@ export default function Navbar() {
             <div className="flex items-center w-32 z-50">
                 <Link href="/">
                     <Image
-                        src="/images/logo/logo.png"
+                        src="/images/logo/logo-white.png"
                         alt="Logo"
                         width={800}
                         height={800}
@@ -117,41 +159,41 @@ export default function Navbar() {
             {/* Desktop Links */}
             <div className="hidden lg:flex flex-1 bg-black text-white items-center justify-between lg:px-6 xl:px-12 py-5 lg:ml-2 xl:ml-5 2xl:ml-8">
                 <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide">
-                    {navItems.map((text, index) => (
+                    {navItems.map((item, index) => (
                         <li key={index} className="relative">
-                            <Link
-                                href={getHref(text)}
+                            <button
+                                onClick={() => handleNavigation(item.id)}
                                 ref={(el) => (linkRefs.current[index] = el)}
-                                className="relative inline-block pb-1"
+                                className="relative inline-block pb-1 cursor-pointer"
                             >
-                                {text}
+                                {item.name}
                                 <span
                                     ref={(el) => (underlineRefs.current[index] = el)}
                                     className="absolute left-0 bottom-0 h-[1px] w-full bg-white scale-x-0"
                                 ></span>
-                            </Link>
+                            </button>
                         </li>
                     ))}
                 </ul>
 
-                <Link
-                    href={getHref("Log In")}
+                <button
+                    onClick={() => handleNavigation("login")}
                     ref={(el) => (linkRefs.current[5] = el)}
-                    className="relative inline-block pb-1 lg:text-sm xl:text-lg"
+                    className="relative inline-block pb-1 lg:text-sm xl:text-lg cursor-pointer"
                 >
                     Log In
                     <span
                         ref={(el) => (underlineRefs.current[5] = el)}
                         className="absolute left-0 bottom-0 h-[1px] w-full bg-white scale-x-0"
                     ></span>
-                </Link>
+                </button>
             </div>
 
             {/* Contact button for desktop */}
             <div className="hidden lg:block bg-white text-gray-800 px-8 lg:py-5 xl:py-6 cursor-pointer hover:bg-black hover:text-white transition-all duration-300">
-                <Link href={getHref("Contact")} className="relative inline-block text-sm font-medium">
+                <button onClick={() => handleNavigation("contact")} className="relative inline-block text-sm font-medium">
                     Contact
-                </Link>
+                </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -176,32 +218,32 @@ export default function Navbar() {
             >
                 <div>
                     <ul className="space-y-6 text-xl md:text-2xl font-light mt-40">
-                        {navItems.map((text, index) => (
+                        {navItems.map((item, index) => (
                             <li key={index} className="menu-item">
-                                <Link
-                                    href={getHref(text)}
-                                    className="hover:text-gray-400 transition-colors duration-300"
+                                <button
+                                    onClick={() => handleNavigation(item.id)}
+                                    className="hover:text-gray-400 transition-colors duration-300 w-full text-left"
                                 >
-                                    {text}
-                                </Link>
+                                    {item.name}
+                                </button>
                             </li>
                         ))}
                     </ul>
                 </div>
 
                 <div className="flex">
-                    <Link
-                        href={getHref("Log In")}
+                    <button
+                        onClick={() => handleNavigation("login")}
                         className="w-1/2 bg-[#fdd204] py-4 text-black text-lg text-center menu-item"
                     >
                         Log In
-                    </Link>
-                    <Link
-                        href={getHref("Contact")}
+                    </button>
+                    <button
+                        onClick={() => handleNavigation("contact")}
                         className="w-1/2 bg-[#fff] py-4 text-black text-lg text-center menu-item"
                     >
                         Contact
-                    </Link>
+                    </button>
                 </div>
             </div>
         </nav>

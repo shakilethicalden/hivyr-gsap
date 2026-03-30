@@ -1,167 +1,203 @@
 "use client";
+
 import Link from "next/link";
-import React from "react";
-import { FaCheckCircle } from "react-icons/fa";
-import { FiSettings, FiBarChart2 } from "react-icons/fi";
-import { MdSmartToy } from "react-icons/md";
+import React, { useState } from "react";
+import { FiCalendar, FiClock } from "react-icons/fi";
 
 const Pricing = () => {
-    return (
-        <section className="bg-white text-black py-20 lg:py-24 flex justify-center">
-            <div className="max-w-7xl w-full px-6">
-                {/* Top heading section */}
-                <div className="flex flex-col md:flex-row items-center justify-between mb-12">
-                    <h2 className="common-title mb-4 md:mb-0">Plans</h2>
-                    <p className="text-gray-600 text-lg lg:text-xl text-center md:text-right max-w-md">
-                        Choose an AI Agent plan that scales with your business. Automate,
-                        analyze, and accelerate with Script Runner.
-                    </p>
-                </div>
+  const [billingCycle, setBillingCycle] = useState("monthly");
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-                {/* Pricing Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    {/* Starter */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col justify-between">
-                        <div>
-                            <h3 className="text-xl font-semibold mb-4">Starter</h3>
-                            <p className="text-4xl font-bold mb-6">
-                                $1,990
-                                <span className="text-lg font-medium text-gray-500">/month</span>
-                            </p>
-                            <ul className="space-y-3 text-gray-700 mb-8">
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    1 AI Agent (Chat or Email)
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Basic automation workflows
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Standard analytics
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Email support
-                                </li>
-                            </ul>
-                        </div>
-                        <Link href={'/pricing'} className="bg-black text-white font-semibold py-3 text-center rounded-xl hover:bg-[#fdd204] hover:text-black transition">
-                            Get Started
-                        </Link>
-                    </div>
+  // Pricing data with monthly and yearly options
+  const plans = [
+    {
+      id: "starter",
+      name: "Starter",
+      description: "Ideal for individuals getting started",
+      monthlyPrice: 19,
+      yearlyPrice: 190,
+      features: [
+        "Access to essential tools",
+        "Secure data management",
+        "Community engagement features",
+        "24/7 customer support",
+        "Monthly updates and resources",
+      ],
+      buttonText: "Choose essential",
+      buttonLink: "/pricing",
+    },
+    {
+      id: "pro",
+      name: "Pro Plan",
+      description: "Enhanced features for growing teams",
+      monthlyPrice: 49,
+      yearlyPrice: 490,
+      features: [
+        "All Starter Plan benefits",
+        "Advanced privacy controls",
+        "Collaboration tools for teams",
+        "API access for integrations",
+        "Priority support response",
+      ],
+      buttonText: "Choose scale",
+      buttonLink: "/pricing",
+    },
+    {
+      id: "enterprise",
+      name: "Enterprise",
+      description: "Comprehensive solutions for organization",
+      monthlyPrice: 99,
+      yearlyPrice: 990,
+      features: [
+        "All Pro Plan benefits",
+        "Customizable features and branding",
+        "Dedicated account manager",
+        "In-depth analytics and reporting",
+        "Onboarding and training sessions",
+      ],
+      buttonText: "Book a call",
+      buttonLink: "/pricing",
+    },
+  ];
 
-                    {/* Pro */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col justify-between">
-                        <div>
-                            <div className="flex items-center justify-between mb-2">
-                                <h3 className="text-xl font-semibold">Pro</h3>
-                                <span className="text-sm bg-[#fdd204] text-black font-medium px-2 py-1 rounded">
-                                    Most Popular
-                                </span>
-                            </div>
-                            <p className="text-4xl font-bold mb-6">
-                                $3,490
-                                <span className="text-lg font-medium text-gray-500">/month</span>
-                            </p>
-                            <ul className="space-y-3 text-gray-700 mb-8">
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Up to 3 AI Agents
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Advanced automation logic
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Real-time analytics dashboard
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Priority chat support
-                                </li>
-                            </ul>
-                        </div>
-                        <Link href={'/pricing'} className="bg-black text-white font-semibold py-3 text-center rounded-xl hover:bg-[#fdd204] hover:text-black transition">
-                            Get Started
-                        </Link>
-                    </div>
+  const getCurrentPrice = (plan) => {
+    if (billingCycle === "yearly") {
+      return plan.yearlyPrice;
+    }
+    return plan.monthlyPrice;
+  };
 
-                    {/* Enterprise */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg flex flex-col justify-between">
-                        <div>
-                            <div className="flex items-center justify-between mb-2">
-                                <h3 className="text-xl font-semibold">Enterprise</h3>
-                                <span className="text-sm bg-[#fdd204] text-black font-medium px-2 py-1 rounded">
-                                    Save $1,000
-                                </span>
-                            </div>
-                            <p className="text-4xl font-bold mb-6">
-                                $5,490
-                                <span className="text-lg font-medium text-gray-500">/month</span>
-                            </p>
-                            <ul className="space-y-3 text-gray-700 mb-8">
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Unlimited AI Agents
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Custom integrations & APIs
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    Dedicated success manager
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <FaCheckCircle className="text-[#fdd204]" />
-                                    24/7 priority support
-                                </li>
-                            </ul>
-                        </div>
-                        <Link href={'/pricing'} className="bg-black text-white font-semibold py-3 text-center rounded-xl hover:bg-[#fdd204] hover:text-black transition">
-                            Get Started
-                        </Link>
-                    </div>
-                </div>
+  const getPeriodText = () => {
+    return billingCycle === "yearly" ? "/year" : "/month";
+  };
 
-                {/* Bottom Add-on */}
-                <div className="bg-black text-white rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row justify-between items-start md:items-center shadow-lg">
-                    {/* Left Section */}
-                    <div className="w-full md:w-auto mb-6 md:mb-0">
-                        <h3 className="text-lg font-semibold mb-3 md:mb-2">Custom AI Agent Setup</h3>
-                        <p className="text-gray-400 text-sm flex flex-col md:flex-row md:items-center md:space-x-4 space-y-2 md:space-y-0">
-                            <span className="flex items-center space-x-1">
-                                <FiSettings /> <span>Workflow mapping</span>
-                            </span>
-                            <span className="hidden md:inline">•</span>
-                            <span className="flex items-center space-x-1">
-                                <MdSmartToy /> <span>Model fine-tuning</span>
-                            </span>
-                            <span className="hidden md:inline">•</span>
-                            <span className="flex items-center space-x-1">
-                                <FiBarChart2 /> <span>Analytics dashboard</span>
-                            </span>
-                        </p>
-                    </div>
+  const getSaveText = (plan) => {
+    if (billingCycle === "yearly") {
+      const monthlyEquivalent = plan.yearlyPrice / 12;
+      const saving = plan.monthlyPrice - monthlyEquivalent;
+      if (saving > 0) {
+        return `Save $${saving.toFixed(2)}/month`;
+      }
+    }
+    return null;
+  };
 
-                    {/* Right Section */}
-                    <div className="w-full md:w-auto flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-                        <p className="text-3xl font-bold">$2,000</p>
-                        <Link
-                            href={'/pricing'}
-                            className="bg-[#fdd204] text-black font-semibold py-3 px-6 text-center rounded-xl transition w-full md:w-auto"
-                        >
-                            Get Started
-                        </Link>
-                    </div>
-                </div>
-
+  return (
+    <section className="bg-white text-black py-20 lg:py-24 flex justify-center">
+      <div className="max-w-7xl w-full px-6">
+        {/* Top heading section */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2 border border-gray-200 w-fit px-3 py-1 rounded-full text-sm font-medium">
+              <span className="text-gray-400">✦</span> Pricing
             </div>
-        </section>
-    );
+            <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+              Start Today, <br /> Cancel Anytime
+            </h2>
+          </div>
+
+          {/* Toggle Switch */}
+          <div className="mt-8 md:mt-0 flex bg-gray-50 p-1 rounded-2xl border border-gray-100">
+            <button
+              onClick={() => setBillingCycle("monthly")}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all ${
+                billingCycle === "monthly"
+                  ? "bg-[#fdd204] text-black shadow-md"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <FiCalendar /> Monthly
+            </button>
+            <button
+              onClick={() => setBillingCycle("yearly")}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all ${
+                billingCycle === "yearly"
+                  ? "bg-[#fdd204] text-black shadow-md"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <FiClock /> Yearly
+            </button>
+          </div>
+        </div>
+
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {plans.map((plan) => {
+            const currentPrice = getCurrentPrice(plan);
+            const periodText = getPeriodText();
+            const saveText = getSaveText(plan);
+            const isHovered = hoveredCard === plan.id;
+
+            // Determine background color based on hover state
+            let bgColor = "";
+            if (isHovered) {
+              bgColor = "bg-[#fdd204]";
+            } else {
+              bgColor = "bg-gray-50/50";
+            }
+
+            // Determine text color for description and features
+            const descriptionColorClass = isHovered ? "text-black font-medium" : "text-gray-600";
+            const featuresTextColorClass = isHovered ? "text-black" : "text-gray-600";
+
+            return (
+              <div
+                key={plan.id}
+                onMouseEnter={() => setHoveredCard(plan.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className={`${bgColor} rounded-[2rem] p-8 flex flex-col transition-all duration-300 border border-gray-100`}
+              >
+                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="text-5xl font-bold">${currentPrice}</span>
+                  <span className={isHovered ? "text-black" : "text-gray-500"}>
+                    {periodText}
+                  </span>
+                </div>
+                {saveText && (
+                  <p className="text-sm text-green-600 font-medium mb-4">{saveText}</p>
+                )}
+                <p
+                  className={`mb-8 ${descriptionColorClass}`}
+                >
+                  {plan.description}
+                </p>
+
+                <Link
+                  href={plan.buttonLink}
+                  className="font-bold py-4 rounded-full text-center transition mb-4 bg-black text-white hover:bg-zinc-800"
+                >
+                  {plan.buttonText}
+                </Link>
+                <p
+                  className={`text-center text-sm mb-8 ${
+                    isHovered ? "text-black" : "text-gray-400"
+                  }`}
+                >
+                  14-day free trial
+                </p>
+
+                <div
+                  className={`rounded-2xl p-6 border border-gray-100 flex-grow ${
+                    isHovered ? "bg-white/50" : "bg-white"
+                  }`}
+                >
+                  <ul className={`space-y-4 ${featuresTextColorClass}`}>
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        • {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Pricing;

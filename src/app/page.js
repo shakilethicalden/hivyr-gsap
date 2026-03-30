@@ -14,10 +14,10 @@ export default function Home() {
     <div>
       <Banner />
       <Service />
-      <Offerings />
       <WhyHivyr />
-      <FAQ />
+      <Offerings />
       <Pricing />
+      <FAQ />
       <CTA />
       <Footer />
     </div>
