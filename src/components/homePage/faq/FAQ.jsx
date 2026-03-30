@@ -128,18 +128,25 @@ const FaqItem = ({ item, isOpen, onClick }) => {
     }, [isOpen]);
 
     return (
-        <div className="border border-gray-100 rounded-2xl mb-4 overflow-hidden bg-white transition-all duration-300 hover:shadow-md">
+        <div className="border border-gray-100 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 overflow-hidden bg-white transition-all duration-300 hover:shadow-md">
             <button
-                className="flex justify-between items-center w-full p-6 text-left focus:outline-none"
+                className="flex justify-between items-center w-full p-4 sm:p-5 md:p-6 text-left focus:outline-none gap-3"
                 onClick={onClick}
             >
-                <span className="text-[17px] font-semibold text-gray-900">{item.question}</span>
-                <div className="bg-gray-50 rounded-full p-1 border border-gray-200 shrink-0 ml-4">
-                    {isOpen ? <Minus className="w-5 h-5 text-gray-600" /> : <Plus className="w-5 h-5 text-gray-600" />}
+                <span className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900 flex-1">
+                    {item.question}
+                </span>
+                <div className="bg-gray-50 rounded-full p-1 border border-gray-200 shrink-0">
+                    {isOpen ? 
+                        <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" /> : 
+                        <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+                    }
                 </div>
             </button>
-            <div ref={contentRef} style={{ height: 0, opacity: 0 }} className="px-6 overflow-hidden">
-                <p className="pb-6 text-gray-500 leading-relaxed text-[15px]">{item.answer}</p>
+            <div ref={contentRef} style={{ height: 0, opacity: 0 }} className="px-4 sm:px-5 md:px-6 overflow-hidden">
+                <p className="pb-4 sm:pb-5 md:pb-6 text-gray-500 leading-relaxed text-base md:text-lg lg:text-xl ">
+                    {item.answer}
+                </p>
             </div>
         </div>
     );
@@ -148,29 +155,77 @@ const FaqItem = ({ item, isOpen, onClick }) => {
 export default function FAQ() {
     const [activeTab, setActiveTab] = useState("Getting Started");
     const [openIndex, setOpenIndex] = useState(0);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const currentQuestions = faqData.find((t) => t.category === activeTab)?.questions || [];
 
+    // Handle tab change on mobile
+    const handleTabChange = (category) => {
+        setActiveTab(category);
+        setOpenIndex(0);
+        setIsMobileMenuOpen(false);
+    };
+
     return (
-        <section className="bg-white py-20 px-4 min-h-screen">
+        <section className="bg-white py-16 lg:py-24 xl:py-28 px-4 sm:px-6 min-h-screen">
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 bg-[#fdd204]/10 rounded-full px-4 py-2 mb-4">
-                        <MessageCircle className="w-4 h-4 text-[#fdd204]" />
-                        <span className="text-sm font-medium text-gray-700">FAQ</span>
+                {/* Header - Responsive */}
+                <div className="text-center mb-8 sm:mb-10 md:mb-12">
+                    <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#fdd204]/10 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4">
+                        <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#fdd204]" />
+                        <span className="text-gray-400">FAQ</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 tracking-tight">
                         Got any <span className="underline decoration-[#fdd204] underline-offset-4">Questions?</span>
                     </h2>
-                    <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+                    <p className="text-gray-500 mt-3 sm:mt-4 max-w-3xl mx-auto text-base md:text-lg lg:text-xl xl:text-2xl px-2">
                         Find answers to common questions about our AI Agent platform. Can't find what you're looking for? Contact our support team.
                     </p>
                 </div>
 
-                {/* Tabs Navigation */}
-                <div className="flex justify-center mb-12">
-                    <div className="flex flex-wrap w-fit justify-center gap-2 border border-gray-100 bg-white p-2 rounded-2xl shadow-sm">
+                {/* Mobile Dropdown for Categories */}
+                <div className="lg:hidden mb-6">
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="w-full flex items-center justify-between gap-2 bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 hover:border-[#fdd204] transition-all"
+                    >
+                        <div className="flex items-center gap-2">
+                            {faqData.find(t => t.category === activeTab)?.icon}
+                            <span>{activeTab}</span>
+                        </div>
+                        <svg 
+                            className={`w-4 h-4 transition-transform duration-200 ${isMobileMenuOpen ? 'rotate-180' : ''}`}
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    
+                    {isMobileMenuOpen && (
+                        <div className="mt-2 bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg">
+                            {faqData.map((tab) => (
+                                <button
+                                    key={tab.category}
+                                    onClick={() => handleTabChange(tab.category)}
+                                    className={`w-full flex items-center gap-2 px-4 py-3 text-base font-medium transition-all duration-200 ${
+                                        activeTab === tab.category
+                                            ? "bg-[#fdd204]/10 text-[#fdd204]"
+                                            : "text-gray-600 hover:bg-gray-50"
+                                    }`}
+                                >
+                                    {tab.icon}
+                                    {tab.category}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                {/* Tabs Navigation - Desktop */}
+                <div className="hidden lg:flex justify-center mb-10 md:mb-12">
+                    <div className="flex flex-wrap justify-center gap-2 border border-gray-100 bg-white p-1.5 sm:p-2 rounded-2xl shadow-sm">
                         {faqData.map((tab) => (
                             <button
                                 key={tab.category}
@@ -178,20 +233,28 @@ export default function FAQ() {
                                     setActiveTab(tab.category);
                                     setOpenIndex(0);
                                 }}
-                                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${activeTab === tab.category
+                                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-xl text-base font-medium transition-all duration-200 whitespace-nowrap ${
+                                    activeTab === tab.category
                                         ? "bg-[#fdd204] text-black shadow-md"
                                         : "text-gray-600 hover:bg-gray-50"
-                                    }`}
+                                }`}
                             >
                                 {tab.icon}
-                                {tab.category}
+                                <span className="hidden sm:inline">{tab.category}</span>
+                                <span className="sm:hidden">
+                                    {tab.category === "Getting Started" ? "Start" : 
+                                     tab.category === "Security & Privacy" ? "Security" :
+                                     tab.category === "Technical Support" ? "Support" :
+                                     tab.category === "Pricing & Plans" ? "Pricing" :
+                                     tab.category === "Integrations" ? "Integrate" : tab.category}
+                                </span>
                             </button>
                         ))}
                     </div>
                 </div>
 
-                {/* FAQ List */}
-                <div className="space-y-2 max-w-4xl mx-auto">
+                {/* FAQ List - Responsive */}
+                <div className="space-y-2 max-w-3xl lg:max-w-5xl mx-auto px-0 sm:px-2">
                     {currentQuestions.map((item, index) => (
                         <FaqItem
                             key={index}
@@ -202,11 +265,11 @@ export default function FAQ() {
                     ))}
                 </div>
 
-                {/* Contact Support CTA */}
-                <div className="mt-12 text-center">
-                    <p className="text-gray-500 text-sm mb-4">Still have questions?</p>
-                    <button className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-[#fdd204] hover:shadow-md transition-all duration-200 rounded-xl px-6 py-3 text-sm font-medium text-gray-700">
-                        <MessageCircle className="w-4 h-4" />
+                {/* Contact Support CTA - Responsive */}
+                <div className="mt-10 sm:mt-12 md:mt-16 text-center">
+                    <p className="text-gray-500 text-xs sm:text-sm lg:text-base mb-3 sm:mb-4">Still have questions?</p>
+                    <button className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-[#fdd204] hover:shadow-md transition-all duration-200 rounded-lg sm:rounded-xl px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm lg:text-base font-medium text-gray-700">
+                        <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         Contact Our Support Team
                     </button>
                 </div>

@@ -46,12 +46,12 @@ export default function Banner() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-end justify-start overflow-hidden p-6 sm:p-12 lg:p-20 bg-white z-10">
+    <section className="relative w-full h-screen flex items-end justify-start overflow-hidden bg-white">
       
-      {/* Background container */}
-      <div className="absolute inset-0 m-2 sm:m-4 xl:m-5 rounded-2xl overflow-hidden">
+      {/* Background container - removed rounded corners on mobile for better alignment */}
+      <div className="absolute inset-0 m-0 sm:m-2 md:m-4 rounded-none sm:rounded-2xl overflow-hidden">
         <video
-          className="w-full h-full object-cover rounded-2xl scale-[1.1]"
+          className="w-full h-full object-cover rounded-none sm:rounded-2xl scale-[1.1]"
           autoPlay
           muted
           loop
@@ -60,37 +60,39 @@ export default function Banner() {
           <source src="/video/banner.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40 rounded-2xl"></div>
+        <div className="absolute inset-0 bg-black/40 rounded-none sm:rounded-2xl"></div>
       </div>
 
-      {/* Navbar overlay */}
-      <div className="absolute top-0 left-0 right-0 z-20 px-4 sm:px-8 lg:px-16 py-4 pt-10">
+      {/* Navbar overlay - consistent padding with content */}
+      <div className="absolute top-0 left-0 right-0 z-20 lg:px-16 xl:px-16 py-4 pt-6 sm:pt-10">
         <Navbar />
       </div>
 
-      {/* Bottom Left Content - Aligned with navbar */}
-      <div className="relative z-10 w-full max-w-4xl text-left text-white mb-10 px-4 sm:px-8 lg:px-16">
-        <h1
-          ref={headingRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] uppercase tracking-tight mb-6"
-        >
-          {/* Scrambled text injects here */}
-        </h1>
+      {/* Bottom Left Content - Perfect alignment with navbar */}
+      <div className="relative z-10 w-full text-left text-white mb-6 sm:mb-10 px-4 sm:px-6 md:px-16 lg:px-24 2xl:px-40">
+        <div className="max-w-5xl">
+          <h1
+            ref={headingRef}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.2] sm:leading-[1.1] uppercase tracking-tight mb-4 sm:mb-6 break-words whitespace-normal"
+          >
+            {/* Scrambled text injects here */}
+          </h1>
 
-        <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed mb-10">
-          Meet your autonomous AI agent — designed to automate tasks, analyze data, 
-          and execute complex workflows. Available 24/7, always learning, and ready 
-          to amplify your team's capabilities.
-        </p>
+          <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 max-w-2xl xl:max-w-3xl leading-relaxed mb-6 sm:mb-10">
+            Meet your autonomous AI agent — designed to automate tasks, analyze data, 
+            and execute complex workflows. Available 24/7, always learning, and ready 
+            to amplify your team's capabilities.
+          </p>
 
-        {/* Action Buttons */}
-        <div className="flex flex-wrap gap-4 mt-8">
-          <button className="bg-[#fdd204] hover:bg-[#f7b518] text-black px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-colors border border-transparent">
-            Meet Our Agent
-          </button>
-          <button className="bg-white hover:bg-gray-100 text-black px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-colors">
-            Start Free Trial
-          </button>
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 sm:mt-8 mb-10">
+            <button className="bg-[#fdd204] hover:bg-[#f7b518] text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold uppercase tracking-widest transition-colors border border-transparent">
+              Meet Our Agent
+            </button>
+            <button className="bg-white hover:bg-gray-100 text-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold uppercase tracking-widest transition-colors">
+              Start Free Trial
+            </button>
+          </div>
         </div>
       </div>
     </section>

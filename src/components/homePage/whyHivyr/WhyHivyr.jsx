@@ -268,7 +268,7 @@ const WhyHivyr = () => {
             <section
             id="about"
                 ref={sectionRef}
-                className="relative bg-[#fdd204] text-black py-20 lg:py-28 overflow-hidden z-10"
+                className="relative bg-[#fdd204] text-black mt-16 lg:mt-24 xl:mt-28 py-20 lg:py-28 overflow-hidden z-10"
             >
                 {/* Subtle background texture */}
                 <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
