@@ -311,10 +311,7 @@ const WhyHivyr = () => {
                                 ref={(el) => (statsRef.current[i] = el)}
                                 className="relative bg-white rounded-3xl p-10 text-center shadow-xl ring-1 ring-black/5 overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
                             >
-                                {/* Watermark number */}
-                                <span aria-hidden="true" className="absolute -bottom-4 -right-2 text-[110px] font-black text-black/[0.04] select-none leading-none pointer-events-none">
-                                    {String(i + 1).padStart(2, "0")}
-                                </span>
+
                                 <p className="stat-number text-6xl lg:text-8xl font-black text-gray-900 leading-none mb-3">
                                     0{stat.suffix}
                                 </p>

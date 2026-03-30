@@ -1,145 +1,247 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#fdd204] text-black relative overflow-hidden border-t border-black/10">
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 pt-12 pb-16 md:pt-14 md:pb-20">
-        {/* Top Row: Copyright + Legal + Links */}
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-4">
-          {/* Left side: copyright and privacy policy */}
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-medium tracking-tight">
-            <span className="text-black/80">© 2025 Hivyr. All rights reserved.</span>
-            <button className="footer-link cursor-pointer text-black/80 hover:text-black transition-colors">
-              Privacy Policy
-            </button>
-            <button className="footer-link cursor-pointer text-black/80 hover:text-black transition-colors hidden sm:inline-block">
-              Terms of Use
-            </button>
+    <footer className="w-full bg-gradient-to-br from-[#fdd204] to-[#f5b800] text-gray-900 relative overflow-hidden">
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+      
+      <div className="px-4 sm:px-6 lg:px-12 xl:px-20 pt-20 pb-8 relative z-10">
+        
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+          
+          {/* Brand Section */}
+          <div className="lg:col-span-5">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+              HIVYR
+            </h2>
+            <p className="text-gray-800 text-base leading-relaxed max-w-md">
+              Building next-generation digital experiences with AI-first thinking. 
+              Hivyr blends design, technology, and strategy to create impactful products.
+            </p>
           </div>
 
-          {/* Right side: email, demo, linkedin */}
-          <div className="flex flex-wrap justify-center items-center gap-5 sm:gap-6">
-            <a
-              href="mailto:info@hivyr.ai"
-              className="footer-link text-black/80 hover:text-black text-sm font-medium transition-all inline-flex items-center gap-1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              info@hivyr.ai
-              <svg
-                className="w-3.5 h-3.5 opacity-70"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
+          {/* Links Grid */}
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Explore */}
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+                Explore
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/products" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Products
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/agents" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Agents
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/pricing" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Pricing
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-            <a
-              href="#"
-              className="group bg-black/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold text-black hover:bg-black hover:text-[#fdd204] transition-all duration-200 inline-flex items-center gap-1.5"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book a demo
-              <svg
-                className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                />
-              </svg>
-            </a>
+            {/* Company */}
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+                Company
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/about" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/careers" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-            <a
-              href="#"
-              className="footer-link text-black/80 hover:text-black text-sm font-medium inline-flex items-center gap-1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn ↗
-            </a>
+            {/* Resources */}
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+                Resources
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/docs" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/support" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Support
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/status" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Status
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/api" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    API Reference
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+                Legal
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/privacy" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cookies" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                    Cookie Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* FULL-WIDTH MASSIVE LOGO with gradient mask */}
-        <div className="mt-14 md:mt-16 w-full relative">
-          <h1
-            className="text-[32vw] sm:text-[30vw] md:text-[28vw] lg:text-[26vw] xl:text-[24vw] 2xl:text-[22vw] font-black leading-[0.85] tracking-tighter text-black text-center w-full select-none"
-            style={{
-              WebkitMaskImage:
-                "linear-gradient(to bottom, black 55%, rgba(0,0,0,0.25) 85%, transparent 100%)",
-              maskImage:
-                "linear-gradient(to bottom, black 55%, rgba(0,0,0,0.25) 85%, transparent 100%)",
-              WebkitMaskRepeat: "no-repeat",
-              maskRepeat: "no-repeat",
-              WebkitMaskSize: "100% 100%",
-              maskSize: "100% 100%",
-            }}
-          >
-            HIVYR
-          </h1>
-          {/* Soft gradient fade at bottom for smooth transition */}
-          <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#fdd204] via-[#fdd204]/80 to-transparent pointer-events-none"></div>
+        {/* Newsletter Section */}
+        <div className="border-t border-b border-gray-900/20 py-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Stay in the loop</h3>
+              <p className="text-gray-800 text-sm">
+                Get the latest updates, insights, and product news delivered to your inbox.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 bg-white/50 backdrop-blur-sm border border-gray-900/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
+              />
+              <button className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all font-medium text-sm whitespace-nowrap">
+                Subscribe
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom micro info row */}
-        <div className="flex flex-wrap justify-between items-center mt-8 pt-4 border-t border-black/10 text-black/60 text-xs">
-          <div className="flex gap-4">
-            <span>AI-native ecosystem</span>
-            <span className="hidden sm:inline-block">•</span>
-            <span className="hidden sm:inline-block">Designed for tomorrow</span>
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
+          <div className="flex gap-6">
+            <span className="text-gray-800/70">© 2026 Hivyr. All rights reserved.</span>
           </div>
-          <div className="flex gap-3 mt-2 sm:mt-0">
-            <a href="#" className="hover:text-black transition">
-              Accessibility
+          
+          <div className="flex gap-6">
+            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+              Twitter
             </a>
-            <a href="#" className="hover:text-black transition">
-              Status
+            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+              LinkedIn
+            </a>
+            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+              GitHub
+            </a>
+            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+              Behance
             </a>
           </div>
         </div>
       </div>
 
-      {/* Optional grain texture overlay for modern depth */}
-      <div
-        className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-        }}
-      />
-
+      {/* Enhanced Link Styles */}
       <style jsx>{`
         .footer-link {
-          transition: all 0.2s ease;
           position: relative;
+          display: inline-block;
+          font-weight: 500;
         }
+
         .footer-link::after {
           content: "";
           position: absolute;
           bottom: -2px;
           left: 0;
-          width: 0;
-          height: 1.5px;
+          width: 0%;
+          height: 2px;
           background: currentColor;
-          transition: width 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .footer-link:hover::after {
           width: 100%;
+        }
+
+        .social-link {
+          position: relative;
+          font-weight: 500;
+        }
+
+        .social-link::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: currentColor;
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-link:hover::after {
+          width: 100%;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .footer-link, .social-link {
+          animation: fadeInUp 0.5s ease-out forwards;
         }
       `}</style>
     </footer>

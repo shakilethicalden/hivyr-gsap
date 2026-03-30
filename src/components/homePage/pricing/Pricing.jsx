@@ -165,7 +165,7 @@ const Pricing = () => {
                   </span>
                 </div>
                 {saveText && (
-                  <p className="text-xs sm:text-sm text-green-600 font-medium mb-3 sm:mb-4">{saveText}</p>
+                  <p className={`text-xs sm:text-sm ${isHovered ? "text-black" : "text-gray-500"} font-medium mb-3 sm:mb-4`}>{saveText}</p>
                 )}
                 <p
                   className={`mb-6 sm:mb-8 text-sm sm:text-base ${descriptionColorClass}`}
@@ -205,11 +205,11 @@ const Pricing = () => {
         </div>
 
         {/* Additional Info - Responsive */}
-        <div className="mt-12 sm:mt-16 text-center">
+        {/* <div className="mt-12 sm:mt-16 text-center">
           <p className="text-gray-500 text-xs sm:text-sm">
             All plans include a 14-day free trial. No credit card required.
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

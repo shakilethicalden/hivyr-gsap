@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 
 export default function Navbar() {
@@ -12,49 +13,24 @@ export default function Navbar() {
     const underlineRefs = useRef([]);
     const tl = useRef(null);
     const iconTl = useRef(null);
+    const pathname = usePathname();
 
-    const handleNavigation = (sectionId) => {
-        // Close mobile menu if open
-        if (menuOpen) {
-            setMenuOpen(false);
+    // Define navigation items with their paths
+    const navItems = [
+        { name: "Products", path: "/products" },
+        { name: "Agents", path: "/agents" },
+        { name: "Services", path: "/services" },
+        { name: "About", path: "/about" },
+        { name: "Pricing", path: "/pricing" }
+    ];
+
+    // Check if a path is active
+    const isActive = (path) => {
+        if (path === "/") {
+            return pathname === path;
         }
-        
-        // Check if we're on the homepage
-        if (window.location.pathname === "/") {
-            // On homepage, scroll to the section
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-            }
-        } else {
-            // Not on homepage, navigate to homepage with section hash
-            window.location.href = `/#${sectionId}`;
-        }
+        return pathname === path;
     };
-
-    useEffect(() => {
-        // Handle hash navigation when page loads
-        const handleHashNavigation = () => {
-            if (window.location.hash) {
-                const sectionId = window.location.hash.substring(1); // Remove #
-                const element = document.getElementById(sectionId);
-                if (element) {
-                    setTimeout(() => {
-                        element.scrollIntoView({ behavior: "smooth" });
-                    }, 100);
-                }
-            }
-        };
-
-        handleHashNavigation();
-        
-        // Listen for hash changes
-        window.addEventListener("hashchange", handleHashNavigation);
-        
-        return () => {
-            window.removeEventListener("hashchange", handleHashNavigation);
-        };
-    }, []);
 
     useEffect(() => {
         // Menu slide animation
@@ -114,34 +90,78 @@ export default function Navbar() {
         }
     }, [menuOpen]);
 
-    // Hover underline GSAP animation
+    // Hover underline GSAP animation with active state management
     useEffect(() => {
+        // First, set initial state for all underlines based on active status
         linkRefs.current.forEach((el, index) => {
             const underline = underlineRefs.current[index];
             if (!el || !underline) return;
-
-            const hoverTl = gsap.timeline({ paused: true });
-            hoverTl.fromTo(
-                underline,
-                { scaleX: 0, transformOrigin: "left" },
-                { scaleX: 1, duration: 0.4, ease: "power3.out" }
-            );
-
-            el.addEventListener("mouseenter", () => hoverTl.play());
-            el.addEventListener("mouseleave", () => hoverTl.reverse());
+            
+            // Get the path for this link
+            const linkPath = el.getAttribute('data-path');
+            
+            // If this link is active, set its underline to full width
+            if (linkPath && isActive(linkPath)) {
+                gsap.set(underline, { scaleX: 1 });
+            } else {
+                gsap.set(underline, { scaleX: 0 });
+            }
         });
-    }, []);
 
-    const navItems = [
-        { name: "Products", id: "products" },
-        { name: "Agents", id: "agents" },
-        { name: "Services", id: "services" },
-        { name: "About", id: "about" },
-        { name: "Pricing", id: "pricing" }
-    ];
+        // Setup hover animations
+        linkRefs.current.forEach((el, index) => {
+            const underline = underlineRefs.current[index];
+            if (!el || !underline) return;
+            
+            const linkPath = el.getAttribute('data-path');
+            
+            // Skip setting up hover animation for active link if you don't want hover effect
+            // Or keep it to allow hover even on active link
+            const hoverTl = gsap.timeline({ paused: true });
+            hoverTl.to(underline, {
+                scaleX: 1,
+                duration: 0.4,
+                ease: "power3.out",
+                transformOrigin: "left"
+            });
+
+            const handleMouseEnter = () => {
+                hoverTl.play();
+            };
+            
+            const handleMouseLeave = () => {
+                // Only reverse if it's not the active link
+                // Remove this condition if you want the hover to reverse even on active link
+                if (!linkPath || !isActive(linkPath)) {
+                    hoverTl.reverse();
+                } else {
+                    // If it's active, ensure it stays at scaleX: 1 after hover
+                    gsap.set(underline, { scaleX: 1 });
+                }
+            };
+            
+            el.addEventListener("mouseenter", handleMouseEnter);
+            el.addEventListener("mouseleave", handleMouseLeave);
+            
+            // Store cleanup functions
+            el._cleanup = () => {
+                el.removeEventListener("mouseenter", handleMouseEnter);
+                el.removeEventListener("mouseleave", handleMouseLeave);
+            };
+        });
+        
+        // Cleanup function
+        return () => {
+            linkRefs.current.forEach((el) => {
+                if (el && el._cleanup) {
+                    el._cleanup();
+                }
+            });
+        };
+    }, [pathname]); // Re-run when pathname changes to update active states
 
     return (
-        <nav className="w-full flex items-center justify-between px-4 sm:px-6 md:px-16 lg:px-8  2xl:px-20 py-4 relative z-50 bg-transparent">
+        <nav className="w-full flex items-center justify-between px-4 sm:px-6 md:px-16 lg:px-8 2xl:px-20 py-4 relative z-50 bg-transparent">
             {/* Logo */}
             <div className="flex items-center w-32 z-50">
                 <Link href="/">
@@ -161,39 +181,53 @@ export default function Navbar() {
                 <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide">
                     {navItems.map((item, index) => (
                         <li key={index} className="relative">
-                            <button
-                                onClick={() => handleNavigation(item.id)}
-                                ref={(el) => (linkRefs.current[index] = el)}
-                                className="relative inline-block pb-1 cursor-pointer"
+                            <Link
+                                href={item.path}
+                                ref={(el) => {
+                                    if (el) linkRefs.current[index] = el;
+                                }}
+                                data-path={item.path}
+                                className={`relative inline-block pb-1 cursor-pointer transition-colors duration-300 ${
+                                    isActive(item.path) ? 'text-yellow-400' : ''
+                                }`}
                             >
                                 {item.name}
                                 <span
-                                    ref={(el) => (underlineRefs.current[index] = el)}
-                                    className="absolute left-0 bottom-0 h-[1px] w-full bg-white scale-x-0"
+                                    ref={(el) => {
+                                        if (el) underlineRefs.current[index] = el;
+                                    }}
+                                    className="absolute left-0 bottom-0 h-[1px] w-full bg-white"
                                 ></span>
-                            </button>
+                            </Link>
                         </li>
                     ))}
                 </ul>
 
-                <button
-                    onClick={() => handleNavigation("login")}
-                    ref={(el) => (linkRefs.current[5] = el)}
-                    className="relative inline-block pb-1 lg:text-sm xl:text-lg cursor-pointer"
+                <Link
+                    href="/login"
+                    ref={(el) => {
+                        if (el) linkRefs.current[5] = el;
+                    }}
+                    data-path="/login"
+                    className={`relative inline-block pb-1 lg:text-sm xl:text-lg cursor-pointer transition-colors duration-300 ${
+                        isActive('/login') ? 'text-yellow-400' : 'hover:text-gray-300'
+                    }`}
                 >
                     Log In
                     <span
-                        ref={(el) => (underlineRefs.current[5] = el)}
-                        className="absolute left-0 bottom-0 h-[1px] w-full bg-white scale-x-0"
+                        ref={(el) => {
+                            if (el) underlineRefs.current[5] = el;
+                        }}
+                        className="absolute left-0 bottom-0 h-[1px] w-full bg-white"
                     ></span>
-                </button>
+                </Link>
             </div>
 
             {/* Contact button for desktop */}
             <div className="hidden lg:block bg-white text-gray-800 px-8 lg:py-5 xl:py-6 cursor-pointer hover:bg-black hover:text-white transition-all duration-300">
-                <button onClick={() => handleNavigation("contact")} className="relative inline-block text-sm font-medium">
+                <Link href="/contact" className="relative inline-block text-sm font-medium">
                     Contact
-                </button>
+                </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -220,30 +254,39 @@ export default function Navbar() {
                     <ul className="space-y-6 text-xl md:text-2xl font-light mt-40">
                         {navItems.map((item, index) => (
                             <li key={index} className="menu-item">
-                                <button
-                                    onClick={() => handleNavigation(item.id)}
-                                    className="hover:text-gray-400 transition-colors duration-300 w-full text-left"
+                                <Link
+                                    href={item.path}
+                                    onClick={() => setMenuOpen(false)}
+                                    className={`hover:text-gray-400 transition-colors duration-300 w-full text-left ${
+                                        isActive(item.path) ? 'text-yellow-400' : ''
+                                    }`}
                                 >
                                     {item.name}
-                                </button>
+                                </Link>
                             </li>
                         ))}
                     </ul>
                 </div>
 
                 <div className="flex">
-                    <button
-                        onClick={() => handleNavigation("login")}
-                        className="w-1/2 bg-[#fdd204] py-4 text-black text-lg text-center menu-item"
+                    <Link
+                        href="/login"
+                        onClick={() => setMenuOpen(false)}
+                        className={`w-1/2 bg-[#fdd204] py-4 text-black text-lg text-center menu-item ${
+                            isActive('/login') ? 'bg-yellow-500' : ''
+                        }`}
                     >
                         Log In
-                    </button>
-                    <button
-                        onClick={() => handleNavigation("contact")}
-                        className="w-1/2 bg-[#fff] py-4 text-black text-lg text-center menu-item"
+                    </Link>
+                    <Link
+                        href="/contact"
+                        onClick={() => setMenuOpen(false)}
+                        className={`w-1/2 bg-[#fff] py-4 text-black text-lg text-center menu-item ${
+                            isActive('/contact') ? 'bg-gray-200' : ''
+                        }`}
                     >
                         Contact
-                    </button>
+                    </Link>
                 </div>
             </div>
         </nav>

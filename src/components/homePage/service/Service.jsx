@@ -201,7 +201,7 @@ const Service = () => {
                   onClick={() => setActiveTab(service.name)}
                   className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-200 text-xs sm:text-sm font-medium w-full text-left ${
                     activeTab === service.name
-                      ? 'bg-gradient-to-r from-[#f7b518]/10 to-[#fdd204]/10 text-gray-900 shadow-sm border-l-2 sm:border-l-[3px] border-[#f7b518]'
+                      ? 'bg-gradient-to-r from-[#f7b518]/10 to-[#fdd204]/10 text-gray-900 shadow-sm border-[#f7b518]'
                       : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                   }`}
                 >
@@ -376,7 +376,7 @@ const Service = () => {
         </div>
 
         {/* Bottom CTA Section - Responsive */}
-        <div className="mt-8 sm:mt-10 md:mt-12 text-center">
+        {/* <div className="mt-8 sm:mt-10 md:mt-12 text-center">
           <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
             All agents are powered by Hivyr's advanced AI engine
           </p>
@@ -385,7 +385,7 @@ const Service = () => {
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#fdd204] rounded-full"></span>
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full"></span>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

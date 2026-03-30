@@ -266,13 +266,13 @@ export default function FAQ() {
                 </div>
 
                 {/* Contact Support CTA - Responsive */}
-                <div className="mt-10 sm:mt-12 md:mt-16 text-center">
+                {/* <div className="mt-10 sm:mt-12 md:mt-16 text-center">
                     <p className="text-gray-500 text-xs sm:text-sm lg:text-base mb-3 sm:mb-4">Still have questions?</p>
                     <button className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-[#fdd204] hover:shadow-md transition-all duration-200 rounded-lg sm:rounded-xl px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm lg:text-base font-medium text-gray-700">
                         <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         Contact Our Support Team
                     </button>
-                </div>
+                </div> */}
             </div>
         </section>
     );
