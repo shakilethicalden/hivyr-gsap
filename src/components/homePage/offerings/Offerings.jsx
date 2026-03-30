@@ -132,6 +132,7 @@ const Offerings = () => {
 
     return (
         <section
+        id="agents"
             ref={sectionRef}
             className="relative bg-white mb-20 lg:mb-24 overflow-hidden z-10"
         >

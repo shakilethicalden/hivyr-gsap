@@ -83,7 +83,7 @@ const Pricing = () => {
   };
 
   return (
-    <section className="bg-white text-black py-20 lg:py-24 flex justify-center">
+    <section id="pricing" className="bg-white text-black py-20 lg:py-24 flex justify-center">
       <div className="max-w-7xl w-full px-6">
         {/* Top heading section */}
         <div className="flex flex-col md:flex-row items-end justify-between mb-16">

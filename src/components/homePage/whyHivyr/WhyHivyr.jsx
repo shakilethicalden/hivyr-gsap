@@ -266,6 +266,7 @@ const WhyHivyr = () => {
     return (
         <>
             <section
+            id="about"
                 ref={sectionRef}
                 className="relative bg-[#fdd204] text-black py-20 lg:py-28 overflow-hidden z-10"
             >

@@ -318,7 +318,7 @@ const Service = () => {
   }, [activeTab]);
 
   return (
-    <section className="bg-white text-gray-900 py-20 px-6 font-['Inter',_sans-serif]">
+    <section id='services' className="bg-white text-gray-900 py-20 px-6 font-['Inter',_sans-serif]">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
