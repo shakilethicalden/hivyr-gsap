@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gradient-to-br from-[#fdd204] to-[#f5b800] text-gray-900 relative overflow-hidden">
+    <footer className="w-full bg-[#fdd204] text-gray-900 relative overflow-hidden">
       
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>

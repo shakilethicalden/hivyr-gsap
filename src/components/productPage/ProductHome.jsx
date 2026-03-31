@@ -11,9 +11,6 @@ import Testimonials from '../testimonial/Testimonial';
 const ProductHome = () => {
     return (
         <div>
-            <div className=''>
-                <Navbar />
-            </div>
             <ProductBanner />
             <ProductArea2 />
             <ProductArea />
