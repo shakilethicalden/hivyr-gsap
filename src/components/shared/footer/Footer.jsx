@@ -143,7 +143,7 @@ const Footer = () => {
 
         {/* Newsletter Section */}
         <div className="border-t border-b border-gray-900/20 py-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="flex flex-col md:flex-row gap-8 justify-between md:items-center">
             <div>
               <h3 className="text-xl font-semibold mb-2">Stay in the loop</h3>
               <p className="text-gray-800 text-sm">
@@ -152,10 +152,10 @@ const Footer = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-white/50 backdrop-blur-sm border border-gray-900/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
-              />
+  type="email"
+  placeholder="Enter your email"
+  className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-gray-900/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
+/>
               <button className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all font-medium text-sm whitespace-nowrap">
                 Subscribe
               </button>

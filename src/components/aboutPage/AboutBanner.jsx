@@ -1,84 +1,54 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import Navbar from "@/components/shared/navbar/Navbar";
 
-const AboutBanner = () => {
-  const titleRef = useRef(null);
-
-  const scrambleReveal = (finalText, element, duration = 2.5) => {
-    const chars =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()";
-    const totalFrames = Math.floor(duration * 60);
-    let frame = 0;
-    const revealProgress = Array(finalText.length).fill(false);
-
-    const animate = () => {
-      let displayed = "";
-      for (let i = 0; i < finalText.length; i++) {
-        displayed += revealProgress[i]
-          ? finalText[i]
-          : chars[Math.floor(Math.random() * chars.length)];
-      }
-      element.textContent = displayed;
-
-      frame++;
-      const progress = frame / totalFrames;
-      for (let i = 0; i < finalText.length; i++) {
-        if (!revealProgress[i] && Math.random() < progress)
-          revealProgress[i] = true;
-      }
-
-      if (frame < totalFrames) requestAnimationFrame(animate);
-      else element.textContent = finalText;
-    };
-
-    animate();
-  };
-
-  useEffect(() => {
-    (async () => {
-      const module = await import("gsap");
-      const gsap = module.gsap;
-
-      if (titleRef.current) {
-        const text = titleRef.current.dataset.text;
-        titleRef.current.textContent = "";
-        scrambleReveal(text, titleRef.current, 2.5);
-      }
-    })();
-  }, []);
-
+export default function AboutBanner() {
   return (
-    <section className="relative w-full h-[90vh] sm:h-[85vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src="/video/about.mp4" type="video/mp4" />
-      </video>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
-
-      {/* Text Content */}
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-0">
-        <p className="text-lg tracking-widest text-gray-100 mb-6">
-          ABOUT OUR AI AGENT PLATFORM
-        </p>
-
-        <h1
-          ref={titleRef}
-          data-text="We build autonomous AI agents that think, act, and collaborate—empowering businesses to operate at machine speed."
-          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl  font-bold leading-tight max-w-full md:max-w-6xl mx-auto inline-block"
+    <section className="relative w-full h-screen flex items-start overflow-hidden bg-white">
+      
+      {/* Background container with image */}
+      <div className="absolute inset-0 m-0 sm:m-2 md:m-4 rounded-none sm:rounded-2xl overflow-hidden">
+        <div 
+          className="w-full h-full bg-cover bg-center bg-no-repeat rounded-none sm:rounded-2xl"
+          style={{ backgroundImage: "url('/images/about/about-banner.jpg')" }}
         >
-          We build autonomous AI agents that think, act, and collaborate—empowering businesses to operate at machine speed.
-        </h1>
+          <div className="w-full h-full transition-transform duration-700 hover:scale-110"></div>
+        </div>
       </div>
+
+      {/* Navbar overlay */}
+      <div className="absolute top-0 left-0 right-0 z-20 lg:px-8 xl:px-16 py-4 pt-6 ">
+        <Navbar />
+      </div>
+
+      {/* Main Layout */}
+      <main className="relative z-20 w-full h-full flex items-end sm:items-center md:mt-20 lg:mt-24 xl:mt-16 2xl:mt-20 xl:ml-44 2xl:ml-14">
+        <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-8 md:px-12 pb-8 sm:pb-0">
+          
+          {/* Title and Para Wrapper */}
+          <div className="flex flex-col text-white">
+            {/* First two lines of Title - Responsive sizing */}
+            <h1 className="reveal italic text-[15vw] sm:text-[13vw] md:text-[11vw] 2xl:text-[9vw] leading-[1.1] xl:leading-[0.9] tracking-tighter text-left">
+              Meet the<br />
+              <span className="xl:-ml-32 2xl:-ml-40 inline-block">Minds Behind</span>
+            </h1>
+
+            {/* Bottom line with Para next to it - Stack on mobile, row on tablet/desktop */}
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-4 sm:gap-6 md:gap-12">
+              <h1 className="reveal italic text-[15vw] sm:text-[13vw] md:text-[11vw] 2xl:text-[9vw] leading-[1.1] xl:leading-[0.9] tracking-tighter">
+                The Agents
+              </h1>
+              
+              {/* Paragraph - Full width on mobile, constrained on tablet/desktop */}
+              <div className="reveal max-w-full sm:max-w-[320px] md:max-w-[380px] pt-2 sm:pt-0 pb-2 sm:pb-4">
+                <p className="font-sans font-light text-[14px] sm:text-[16px] md:text-[18px] leading-[1.4] sm:leading-[1.4] opacity-80">
+                  We're a team of AI engineers, strategists, and innovators dedicated to building intelligent agents that transform how businesses operate. Our mission is to democratize AI automation, making enterprise-grade intelligence accessible to organizations of all sizes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
     </section>
   );
-};
-
-export default AboutBanner;
+}

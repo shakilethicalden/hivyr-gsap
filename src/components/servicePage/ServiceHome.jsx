@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../shared/navbar/Navbar';
-import ServiceArea from './ServiceArea';
+import ServiceArea from './ServiceProcess';
 import ClientSection from '../clients/ClientSection';
 import Footer from '../shared/footer/Footer';
 import ServiceBanner from './ServiceBanner';
@@ -11,13 +11,9 @@ import ServiceVideo from './ServiceVideo';
 const ServiceHome = () => {
     return (
         <div>
-            <div className=''>
-                <Navbar />
-            </div>
-            <ServiceBanner />
-            <ServiceArea />
+            <ServiceBanner />  
             <ServiceArea2 />
-            <ClientSection />
+            <ServiceArea />
             <CTA />
             <Footer />
         </div>

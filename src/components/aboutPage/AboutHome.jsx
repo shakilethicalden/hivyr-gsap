@@ -11,7 +11,6 @@ import Footer from "../shared/footer/Footer";
 const AboutHome = () => {
   return (
     <div>
-      <Navbar />
       <AboutBanner />
       <AboutArea />
       <Team />
