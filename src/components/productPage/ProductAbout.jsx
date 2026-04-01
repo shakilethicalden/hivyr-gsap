@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ProductAbout() {
   return (
-    <section className="bg-white py-16 px-6 md:py-24 ">
+    <section className="bg-white pt-16 lg:pt-24 xl:pt-28 px-4 sm:px-6  ">
       <div className="max-w-7xl mx-auto">
         
         {/* Heading */}

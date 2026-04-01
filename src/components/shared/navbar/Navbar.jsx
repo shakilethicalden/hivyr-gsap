@@ -84,10 +84,19 @@ export default function Navbar() {
         if (menuOpen) {
             tl.current.play();
             iconTl.current.play();
+            // Prevent body scrolling when menu is open
+            document.body.style.overflow = "hidden";
         } else {
             tl.current.reverse();
             iconTl.current.reverse();
+            // Restore body scrolling when menu is closed
+            document.body.style.overflow = "";
         }
+        
+        // Cleanup function
+        return () => {
+            document.body.style.overflow = "";
+        };
     }, [menuOpen]);
 
     // Hover underline GSAP animation with active state management
@@ -160,17 +169,22 @@ export default function Navbar() {
         };
     }, [pathname]); // Re-run when pathname changes to update active states
 
+    // Close menu when clicking on a link
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+    };
+
     return (
         <nav className="w-full flex items-center justify-between px-4 sm:px-6 md:px-16 lg:px-8 2xl:px-20 py-4 relative z-50 bg-transparent">
-            {/* Logo */}
-            <div className="flex items-center w-32 z-50">
-                <Link href="/">
+            {/* Logo - ensure it stays above the mobile menu */}
+            <div className="flex items-center w-32 z-[60] relative">
+                <Link href="/" onClick={handleLinkClick}>
                     <Image
                         src="/images/logo/logo-white.png"
                         alt="Logo"
                         width={800}
                         height={800}
-                        className="object-contain"
+                        className="object-contain cursor-pointer"
                         priority
                     />
                 </Link>
@@ -230,10 +244,10 @@ export default function Navbar() {
                 </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - ensure it stays above the mobile menu */}
             <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="lg:hidden flex flex-col justify-center items-center space-y-1.5 z-50 w-8 h-8 bg-black"
+                className="lg:hidden flex flex-col justify-center items-center space-y-1.5 z-[60] relative w-8 h-8 bg-transparent"
             >
                 {[0, 1, 2].map((i) => (
                     <span
@@ -244,49 +258,58 @@ export default function Navbar() {
                 ))}
             </button>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Overlay - FIXED */}
             <div
                 ref={menuRef}
-                className="fixed inset-0 bg-black text-white flex flex-col justify-between p-8 lg:hidden opacity-0 pointer-events-none"
-                style={{ pointerEvents: menuOpen ? "auto" : "none" }}
+                className="fixed inset-0 z-50 bg-black text-white lg:hidden overflow-y-auto"
+                style={{ 
+                    transform: menuOpen ? "translateY(0)" : "translateY(-100%)",
+                    opacity: menuOpen ? 1 : 0,
+                    visibility: menuOpen ? "visible" : "hidden",
+                    transition: "visibility 0.3s ease-in-out",
+                    pointerEvents: menuOpen ? "auto" : "none"
+                }}
             >
-                <div>
-                    <ul className="space-y-6 text-xl md:text-2xl font-light mt-40">
-                        {navItems.map((item, index) => (
-                            <li key={index} className="menu-item">
-                                <Link
-                                    href={item.path}
-                                    onClick={() => setMenuOpen(false)}
-                                    className={`hover:text-gray-400 transition-colors duration-300 w-full text-left ${
-                                        isActive(item.path) ? 'text-yellow-400' : ''
-                                    }`}
-                                >
-                                    {item.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                {/* Content wrapper with min-height to ensure scrolling works */}
+                <div className="min-h-screen flex flex-col justify-between p-8">
+                    <div>
+                        <ul className="space-y-6 text-xl md:text-2xl font-light mt-40">
+                            {navItems.map((item, index) => (
+                                <li key={index} className="menu-item">
+                                    <Link
+                                        href={item.path}
+                                        onClick={handleLinkClick}
+                                        className={`hover:text-gray-400 transition-colors duration-300 w-full text-left ${
+                                            isActive(item.path) ? 'text-yellow-400' : ''
+                                        }`}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-                <div className="flex">
-                    <Link
-                        href="/login"
-                        onClick={() => setMenuOpen(false)}
-                        className={`w-1/2 bg-[#fdd204] py-4 text-black text-lg text-center menu-item ${
-                            isActive('/login') ? 'bg-yellow-500' : ''
-                        }`}
-                    >
-                        Log In
-                    </Link>
-                    <Link
-                        href="/contact"
-                        onClick={() => setMenuOpen(false)}
-                        className={`w-1/2 bg-[#fff] py-4 text-black text-lg text-center menu-item ${
-                            isActive('/contact') ? 'bg-gray-200' : ''
-                        }`}
-                    >
-                        Contact
-                    </Link>
+                    <div className="flex mb-8">
+                        <Link
+                            href="/login"
+                            onClick={handleLinkClick}
+                            className={`w-1/2 bg-[#fdd204] py-4 text-black text-lg text-center menu-item ${
+                                isActive('/login') ? 'bg-yellow-500' : ''
+                            }`}
+                        >
+                            Log In
+                        </Link>
+                        <Link
+                            href="/contact"
+                            onClick={handleLinkClick}
+                            className={`w-1/2 bg-[#fff] py-4 text-black text-lg text-center menu-item ${
+                                isActive('/contact') ? 'bg-gray-200' : ''
+                            }`}
+                        >
+                            Contact
+                        </Link>
+                    </div>
                 </div>
             </div>
         </nav>

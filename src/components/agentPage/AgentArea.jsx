@@ -69,8 +69,8 @@ export default function AgentArea() {
   const closeModal = () => setSelectedAgentIndex(null);
 
   return (
-    <section className="w-full py-20 lg:py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section className="w-full py-16 lg:py-24 xl:py-28 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="flex flex-col lg:flex-row items-center lg:justify-between mb-10">
           <div ref={titleRef} className="flex items-center gap-3 overflow-hidden md:pb-8 xl:pb-0">

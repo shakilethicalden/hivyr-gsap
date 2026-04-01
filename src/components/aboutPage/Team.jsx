@@ -83,7 +83,7 @@ export default function Team() {
   return (
     <section
       ref={sectionRef}
-      className="bg-black text-white py-16 common-px overflow-hidden"
+      className="bg-black text-white py-16 lg:py-20 px-4 sm:px-6 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}

@@ -20,9 +20,7 @@ const logos = [
 
 const LogoSlider = () => {
     return (
-        <div className="relative overflow-hidden border-t border-white/20 py-10">
-
-            
+        <div className="relative overflow-hidden border-t border-white/20 py-10">            
 
             <div className="flex w-max animate-marquee gap-16">
                 {[...logos, ...logos].map((logo, i) => (

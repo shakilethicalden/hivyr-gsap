@@ -1,55 +1,56 @@
 "use client";
 
 import React, { useRef } from 'react';
+import Image from 'next/image';
 
 const products = [
   {
     id: 1,
     title: "AI Assistant",
     description: "Intelligent automation that adapts to your workflow seamlessly.",
-    imageSrc: "/images/ai-agent-1.png",
+    imageSrc: "/images/ai-agents/hr.jpg",
   },
   {
     id: 2,
     title: "Smart Agent",
     description: "Autonomous task execution with real-time learning capabilities.",
-    imageSrc: "/images/ai-agent-2.png",
+    imageSrc: "/images/product/smart-agent.jpg",
   },
   {
     id: 3,
     title: "Neural Core",
     description: "Advanced NLP processing for natural human-like interactions.",
-    imageSrc: "/images/ai-agent-3.png",
+    imageSrc: "/images/product/neutral-core.jpg",
   },
   {
     id: 4,
     title: "Auto Pilot",
     description: "Fully automated workflow orchestration across all your tools.",
-    imageSrc: "/images/ai-agent-4.png",
+    imageSrc: "/images/product/auto-pilot.jpg",
   },
   {
     id: 5,
     title: "Insight Engine",
     description: "Real-time analytics and predictive intelligence at your fingertips.",
-    imageSrc: "/images/ai-agent-5.png",
+    imageSrc: "/images/product/insight-engine.jpg",
   },
   {
     id: 6,
     title: "Response AI",
     description: "24/7 customer support automation with human-like accuracy.",
-    imageSrc: "/images/ai-agent-6.png",
+    imageSrc: "/images/product/responsive-ai.jpg",
   },
   {
     id: 7,
     title: "Data Mind",
     description: "Turn unstructured data into actionable business insights.",
-    imageSrc: "/images/ai-agent-7.png",
+    imageSrc: "/images/product/data-mind.jpg",
   },
   {
     id: 8,
     title: "Task Flow",
     description: "Seamless integration with your existing tools and workflows.",
-    imageSrc: "/images/ai-agent-8.png",
+    imageSrc: "/images/product/task-flow.jpg",
   },
 ];
 
@@ -75,7 +76,7 @@ export default function ProductCollection() {
   };
 
   return (
-    <section className="bg-gray-100 py-20 px-4">
+    <section className="bg-gray-100 mt-16 lg:mt-24 ml:pt-28 py-16 lg:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
@@ -116,12 +117,16 @@ export default function ProductCollection() {
               key={item.id}
               className="bg-white text-black min-w-[320px] md:min-w-[360px] rounded-2xl p-8 flex flex-col shadow-sm border border-gray-100"
             >
-              {/* Product Image Container with Yellow Accent */}
-              <div className="w-full bg-[#fdd204] rounded-xl aspect-square flex items-center justify-center mb-6">
-                <div className="w-32 h-32 flex items-center justify-center">
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1" className="text-black">
-                    <path d="M12 2a10 10 0 1010 10 10 10 0 00-10-10zm1 15h-2v-2h2zm0-4h-2V7h2z" />
-                  </svg>
+              {/* Product Image Container with Yellow Background */}
+              <div className="w-full bg-[#fdd204] rounded-xl aspect-square flex items-center justify-center mb-6 overflow-hidden">
+                <div className="w-full h-full relative">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.title}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 320px, 360px"
+                  />
                 </div>
               </div>
 

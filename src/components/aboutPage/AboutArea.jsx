@@ -8,7 +8,7 @@ export default function AboutArea() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white text-black py-20 lg:py-24 common-px overflow-hidden"
+      className="bg-white text-black py-16 lg:py-24 xl:py-28 px-4 sm:px-6 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-start justify-between">
         

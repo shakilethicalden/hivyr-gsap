@@ -60,7 +60,7 @@ const ServiceItem = ({ service, index, isActive, onHoverStart, onHoverEnd }) => 
         <div
             onMouseEnter={() => onHoverStart(service.id)}
             onMouseLeave={onHoverEnd}
-            className="relative border-t border-gray-200 py-8 md:py-12 lg:py-16 px-4 cursor-pointer"
+            className="relative border-t border-gray-200 py-8 md:py-12 lg:py-16  cursor-pointer"
         >
             {/* Hover underline */}
             <div className="absolute bottom-0 left-0 w-full h-[2px] overflow-hidden">
@@ -133,7 +133,7 @@ const ServiceArea2 = () => {
     }, []);
 
     return (
-        <section className="bg-white text-black min-h-screen py-16 md:py-24 lg:py-32 px-4 md:px-8 lg:px-12 relative overflow-hidden">
+        <section className="bg-white text-black  py-16 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gradient-to-r from-[#fdd204]/10 to-transparent rounded-full blur-3xl" />
@@ -151,7 +151,7 @@ const ServiceArea2 = () => {
                         </h2>
                     </div>
                     <div className="max-w-md lg:text-right w-full lg:w-auto">
-                        <p className="header-subtitle text-gray-600 text-base md:text-lg font-light leading-relaxed pl-4 md:pl-6 lg:pl-0 lg:pr-6">
+                        <p className="header-subtitle text-gray-600 text-base md:text-lg font-light leading-relaxed  lg:pl-0 lg:pr-6">
                             Next-generation AI agents designed to elevate your brand, automate workflows, and deliver unparalleled digital experiences.
                         </p>
                     </div>

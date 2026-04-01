@@ -31,7 +31,7 @@ const processSteps = [
 
 const ServiceProcess = () => {
   return (
-    <section className="bg-[#fdd204] text-black min-h-screen font-sans selection:bg-black selection:text-[#fdd204]">
+    <section className="bg-[#fdd204] text-black selection:bg-black selection:text-[#fdd204]">
       {/* Header Section */}
       <div className="pt-20 pb-32 px-4 sm:px-6 lg:px-12 xl:px-20 flex justify-between items-start">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-[1.1] sm:leading-[1] tracking-tighter max-w-4xl text-black">
@@ -46,11 +46,11 @@ const ServiceProcess = () => {
       </div>
 
       {/* Grid Section */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-black/20">
-  {processSteps.map((step, index) => (
-    <div
-      key={index}
-      className={`
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-black/20">
+        {processSteps.map((step, index) => (
+          <div
+            key={index}
+            className={`
         flex flex-col p-6 sm:p-8 xl:p-10
         h-full min-h-[500px] sm:min-h-[550px] lg:min-h-[600px]
         border-b border-black/20
@@ -62,24 +62,24 @@ const ServiceProcess = () => {
         ${index % 2 === 0 ? "bg-white/5" : "bg-transparent"}
         transition-all duration-300
       `}
-    >
-      <div className="w-full max-w-xs mx-auto lg:mx-0 flex flex-col h-full">
-        <div className="mb-6">
-          <span className="text-xs sm:text-sm font-bold text-black/60 tracking-wider">STEP</span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-black mt-1">
-            {step.id}
-          </h2>
-          <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-black mt-3">
-            {step.title}
-          </h3>
-        </div>
-        <p className="text-black/80 text-base sm:text-lg leading-relaxed font-medium flex-grow">
-          {step.description}
-        </p>
+          >
+            <div className="w-full max-w-xs mx-auto lg:mx-0 flex flex-col h-full">
+              <div className="mb-6">
+                <span className="text-xs sm:text-sm font-bold text-black/60 tracking-wider">STEP</span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-black mt-1">
+                  {step.id}
+                </h2>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-black mt-3">
+                  {step.title}
+                </h3>
+              </div>
+              <p className="text-black/80 text-base sm:text-lg leading-relaxed font-medium flex-grow">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
       <LogoSlider />
     </section>
   );

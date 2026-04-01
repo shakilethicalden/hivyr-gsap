@@ -136,7 +136,7 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-white overflow-hidden"
+      className="relative py-16 lg:py-24 xl:py-28 bg-white overflow-hidden"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -150,7 +150,7 @@ export default function Testimonials() {
 
       <div className="relative">
         {/* Header Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-10 lg:mb-16">
           <div className="text-center">
 
             <h2 className="section-title text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
@@ -180,10 +180,10 @@ export default function Testimonials() {
               {[...testimonials, ...testimonials, ...testimonials].map((testimonial, idx) => (
                 <div
                   key={`${testimonial.id}-${idx}`}
-                  className="group relative w-[380px] md:w-[420px] lg:w-[460px] flex-shrink-0 bg-white rounded-2xl  transition-all duration-500  overflow-hidden border-2 border-black/5 hover:border-[#fdd204]"
+                  className="group relative w-[380px] md:w-[420px] lg:w-[460px] flex-shrink-0 bg-white rounded-2xl transition-all duration-500 overflow-hidden border-2 border-black/5 hover:border-[#fdd204]"
                 >
                   {/* Top accent bar */}
-                  <div className="absolute top-0 left-0 right-0 h-1 " />
+                  <div className="absolute top-0 left-0 right-0 h-1" />
 
                   <div className="p-6 md:p-8">
                     {/* Rating and Quote Icon */}
@@ -206,8 +206,8 @@ export default function Testimonials() {
                       </div>
                     </div>
 
-                    {/* Quote */}
-                    <p className="text-black/80  text-base md:text-lg leading-relaxed min-h-[110px] hover:text-[#fdd204]">
+                    {/* Quote - Now changes color on hover */}
+                    <p className="text-black/80 text-base md:text-lg leading-relaxed min-h-[110px] transition-colors duration-500 group-hover:text-[#fdd204]">
                       "{testimonial.quote}"
                     </p>
 
