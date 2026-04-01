@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import ClientWrapper from "@/components/utils/ClientWrapper";
+import HivyrAIChatbot from "@/components/chatbot/ChatbotAi";
 
 const manrope = localFont({
   src: [
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
       <body className={`${manrope.variable} font-sans antialiased`}>
         <ClientWrapper>
           {children}
+          <HivyrAIChatbot />
         </ClientWrapper>
       </body>
     </html>

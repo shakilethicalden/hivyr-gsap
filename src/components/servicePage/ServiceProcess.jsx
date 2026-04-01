@@ -31,7 +31,7 @@ const processSteps = [
 
 const ServiceProcess = () => {
   return (
-    <section className="bg-[#fdd204] text-black selection:bg-black selection:text-[#fdd204]">
+    <section className="bg-[#fdd204]/10 text-black selection:bg-black selection:text-[#fdd204]">
       {/* Header Section */}
       <div className="pt-20 pb-32 px-4 sm:px-6 lg:px-12 xl:px-20 flex justify-between items-start">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-[1.1] sm:leading-[1] tracking-tighter max-w-4xl text-black">

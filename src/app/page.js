@@ -1,3 +1,4 @@
+import HivyrAIChatbot from "@/components/chatbot/ChatbotAi";
 import About from "@/components/homePage/about/About";
 import Banner from "@/components/homePage/banner/Banner";
 import CTA from "@/components/homePage/cta/CTA";

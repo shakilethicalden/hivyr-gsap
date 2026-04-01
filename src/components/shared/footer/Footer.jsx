@@ -1,27 +1,35 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#fdd204] text-gray-900 relative overflow-hidden">
-      
+    <footer className="w-full bg-[#fdd204]/10 text-gray-900 relative overflow-hidden">
+
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-      
+
       <div className="px-4 sm:px-6 lg:px-12 xl:px-20 pt-20 pb-8 relative z-10">
-        
+
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-          
+
           {/* Brand Section */}
           <div className="lg:col-span-5">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-              HIVYR
-            </h2>
+            {/* Logo SVG - Replace the path with your actual logo path */}
+            <div className="mb-6">
+              <Image
+                src="/images/logo/logo.png"
+                alt="Hivyr"
+                width={720}
+                height={720}
+                className="mb-6 w-[150px] h-auto"
+              />
+            </div>
             <p className="text-gray-800 text-base leading-relaxed max-w-md">
-              Building next-generation digital experiences with AI-first thinking. 
+              Building next-generation digital experiences with AI-first thinking.
               Hivyr blends design, technology, and strategy to create impactful products.
             </p>
           </div>
@@ -152,10 +160,10 @@ const Footer = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
-  type="email"
-  placeholder="Enter your email"
-  className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-gray-900/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
-/>
+                type="email"
+                placeholder="Enter your email"
+                className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-gray-900/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
+              />
               <button className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all font-medium text-sm whitespace-nowrap">
                 Subscribe
               </button>
@@ -168,7 +176,7 @@ const Footer = () => {
           <div className="flex gap-6">
             <span className="text-gray-800/70">© 2026 Hivyr. All rights reserved.</span>
           </div>
-          
+
           <div className="flex gap-6">
             <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
               Twitter
@@ -249,65 +257,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// import React from "react";
-
-// const Footer = () => {
-//   return (
-//     <footer className="w-full bg-[#f4f4f4] text-[#707070] px-6 md:px-12 pt-16 pb-0 overflow-hidden relative min-h-[600px] flex flex-col justify-between">
-//       {/* Top Section: Branding and Links */}
-//       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 z-10">
-        
-//         {/* Logo and Tagline */}
-//         <div className="md:col-span-5 lg:col-span-6">
-//           <div className="mb-4">
-//             {/* Replace with your actual SVG logo */}
-//             <div className="w-8 h-8 bg-[#707070] rounded-sm opacity-80" /> 
-//           </div>
-//           <p className="max-w-[280px] text-[15px] leading-relaxed font-medium">
-//             A more meaningful home for photography, built by photographers.
-//           </p>
-//         </div>
-
-//         {/* Navigation Links */}
-//         <div className="md:col-span-7 lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
-//           <div className="flex flex-col gap-2">
-//             <span className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Hivyr</span>
-//             <a href="#" className="hover:text-black transition-colors">About</a>
-//             <a href="#" className="hover:text-black transition-colors">Premium</a>
-//             <a href="#" className="hover:text-black transition-colors">Help</a>
-//           </div>
-          
-//           <div className="flex flex-col gap-2">
-//             <span className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Updates</span>
-//             <a href="#" className="hover:text-black transition-colors">Changelog</a>
-//             <a href="#" className="hover:text-black transition-colors">Roadmap</a>
-//             <a href="#" className="hover:text-black transition-colors">Discord</a>
-//           </div>
-
-//           <div className="flex flex-col gap-2">
-//             <span className="text-[10px] uppercase tracking-widest opacity-50 mb-1">Legal</span>
-//             <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
-//             <a href="#" className="hover:text-black transition-colors">Privacy policy</a>
-//             <a href="#" className="hover:text-black transition-colors">Community Guidelines</a>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Large Background Text Section */}
-//       <div className="relative w-full flex items-end justify-center pointer-events-none select-none">
-//         <h1 
-//           className="text-[28vw] font-bold leading-[0.8] tracking-tighter text-[#e5e5e5] translate-y-[15%]"
-//           style={{
-//             // This creates the subtle transparent overlap effect seen in the screenshot
-//             mixBlendMode: 'multiply' 
-//           }}
-//         >
-//           HIVYR
-//         </h1>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;

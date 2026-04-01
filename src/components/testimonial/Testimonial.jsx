@@ -109,7 +109,7 @@ export default function Testimonials() {
     // Set up the animation moving from right to left
     const marqueeAnimation = gsap.to([marquee, clone], {
       x: `-${originalWidth}`,
-      duration: 30,
+      duration: 60,
       ease: "none",
       repeat: -1,
       modifiers: {
