@@ -94,7 +94,7 @@ const PricingArea = () => {
 
                 {/* HEADER */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+                    <h1 className="title_text">
                         We've got a plan<br /> that's perfect for you
                     </h1>
 
@@ -123,7 +123,7 @@ const PricingArea = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-start gap-4 mb-8">
                     <button
                         onClick={handleMonthlyClick}
-                        className={`py-3 px-6 rounded-lg font-semibold border ${
+                        className={`button_text rounded-lg border ${
                             billingPeriod === "monthly"
                                 ? "bg-black text-white border-black"
                                 : "bg-white text-black border-gray-300"
@@ -134,7 +134,7 @@ const PricingArea = () => {
 
                     <button
                         onClick={() => setBillingPeriod("annual")}
-                        className={`py-3 px-6 rounded-lg font-semibold border ${
+                        className={`button_text rounded-lg border ${
                             billingPeriod === "annual"
                                 ? "bg-black text-white border-black"
                                 : "bg-white text-black border-gray-300"
@@ -181,7 +181,7 @@ const PricingArea = () => {
                             {/* FIX: Modal ONLY opens here */}
                             <button
                                 onClick={handleGetStarted}
-                                className="w-full bg-black text-white py-2.5 sm:py-3 rounded-lg font-medium 
+                                className="w-full bg-black text-white rounded-lg button_text
                                            hover:bg-[#fdd204] hover:text-black transition duration-200 mb-6"
                             >
                                 Get started

@@ -175,10 +175,10 @@ export default function FAQ() {
                         <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#fdd204]" />
                         <span className="text-gray-400">FAQ</span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 tracking-tight">
+                    <h2 className="title_text">
                         Got any <span className="underline decoration-[#fdd204] underline-offset-4">Questions?</span>
                     </h2>
-                    <p className="text-gray-500 mt-3 sm:mt-4 max-w-3xl mx-auto text-base md:text-lg lg:text-xl xl:text-2xl px-2">
+                    <p className="paragraph_text text-gray-500 mt-3 sm:mt-4 max-w-3xl mx-auto  px-2">
                         Find answers to common questions about our AI Agent platform. Can't find what you're looking for? Contact our support team.
                     </p>
                 </div>
@@ -187,7 +187,7 @@ export default function FAQ() {
                 <div className="lg:hidden mb-6">
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="w-full flex items-center justify-between gap-2 bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 hover:border-[#fdd204] transition-all"
+                        className="w-full flex items-center justify-between gap-2 bg-white border border-gray-200 rounded-xl px-4 py-3 font-semibold text-base md:text-lg text-gray-700 hover:border-[#fdd204] transition-all"
                     >
                         <div className="flex items-center gap-2">
                             {faqData.find(t => t.category === activeTab)?.icon}

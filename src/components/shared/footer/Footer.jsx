@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#fdd204]/10 text-gray-900 relative overflow-hidden">
+    <footer className="w-full bg-white text-gray-900 relative overflow-hidden">
 
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
@@ -23,12 +23,12 @@ const Footer = () => {
               <Image
                 src="/images/logo/logo.png"
                 alt="Hivyr"
-                width={720}
-                height={720}
+                width={750}
+                height={750}
                 className="mb-6 w-[150px] h-auto"
               />
             </div>
-            <p className="text-gray-800 text-base leading-relaxed max-w-md">
+            <p className="text-gray-500 paragraph_text max-w-md">
               Building next-generation digital experiences with AI-first thinking.
               Hivyr blends design, technology, and strategy to create impactful products.
             </p>
@@ -38,27 +38,27 @@ const Footer = () => {
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8">
             {/* Explore */}
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold uppercase tracking-wider  mb-4">
                 Explore
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/products" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/products" className="footer-link paragraph_text  transition-all">
                     Products
                   </Link>
                 </li>
                 <li>
-                  <Link href="/agents" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/agents" className="footer-link paragraph_text transition-all">
                     Agents
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/services" className="footer-link paragraph_text transition-all">
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/pricing" className="footer-link paragraph_text transition-all">
                     Pricing
                   </Link>
                 </li>
@@ -67,27 +67,27 @@ const Footer = () => {
 
             {/* Company */}
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider  mb-4">
                 Company
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/about" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/about" className="footer-link paragraph_text transition-all">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/careers" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/careers" className="footer-link paragraph_text transition-all">
                     Careers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/blog" className="footer-link paragraph_text transition-all">
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/contact" className="footer-link paragraph_text transition-all">
                     Contact
                   </Link>
                 </li>
@@ -96,27 +96,27 @@ const Footer = () => {
 
             {/* Resources */}
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider  mb-4">
                 Resources
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/docs" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/docs" className="footer-link paragraph_text transition-all">
                     Documentation
                   </Link>
                 </li>
                 <li>
-                  <Link href="/support" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/support" className="footer-link paragraph_text transition-all">
                     Support
                   </Link>
                 </li>
                 <li>
-                  <Link href="/status" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/status" className="footer-link paragraph_text transition-all">
                     Status
                   </Link>
                 </li>
                 <li>
-                  <Link href="/api" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/api" className="footer-link paragraph_text transition-all">
                     API Reference
                   </Link>
                 </li>
@@ -125,22 +125,22 @@ const Footer = () => {
 
             {/* Legal */}
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-900/70 mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider  mb-4">
                 Legal
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/privacy" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/privacy" className="footer-link paragraph_text transition-all">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/terms" className="footer-link paragraph_text transition-all">
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link href="/cookies" className="footer-link text-gray-800 hover:text-gray-900 transition-all">
+                  <Link href="/cookies" className="footer-link paragraph_text transition-all">
                     Cookie Policy
                   </Link>
                 </li>
@@ -150,11 +150,11 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="border-t border-b border-gray-900/20 py-8 mb-8">
+        <div className="border-t border-b border-black/20 py-8 mb-8">
           <div className="flex flex-col md:flex-row gap-8 justify-between md:items-center">
             <div>
-              <h3 className="text-xl font-semibold mb-2">Stay in the loop</h3>
-              <p className="text-gray-800 text-sm">
+              <h3 className="text-[16px] md:text-[18px] font-bold mb-2">Stay in the loop</h3>
+              <p className="text-gray-500 text-sm">
                 Get the latest updates, insights, and product news delivered to your inbox.
               </p>
             </div>
@@ -162,9 +162,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-gray-900/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
+                className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
               />
-              <button className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all font-medium text-sm whitespace-nowrap">
+              <button className="button_text bg-black text-white rounded-lg transition-all ">
                 Subscribe
               </button>
             </div>
@@ -174,20 +174,20 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
           <div className="flex gap-6">
-            <span className="text-gray-800/70">© 2026 Hivyr. All rights reserved.</span>
+            <span className="text-gray-500">© 2026 Hivyr. All rights reserved.</span>
           </div>
 
           <div className="flex gap-6">
-            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+            <a href="#" className="social-link paragraph_text transition-all">
               Twitter
             </a>
-            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+            <a href="#" className="social-link paragraph_text transition-all">
               LinkedIn
             </a>
-            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+            <a href="#" className="social-link paragraph_text transition-all">
               GitHub
             </a>
-            <a href="#" className="social-link text-gray-800 hover:text-gray-900 transition-all">
+            <a href="#" className="social-link paragraph_text transition-all">
               Behance
             </a>
           </div>

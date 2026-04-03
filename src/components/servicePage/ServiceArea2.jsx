@@ -67,24 +67,24 @@ const ServiceItem = ({ service, index, isActive, onHoverStart, onHoverEnd }) => 
                 <div ref={lineRef} className="h-full bg-[#fdd204]" style={{ width: '0%' }} />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8 items-center">
                 {/* Index */}
                 <div className="md:col-span-1">
-                    <span ref={indexRef} className="text-xs md:text-sm font-mono tracking-wider" style={{ color: '#9ca3af' }}>
+                    <span ref={indexRef} className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-boldr text-gray-500" >
                         {String(index).padStart(2, '0')}
                     </span>
                 </div>
 
                 {/* Title */}
                 <div className="md:col-span-5">
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight" style={{ color: '#000000' }}>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-black" >
                         {service.title}
                     </h3>
                 </div>
 
                 {/* Description */}
                 <div className="md:col-span-6">
-                    <p ref={descRef} className="text-sm md:text-base lg:text-lg leading-relaxed" style={{ color: '#6b7280' }}>
+                    <p ref={descRef} className="paragraph_text text-gray-500" >
                         {service.description}
                     </p>
                 </div>
@@ -145,13 +145,13 @@ const ServiceArea2 = () => {
                 {/* Header */}
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 md:mb-20 lg:mb-28 gap-6 md:gap-8">
                     <div className="flex-1">
-                        <h2 className="header-title text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] md:leading-[1.05]">
+                        <h2 className="title_text">
                             Intelligent<br />
                             <span>Solutions.</span>
                         </h2>
                     </div>
                     <div className="max-w-md lg:text-right w-full lg:w-auto">
-                        <p className="header-subtitle text-gray-600 text-base md:text-lg font-light leading-relaxed  lg:pl-0 lg:pr-6">
+                        <p className="header-subtitle text-gray-600 paragraph_text  lg:pl-0 lg:pr-6">
                             Next-generation AI agents designed to elevate your brand, automate workflows, and deliver unparalleled digital experiences.
                         </p>
                     </div>

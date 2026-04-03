@@ -73,7 +73,7 @@ export default function Login() {
                                 placeholder="What should we call you?"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2 sm:px-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm sm:text-base"
+                                className="w-full border rounded-lg px-3 py-2 sm:px-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#fdd204] text-sm sm:text-base"
                             />
                         </div>
 
@@ -87,7 +87,7 @@ export default function Login() {
                                 placeholder="you@domain.com"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2 sm:px-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm sm:text-base"
+                                className="w-full border rounded-lg px-3 py-2 sm:px-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#fdd204] text-sm sm:text-base"
                             />
                         </div>
 
@@ -101,7 +101,7 @@ export default function Login() {
                                 placeholder="********"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2 sm:px-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm sm:text-base"
+                                className="w-full border rounded-lg px-3 py-2 sm:px-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#fdd204] text-sm sm:text-base"
                             />
                             <p className="text-[10px] sm:text-xs text-gray-500 mt-1">
                                 Must be at least 8 characters
@@ -110,15 +110,15 @@ export default function Login() {
 
                         <button
                             type="submit"
-                            className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base"
+                            className="w-full bg-[#fdd204] hover:bg-black hover:text-white button_text rounded-lg "
                         >
                             Create account
                         </button>
                     </form>
 
-                    <p className="text-xs sm:text-sm text-center text-gray-600 mt-4 sm:mt-6">
+                    <p className="text-xs sm:text-sm text-center text-gray-500 mt-4 sm:mt-6">
                         Already a member?{" "}
-                        <a href="#" className="text-yellow-600 hover:underline">
+                        <a href="#" className="text-[#fdd204] hover:underline">
                             Log in
                         </a>
                     </p>

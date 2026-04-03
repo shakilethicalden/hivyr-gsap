@@ -53,10 +53,10 @@ const CTA = () => {
   }, []);
 
   return (
-    <section className="relative w-full bg-black py-20 lg:py-24 px-6 flex flex-col justify-center items-center">
+    <section className="relative w-full bg-black py-20 lg:py-24 px-4 sm:px-6 flex flex-col justify-center items-center">
       <h2
         ref={h2Ref}
-        className="text-3xl md:text-5xl font-bold max-w-5xl mx-auto text-center leading-snug select-none transition-all duration-300"
+        className="title_text max-w-6xl mx-auto text-center leading-snug select-none transition-all duration-300"
         style={{
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
@@ -66,7 +66,7 @@ const CTA = () => {
         Automate. Optimize. Scale — with next-gen AI Agents built for your business.
       </h2>
       
-        <a href="/contact" className="mt-8 bg-[#fdd204] text-black px-6 py-3 rounded-full hover:bg-[#fdd204] transition-all duration-300 cursor-pointer">
+        <a href="/contact" className="button_text text-black  rounded-full bg-white hover:bg-[#fdd204] transition-all duration-300 cursor-pointer">
           Get started
         </a>
     </section>

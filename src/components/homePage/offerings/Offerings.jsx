@@ -156,13 +156,10 @@ const Offerings = () => {
 
                         {/* Text */}
                         <div className="lg:w-1/2 flex flex-col justify-center items-center lg:items-start">
-                            <p className="text-[#fdd204] font-semibold uppercase tracking-widest text-lg mb-3">
-                                AI Agents
-                            </p>
-                            <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-gray-900 mb-6">
+                            <h2 className="title_text">
                                 Meet the Intelligent Agents Powering Your Business
                             </h2>
-                            <p className="text-lg lg:text-2xl font-medium text-gray-600 leading-relaxed">
+                            <p className="paragraph_text text-gray-500">
                                 Discover how each specialized AI agent helps automate communication, streamline workflows, and enhance customer experiences across every platform.
                             </p>
                         </div>
@@ -194,7 +191,7 @@ const Offerings = () => {
 
                                 <div className="flex flex-col flex-grow">
                                     <h3 className="text-2xl font-bold text-gray-900 mb-3">{card.title}</h3>
-                                    <p className="text-gray-600 text-lg font-medium leading-relaxed">
+                                    <p className="paragraph_text text-gray-500">
                                         {card.description}
                                     </p>
                                 </div>

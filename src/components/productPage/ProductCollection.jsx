@@ -80,7 +80,7 @@ export default function ProductCollection() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-[48px] font-semibold tracking-tight text-black">
+          <h2 className="title_text text-black">
             Our Product Collections
           </h2>
 
@@ -135,7 +135,7 @@ export default function ProductCollection() {
                 <h3 className="text-2xl font-semibold tracking-tight text-black mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-gray-500">
+                <p className="paragraph_text text-gray-500">
                   {item.description}
                 </p>
               </div>

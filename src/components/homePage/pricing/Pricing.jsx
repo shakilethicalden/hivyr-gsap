@@ -94,7 +94,7 @@ const Pricing = () => {
               <DollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#fdd204]" />
               <span className="text-gray-400">Pricing</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+            <h2 className="title_text">
               Start Today, <br className="hidden sm:block" /> Cancel Anytime
             </h2>
           </div>
@@ -103,21 +103,21 @@ const Pricing = () => {
           <div className="flex bg-gray-50 p-1 rounded-2xl border border-gray-100 w-full sm:w-auto">
             <button
               onClick={() => setBillingCycle("monthly")}
-              className={`flex items-center justify-center gap-1 sm:gap-2 flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all text-sm sm:text-base ${billingCycle === "monthly"
+              className={`flex items-center justify-center gap-1 sm:gap-2 flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all font-semibold text-base md:text-lg ${billingCycle === "monthly"
                 ? "bg-[#fdd204] text-black shadow-md"
                 : "text-gray-500 hover:text-gray-700"
                 }`}
             >
-              <FiCalendar className="text-sm sm:text-base" /> Monthly
+              <FiCalendar className="font-semibold text-base md:text-lg" /> Monthly
             </button>
             <button
               onClick={() => setBillingCycle("yearly")}
-              className={`flex items-center justify-center gap-1 sm:gap-2 flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all text-sm sm:text-base ${billingCycle === "yearly"
+              className={`flex items-center justify-center gap-1 sm:gap-2 flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all font-semibold text-base md:text-lg ${billingCycle === "yearly"
                 ? "bg-[#fdd204] text-black shadow-md"
                 : "text-gray-500 hover:text-gray-700"
                 }`}
             >
-              <FiClock className="text-sm sm:text-base" /> Yearly
+              <FiClock className="font-semibold text-base md:text-lg" /> Yearly
             </button>
           </div>
         </div>
@@ -175,7 +175,7 @@ const Pricing = () => {
 
                 <Link
                   href={plan.buttonLink}
-                  className="font-bold py-3 sm:py-4 rounded-full text-center transition mb-4 bg-black text-white hover:bg-zinc-800 text-sm sm:text-base"
+                  className="button_text rounded-full text-center transition mb-4 bg-black text-white hover:bg-white hover:text-black "
                 >
                   {plan.buttonText}
                 </Link>

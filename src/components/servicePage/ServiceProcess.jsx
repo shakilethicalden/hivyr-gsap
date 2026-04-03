@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import LogoSlider from "../slider/LogoSlider";
+import Image from "next/image";
 
 const processSteps = [
   {
@@ -34,14 +35,20 @@ const ServiceProcess = () => {
     <section className="bg-[#fdd204]/10 text-black selection:bg-black selection:text-[#fdd204]">
       {/* Header Section */}
       <div className="pt-20 pb-32 px-4 sm:px-6 lg:px-12 xl:px-20 flex justify-between items-start">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-[1.1] sm:leading-[1] tracking-tighter max-w-4xl text-black">
+        <h1 className="title_text max-w-4xl text-black">
           Our AI Agent <br /> Implementation Process
         </h1>
-        {/* Placeholder for the Logo/Icon on the right */}
+
+        {/* Logo on the right */}
         <div className="hidden md:block w-24 h-24 lg:w-32 lg:h-32 relative">
-          <div className="border-2 border-black rounded-full w-full h-full flex items-center justify-center italic text-xs text-black font-semibold">
-            AI AGENT
-          </div>
+          <Image
+            src="/images/logo/logo.png" 
+            alt="Hivyr AI Logo"
+            height={750}
+            width={750}
+            className="object-contain"
+            priority
+          />
         </div>
       </div>
 
@@ -73,7 +80,7 @@ const ServiceProcess = () => {
                   {step.title}
                 </h3>
               </div>
-              <p className="text-black/80 text-base sm:text-lg leading-relaxed font-medium flex-grow">
+              <p className="paragraph_text text-gray-500 flex-grow">
                 {step.description}
               </p>
             </div>

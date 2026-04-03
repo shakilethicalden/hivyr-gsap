@@ -153,7 +153,7 @@ export default function Testimonials() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-10 lg:mb-16">
           <div className="text-center">
 
-            <h2 className="section-title text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h2 className="section-title title_text tracking-tight">
               {["Don't", "just", "take", "our", "word", "for", "it"].map((word, i) => (
                 <span key={i} className="inline-block mr-2">
                   <span className={word === "it" ? "text-[#fdd204]" : "text-black"}>
@@ -162,7 +162,7 @@ export default function Testimonials() {
                 </span>
               ))}
             </h2>
-            <p className="section-description text-black/50 text-lg max-w-2xl mx-auto mt-6 leading-relaxed">
+            <p className="section-description paragraph_text text-gray-500 max-w-2xl mx-auto ">
               See what our customers are saying about their experience with our AI Agent
             </p>
           </div>

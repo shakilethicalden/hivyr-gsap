@@ -46,7 +46,7 @@ export default function ServiceBanner() {
                 
                 {/* Paragraph - Full width on mobile, constrained on tablet/desktop */}
                 <div className="reveal max-w-full sm:max-w-[320px] md:max-w-[380px] pt-2 sm:pt-0 pb-2 sm:pb-4">
-                  <p className="font-light text-[14px] sm:text-[16px] md:text-[18px] leading-[1.4] sm:leading-[1.4] opacity-80">
+                  <p className="paragraph_text opacity-80">
                     Deploy custom AI agents tailored to your business needs. From intelligent automation to predictive analytics, our agents work autonomously while seamlessly integrating with your existing systems. Scale your operations with AI that delivers measurable results.
                   </p>
                 </div>

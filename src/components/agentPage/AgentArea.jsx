@@ -259,12 +259,12 @@ export default function AgentArea() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-0">
         {/* Header */}
         <div className="flex flex-col lg:flex-row items-center justify-between mb-12 lg:mb-16 gap-6">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-center lg:text-left">
+          <h2 className="title_text text-center lg:text-left">
             <span className="text-[#fdd204]">Explore</span>{" "}
             <span className="text-black">AI Agents</span>
           </h2>
 
-          <p className="text-gray-600 max-w-lg text-lg text-center lg:text-right">
+          <p className="paragraph_text text-gray-500 max-w-lg  text-center lg:text-right">
             Whether you're building your first AI workflow or scaling intelligent
             systems for enterprise, our AI agents keep your business connected.
           </p>
@@ -315,14 +315,14 @@ export default function AgentArea() {
               <div className="flex gap-4 w-full sm:w-auto">
                 <a
                   href={agentCards[activeIndex].link}
-                  className="bg-white text-black px-5 py-3 rounded-lg font-semibold flex items-center gap-2 hover:bg-black hover:text-white transition flex-1 sm:flex-initial justify-center"
+                  className="button_text bg-white text-black  rounded-lg  flex items-center gap-2 hover:bg-black hover:text-white transition flex-1 sm:flex-initial justify-center"
                 >
                   View Details <ArrowRight size={18} />
                 </a>
 
                 <button
                   onClick={() => setSelectedAgentIndex(activeIndex)}
-                  className="bg-[#fdd204] text-black px-5 py-3 rounded-lg font-semibold hover:bg-black hover:text-white transition flex-1 sm:flex-initial"
+                  className="button_text bg-[#fdd204] text-black  rounded-lg  hover:bg-black hover:text-white transition flex-1 sm:flex-initial"
                 >
                   Try Demo
                 </button>

@@ -47,9 +47,9 @@ export default function ProductQuote() {
 
 
       {/* Quote Text */}
-      <div className="absolute inset-0 flex items-center justify-center px-6 sm:px-10">
+      <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6">
         <h1
-          className="text-white text-center prod_common_title max-w-5xl leading-tight"
+          className="text-white text-center title_text max-w-6xl leading-tight"
         >
           "Unlock the power of intelligence at your fingertips — where innovation
           meets insight, and your ideas become reality with every interaction."

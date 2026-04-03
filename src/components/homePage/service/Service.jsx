@@ -181,16 +181,16 @@ const Service = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header Section - Already Responsive */}
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.2] sm:leading-[1.2] md:leading-[1.1] mb-4 sm:mb-6 px-2 max-w-3xl mx-auto">
+          <h2 className="title_text max-w-3xl mx-auto">
             Meet the <span className="bg-gradient-to-r from-[#f7b518] to-[#fdd204] bg-clip-text text-transparent">Intelligent Agents</span> by Hivyr
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl xl:max-w-3xl mx-auto px-2">
+          <p className="paragraph_text text-gray-500 max-w-2xl xl:max-w-3xl mx-auto px-2">
             Powerful AI agents that transform how you communicate, automate workflows, and engage customers across every channel.
           </p>
         </div>
 
         {/* Dashboard UI - Fully Responsive */}
-        <div className="bg-gray-50 rounded-2xl sm:rounded-3xl border border-gray-200 overflow-hidden flex flex-col lg:flex-row min-h-[550px] sm:min-h-[600px] md:min-h-[650px] shadow-xl">
+        <div className="bg-gray-50 rounded-2xl sm:rounded-3xl border border-gray-200 overflow-hidden flex flex-col lg:flex-row min-h-[550px] sm:min-h-[600px] md:min-h-[650px] ">
           
           {/* Sidebar - Responsive Scroll */}
           <div className="w-full lg:w-72 xl:w-80 bg-white border-b lg:border-b-0 lg:border-r border-gray-200 p-2 sm:p-4 max-h-[300px] sm:max-h-[400px] lg:max-h-none overflow-y-auto">
@@ -199,7 +199,7 @@ const Service = () => {
                 <button
                   key={service.name}
                   onClick={() => setActiveTab(service.name)}
-                  className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-200 text-xs sm:text-sm font-medium w-full text-left ${
+                  className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-200 text-sm md:text-lg font-medium w-full text-left ${
                     activeTab === service.name
                       ? 'bg-gradient-to-r from-[#f7b518]/10 to-[#fdd204]/10 text-gray-900 shadow-sm border-[#f7b518]'
                       : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
@@ -361,10 +361,10 @@ const Service = () => {
 
                     {/* Action Buttons - Responsive */}
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                      <button className="bg-gradient-to-r from-[#f7b518] to-[#fdd204] text-gray-900 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold hover:shadow-lg transition-all text-sm sm:text-base">
+                      <button className="button_text bg-gradient-to-r from-[#f7b518] to-[#fdd204]  rounded-xl transition-all">
                         Try {activeCard.title}
                       </button>
-                      <button className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border-2 border-gray-300 text-gray-700 font-semibold hover:border-[#f7b518] hover:text-[#f7b518] transition-all text-sm sm:text-base">
+                      <button className="button_text rounded-xl border-2 border-gray-300  hover:border-[#f7b518] hover:text-[#f7b518] transition-all ">
                         Learn More
                       </button>
                     </div>

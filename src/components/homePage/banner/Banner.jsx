@@ -57,7 +57,7 @@ export default function Banner() {
           loop
           playsInline
         >
-          <source src="/video/banner.mp4" type="video/mp4" />
+          <source src="/video/banner/hivyr-video.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40 rounded-none sm:rounded-2xl"></div>
@@ -73,12 +73,12 @@ export default function Banner() {
         <div className="max-w-5xl">
           <h1
             ref={headingRef}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.2] sm:leading-[1.1] uppercase tracking-tight mb-4 sm:mb-6 break-words whitespace-normal"
+            className="title_text text-white  break-words whitespace-normal"
           >
             {/* Scrambled text injects here */}
           </h1>
 
-          <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 max-w-2xl xl:max-w-3xl leading-relaxed mb-6 sm:mb-10">
+          <p className="paragraph_text max-w-2xl xl:max-w-3xl  mb-6 sm:mb-10">
             Meet your autonomous AI agent — designed to automate tasks, analyze data, 
             and execute complex workflows. Available 24/7, always learning, and ready 
             to amplify your team's capabilities.
@@ -86,10 +86,10 @@ export default function Banner() {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 sm:mt-8 mb-10">
-            <button className="bg-[#fdd204] hover:bg-[#f7b518] text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold uppercase tracking-widest transition-colors border border-transparent">
+            <button className="button_text bg-white hover:bg-black text-black hover:text-white  rounded-full  border border-transparent cursor-pointer">
               Meet Our Agent
             </button>
-            <button className="bg-white hover:bg-gray-100 text-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold uppercase tracking-widest transition-colors">
+            <button className="button_text bg-[#fdd204] hover:bg-black text-black hover:text-white  rounded-full  transition-colors cursor-pointer">
               Start Free Trial
             </button>
           </div>

@@ -293,11 +293,11 @@ const WhyHivyr = () => {
                                 Why Hivyr
                             </p>
                         </div>
-                        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-black mb-5">
+                        <h2 className="title_text text-black">
                             Built for speed.{" "}
                             <span className="text-black/60">Designed for scale.</span>
                         </h2>
-                        <p className="text-base lg:text-lg text-black/70 leading-relaxed">
+                        <p className="paragraph_text text-black/70 leading-relaxed">
                             At Hivyr, we harness the power of AI to streamline complex processes
                             and automate repetitive tasks — freeing you to focus on what truly matters.
                         </p>
@@ -315,7 +315,7 @@ const WhyHivyr = () => {
                                 <p className="stat-number text-6xl lg:text-8xl font-black text-gray-900 leading-none mb-3">
                                     0{stat.suffix}
                                 </p>
-                                <p className="text-base lg:text-lg text-gray-500 font-medium">
+                                <p className="paragraph_text text-gray-500 font-medium">
                                     {stat.label}
                                 </p>
                                 {/* Yellow accent bar */}
