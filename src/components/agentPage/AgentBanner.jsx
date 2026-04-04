@@ -33,14 +33,14 @@ export default function AgentBanner() {
             {/* Title and Para Wrapper */}
             <div className="flex flex-col text-white">
               {/* First two lines of Title - Responsive sizing */}
-              <h1 className="reveal italic text-[15vw] sm:text-[13vw] md:text-[11vw] 2xl:text-[9vw] leading-[1.1] xl:leading-[0.9] tracking-tighter text-left">
+              <h1 className="reveal italic text-[15vw]  md:text-[6vw] lg:text-[8vw]  2xl:text-[9vw] leading-[1.1] xl:leading-[0.9] tracking-tighter text-left">
                 Intelligent<br />
                 <span className="xl:-ml-32 2xl:-ml-40 inline-block">Agents</span>
               </h1>
 
               {/* Bottom line with Para next to it - Stack on mobile, row on tablet/desktop */}
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-4 sm:gap-6 md:gap-12">
-                <h1 className="reveal italic text-[15vw] sm:text-[13vw] md:text-[11vw] 2xl:text-[9vw] leading-[1.1] xl:leading-[0.9] tracking-tighter">
+                <h1 className="reveal italic text-[15vw]  md:text-[6vw] lg:text-[8vw]  2xl:text-[9vw] leading-[1.1] xl:leading-[0.9] tracking-tighter">
                   Redefined
                 </h1>
 
