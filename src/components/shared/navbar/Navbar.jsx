@@ -21,7 +21,7 @@ export default function Navbar() {
         { name: "Agents", path: "/agents" },
         { name: "Services", path: "/services" },
         { name: "About", path: "/about" },
-        { name: "Pricing", path: "/pricing" }
+        // { name: "Pricing", path: "/pricing" }
     ];
 
     // Check if a path is active
@@ -190,9 +190,9 @@ export default function Navbar() {
                 </Link>
             </div>
 
-            {/* Desktop Links */}
-            <div className="hidden lg:flex flex-1 bg-black text-white items-center justify-between lg:px-6 xl:px-12 py-5 lg:ml-2 xl:ml-5 2xl:ml-8">
-                <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide">
+            {/* Desktop Links - Glassmorphism effect */}
+            <div className="hidden lg:flex flex-1 bg-white/5 backdrop-blur-md text-white items-center justify-between lg:px-6 xl:px-12 lg:ml-2 xl:ml-5 2xl:ml-8 rounded-xl border border-white/20 shadow-lg">
+                <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide py-5">
                     {navItems.map((item, index) => (
                         <li key={index} className="relative">
                             <Link
@@ -217,31 +217,34 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                <Link
-                    href="/login"
-                    ref={(el) => {
-                        if (el) linkRefs.current[5] = el;
-                    }}
-                    data-path="/login"
-                    className={`relative inline-block pb-1 lg:text-sm xl:text-lg cursor-pointer transition-colors duration-300 ${
-                        isActive('/login') ? 'text-yellow-400' : 'hover:text-gray-300'
-                    }`}
-                >
-                    Log In
-                    <span
+                <div className="flex items-center space-x-8">
+                    {/* <Link
+                        href="/login"
                         ref={(el) => {
-                            if (el) underlineRefs.current[5] = el;
+                            if (el) linkRefs.current[5] = el;
                         }}
-                        className="absolute left-0 bottom-0 h-[1px] w-full bg-white"
-                    ></span>
-                </Link>
-            </div>
+                        data-path="/login"
+                        className={`relative inline-block pb-1 lg:text-sm xl:text-lg cursor-pointer transition-colors duration-300 ${
+                            isActive('/login') ? 'text-yellow-400' : 'hover:text-gray-300'
+                        }`}
+                    >
+                        Log In
+                        <span
+                            ref={(el) => {
+                                if (el) underlineRefs.current[5] = el;
+                            }}
+                            className="absolute left-0 bottom-0 h-[1px] w-full bg-white"
+                        ></span>
+                    </Link> */}
 
-            {/* Contact button for desktop */}
-            <div className="hidden lg:block bg-white text-gray-800 px-8 lg:py-5 xl:py-6 cursor-pointer hover:bg-black hover:text-white transition-all duration-300">
-                <Link href="/contact" className="relative inline-block text-sm font-medium">
-                    Contact
-                </Link>
+                    {/* Contact button - black bg, same height as navbar */}
+                    <Link
+                        href="/contact"
+                        className="bg-black text-white px-8 py-5 cursor-pointer hover:bg-white hover:text-black transition-all duration-300 rounded-lg inline-block text-sm font-medium -my-5"
+                    >
+                        Contact
+                    </Link>
+                </div>
             </div>
 
             {/* Mobile Menu Button - ensure it stays above the mobile menu */}
@@ -291,7 +294,7 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex mb-8">
-                        <Link
+                        {/* <Link
                             href="/login"
                             onClick={handleLinkClick}
                             className={`w-1/2 bg-[#fdd204] py-4 text-black text-lg text-center menu-item ${
@@ -299,7 +302,7 @@ export default function Navbar() {
                             }`}
                         >
                             Log In
-                        </Link>
+                        </Link> */}
                         <Link
                             href="/contact"
                             onClick={handleLinkClick}

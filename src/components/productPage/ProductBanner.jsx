@@ -16,7 +16,7 @@ export default function ProductBanner() {
         <div className="absolute inset-0 m-0 sm:m-2 md:m-4 rounded-none sm:rounded-2xl overflow-hidden">
           <div
             className="relative w-full h-full bg-cover bg-center bg-no-repeat rounded-none sm:rounded-2xl"
-            style={{ backgroundImage: "url('/images/product/product-hero.png')" }}
+            style={{ backgroundImage: "url('/images/product/product-hero.jpeg')" }}
           >
             {/* Black overlay */}
             <div className="absolute inset-0 bg-black/30"></div>

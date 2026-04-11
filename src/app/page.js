@@ -16,8 +16,8 @@ export default function Home() {
       <Banner />
       <Service />
       <WhyHivyr />
-      <Offerings />
-      <Pricing />
+      {/* <Offerings /> */}
+      {/* <Pricing /> */}
       <FAQ />
       <CTA />
       <Footer />

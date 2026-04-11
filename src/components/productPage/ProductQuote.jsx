@@ -38,7 +38,7 @@ export default function ProductQuote() {
         ref={bgRef}
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center will-change-transform transition-transform duration-[2s] ease-out"
         style={{
-          backgroundImage: "url('/images/product/quote.jpg')",
+          backgroundImage: "url('/images/product/quote.jpeg')",
         }}
       ></div>
 

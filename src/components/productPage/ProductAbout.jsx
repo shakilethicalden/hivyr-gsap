@@ -18,7 +18,7 @@ export default function ProductAbout() {
             {/* Image */}
             <div className="w-[320px]">
               <img
-                src="/images/product/about.jpg"
+                src="/images/product/about.jpeg"
                 alt="AI Agent Interface"
                 className="rounded-2xl w-full h-auto object-cover"
               />
