@@ -57,7 +57,7 @@ export default function Banner() {
           loop
           playsInline
         >
-          <source src="/video/banner/hivyr-video.mp4" type="video/mp4" />
+          <source src="/video/banner/final-banner.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40 rounded-none sm:rounded-2xl"></div>
@@ -69,7 +69,7 @@ export default function Banner() {
       </div>
 
       {/* Bottom Left Content - Perfect alignment with navbar */}
-      <div className="relative z-10 w-full text-left text-white mb-6 sm:mb-10 px-4 sm:px-6 md:px-16 lg:px-24 2xl:px-40">
+      <div className="relative z-10 w-full text-left text-white mb-6 sm:mb-10 px-4 sm:px-6 lg:px-12 xl:px-20">
         <div className="max-w-5xl">
           <h1
             ref={headingRef}

@@ -233,7 +233,7 @@ export default function FAQ() {
                                     setActiveTab(tab.category);
                                     setOpenIndex(0);
                                 }}
-                                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-xl text-base font-medium transition-all duration-200 whitespace-nowrap ${
+                                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full text-base font-medium transition-all duration-200 whitespace-nowrap ${
                                     activeTab === tab.category
                                         ? "bg-[#fdd204] text-black shadow-md"
                                         : "text-gray-600 hover:bg-gray-50"

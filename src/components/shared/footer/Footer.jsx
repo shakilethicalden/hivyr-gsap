@@ -57,11 +57,11 @@ const Footer = () => {
                     Services
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/pricing" className="footer-link paragraph_text transition-all">
                     Pricing
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -162,9 +162,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
+                className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-black/20 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
               />
-              <button className="button_text bg-black text-white rounded-lg transition-all ">
+              <button className="button_text bg-black text-white rounded-full transition-all ">
                 Subscribe
               </button>
             </div>

@@ -272,7 +272,7 @@ const AgentRow = ({ agent, hoveredId, onHover, onTryDemo, isMobile }) => {
           <a
             href={agent.link}
             onClick={(e) => e.stopPropagation()}
-            className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium bg-black text-white rounded-md hover:bg-gray-800 transition-all duration-200 hover:scale-105"
+            className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-200 hover:scale-105"
           >
             Details
           </a>
@@ -281,7 +281,7 @@ const AgentRow = ({ agent, hoveredId, onHover, onTryDemo, isMobile }) => {
               e.stopPropagation();
               onTryDemo(agent);
             }}
-            className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium bg-[#fdd204] text-black rounded-md hover:bg-black hover:text-white transition-all duration-200 hover:scale-105"
+            className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium bg-[#fdd204] text-black rounded-full hover:bg-black hover:text-white transition-all duration-200 hover:scale-105"
           >
             Try Demo
           </button>

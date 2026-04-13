@@ -103,7 +103,7 @@ const ContactArea = () => {
 
             <button
               type="submit"
-              className="w-full lg:w-auto px-8 py-3 bg-black text-white rounded-md hover:bg-[#fdd204] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#fdd204]/20 focus:ring-offset-2 transition-all"
+              className="w-full lg:w-auto px-8 py-3 bg-black text-white rounded-full hover:bg-[#fdd204] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#fdd204]/20 focus:ring-offset-2 transition-all"
             >
               Send Message
             </button>

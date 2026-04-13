@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import LogoSlider from "../slider/LogoSlider";
-import Image from "next/image";
 
 const processSteps = [
   {
@@ -34,21 +33,18 @@ const ServiceProcess = () => {
   return (
     <section className="bg-[#fdd204]/10 text-black selection:bg-black selection:text-[#fdd204]">
       {/* Header Section */}
-      <div className="pt-20 pb-32 px-4 sm:px-6 lg:px-12 xl:px-20 flex justify-between items-start">
+      <div className="pt-20 pb-32 px-4 sm:px-6 lg:px-12 xl:px-20 flex justify-between items-start gap-8">
         <h1 className="title_text max-w-4xl text-black">
           Our AI Agent <br /> Implementation Process
         </h1>
 
-        {/* Logo on the right */}
-        <div className="hidden md:block w-24 h-24 lg:w-32 lg:h-32 relative">
-          <Image
-            src="/images/logo/logo.png" 
-            alt="Hivyr AI Logo"
-            height={750}
-            width={750}
-            className="object-contain"
-            priority
-          />
+        {/* Paratext paragraph instead of logo */}
+        <div className="hidden md:block max-w-sm ">
+          <p className="paragraph_text">
+            A strategic, four-phase methodology designed to seamlessly integrate
+            intelligent AI agents into your business operations, ensuring measurable
+            results and continuous optimization at every stage.
+          </p>
         </div>
       </div>
 

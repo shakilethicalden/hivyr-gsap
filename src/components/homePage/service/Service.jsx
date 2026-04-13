@@ -199,7 +199,7 @@ const Service = () => {
                 <button
                   key={service.name}
                   onClick={() => setActiveTab(service.name)}
-                  className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-200 text-sm md:text-lg font-medium w-full text-left ${
+                  className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-4 py-2 sm:py-3 rounded-full transition-all duration-200 text-sm md:text-lg font-medium w-full text-left ${
                     activeTab === service.name
                       ? 'bg-gradient-to-r from-[#f7b518]/10 to-[#fdd204]/10 text-gray-900 shadow-sm border-[#f7b518]'
                       : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
@@ -361,10 +361,10 @@ const Service = () => {
 
                     {/* Action Buttons - Responsive */}
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                      <button className="button_text bg-gradient-to-r from-[#f7b518] to-[#fdd204]  rounded-xl transition-all">
+                      <button className="button_text bg-gradient-to-r from-[#f7b518] to-[#fdd204]  rounded-full transition-all">
                         Try {activeCard.title}
                       </button>
-                      <button className="button_text rounded-xl border-2 border-gray-300  hover:border-[#f7b518] hover:text-[#f7b518] transition-all ">
+                      <button className="button_text rounded-full border-2 border-gray-300  hover:border-[#f7b518] hover:text-[#f7b518] transition-all ">
                         Learn More
                       </button>
                     </div>

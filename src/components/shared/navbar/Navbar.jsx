@@ -175,7 +175,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="w-full flex items-center justify-between px-4 sm:px-6 md:px-16 lg:px-8 2xl:px-20 py-4 relative z-50 bg-transparent">
+        <nav className="fixed top-5 left-0 w-full flex items-center justify-between px-4 sm:px-6 md:px-16 lg:px-8 2xl:px-20 py-4 z-50 bg-transparent">
             {/* Logo - ensure it stays above the mobile menu */}
             <div className="flex items-center w-32 z-[60] relative">
                 <Link href="/" onClick={handleLinkClick}>
@@ -191,8 +191,8 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Links - Glassmorphism effect */}
-            <div className="hidden lg:flex flex-1 bg-white/5 backdrop-blur-md text-white items-center justify-between lg:px-6 xl:px-12 lg:ml-2 xl:ml-5 2xl:ml-8 rounded-xl border border-white/20 shadow-lg">
-                <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide py-5">
+            <div className="hidden lg:flex flex-1 bg-white/5 backdrop-blur-md text-white items-center justify-between lg:px-2.5 lg:pl-6  lg:ml-2 xl:ml-5 2xl:ml-8 rounded-full border border-white/20 shadow-lg">
+                <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide ">
                     {navItems.map((item, index) => (
                         <li key={index} className="relative">
                             <Link
@@ -218,29 +218,10 @@ export default function Navbar() {
                 </ul>
 
                 <div className="flex items-center space-x-8">
-                    {/* <Link
-                        href="/login"
-                        ref={(el) => {
-                            if (el) linkRefs.current[5] = el;
-                        }}
-                        data-path="/login"
-                        className={`relative inline-block pb-1 lg:text-sm xl:text-lg cursor-pointer transition-colors duration-300 ${
-                            isActive('/login') ? 'text-yellow-400' : 'hover:text-gray-300'
-                        }`}
-                    >
-                        Log In
-                        <span
-                            ref={(el) => {
-                                if (el) underlineRefs.current[5] = el;
-                            }}
-                            className="absolute left-0 bottom-0 h-[1px] w-full bg-white"
-                        ></span>
-                    </Link> */}
-
-                    {/* Contact button - black bg, same height as navbar */}
+                    {/* Contact button */}
                     <Link
                         href="/contact"
-                        className="bg-black text-white px-8 py-5 cursor-pointer hover:bg-white hover:text-black transition-all duration-300 rounded-lg inline-block text-sm font-medium -my-5"
+                        className="bg-gradient-to-r from-[#fdd204] to-[#f7b518] text-black px-8 py-3 cursor-pointer hover:opacity-90 transition-all duration-300 rounded-full inline-block lg:text-sm xl:text-lg font-medium my-2.5 "
                     >
                         Contact
                     </Link>
@@ -306,7 +287,7 @@ export default function Navbar() {
                         <Link
                             href="/contact"
                             onClick={handleLinkClick}
-                            className={`w-1/2 bg-[#fff] py-4 text-black text-lg text-center menu-item ${
+                            className={`w-1/2 bg-gradient-to-r from-[#fdd204] to-[#f7b518] py-4 text-black text-lg text-center menu-item ${
                                 isActive('/contact') ? 'bg-gray-200' : ''
                             }`}
                         >
