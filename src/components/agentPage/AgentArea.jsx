@@ -1,8 +1,7 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { ArrowRight, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { X } from "lucide-react";
 
 const agentCards = [
   { 
@@ -80,16 +79,10 @@ export default function AIShowcase() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Responsive column calculation
+  // Responsive column calculation for desktop masonry layout
   const getColumns = () => {
-    if (isMobile) {
-      // Single column for mobile
-      return [agentCards];
-    } else if (isTablet) {
-      // Two columns for tablet
-      const col1 = agentCards.filter((_, i) => i % 2 === 0);
-      const col2 = agentCards.filter((_, i) => i % 2 === 1);
-      return [col1, col2];
+    if (isMobile || isTablet) {
+      return null; // Don't use masonry layout on mobile/tablet
     } else {
       // Three columns for desktop
       return [
@@ -101,6 +94,7 @@ export default function AIShowcase() {
   };
 
   const columns = getColumns();
+  const isMobileOrTablet = isMobile || isTablet;
 
   const handleTryDemo = (agent) => {
     setSelectedAgent(agent);
@@ -109,7 +103,7 @@ export default function AIShowcase() {
 
   return (
     <>
-      <section className="w-full bg-gradient-to-br from-gray-50 to-white overflow-hidden py-16 lg:py-24 xl:py-28 ">
+      <section className="w-full bg-gradient-to-br from-gray-50 to-white overflow-hidden py-16 lg:py-24 xl:py-28">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
           {/* Header Section */}
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
@@ -123,48 +117,60 @@ export default function AIShowcase() {
             </p>
           </div>
 
-          {/* Main Layout - Fully Responsive */}
-          <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8 lg:gap-12 select-none">
-            {/* Photo Grid - Masonry Layout */}
-            <div className="flex gap-3 sm:gap-4 md:gap-5 flex-shrink-0 w-full lg:w-auto justify-center lg:justify-start overflow-visible">
-              {columns.map((column, colIndex) => (
-                <div 
-                  key={colIndex}
-                  className="flex flex-col gap-3 sm:gap-4 md:gap-5"
-                  style={{
-                    marginTop: !isMobile && !isTablet && colIndex === 1 ? '60px' : 
-                              !isMobile && !isTablet && colIndex === 2 ? '30px' : 
-                              isTablet && colIndex === 1 ? '40px' : '0px'
-                  }}
-                >
-                  {column.map((agent, agentIndex) => (
-                    <PhotoCard
-                      key={agent.id}
-                      agent={agent}
-                      isMobile={isMobile}
-                      isTablet={isTablet}
-                      hoveredId={hoveredId}
-                      onHover={setHoveredId}
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            {/* Right: Agent List */}
-            <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 pt-0 lg:pt-2 flex-1 w-full overflow-visible">
+          {/* Mobile & Tablet Layout - Grid with images and text below */}
+          {isMobileOrTablet && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
               {agentCards.map((agent) => (
-                <AgentRow
+                <MobileAgentCard
                   key={agent.id}
                   agent={agent}
                   hoveredId={hoveredId}
                   onHover={setHoveredId}
                   onTryDemo={handleTryDemo}
-                  isMobile={isMobile}
                 />
               ))}
             </div>
-          </div>
+          )}
+
+          {/* Desktop Layout - Original Masonry + Agent List */}
+          {!isMobileOrTablet && columns && (
+            <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8 lg:gap-12 select-none">
+              {/* Photo Grid - Masonry Layout */}
+              <div className="flex gap-3 sm:gap-4 md:gap-5 flex-shrink-0 w-full lg:w-auto justify-center lg:justify-start overflow-visible">
+                {columns.map((column, colIndex) => (
+                  <div 
+                    key={colIndex}
+                    className="flex flex-col gap-3 sm:gap-4 md:gap-5"
+                    style={{
+                      marginTop: colIndex === 1 ? '60px' : colIndex === 2 ? '30px' : '0px'
+                    }}
+                  >
+                    {column.map((agent) => (
+                      <PhotoCard
+                        key={agent.id}
+                        agent={agent}
+                        hoveredId={hoveredId}
+                        onHover={setHoveredId}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              {/* Right: Agent List */}
+              <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 pt-0 lg:pt-2 flex-1 w-full overflow-visible">
+                {agentCards.map((agent) => (
+                  <AgentRow
+                    key={agent.id}
+                    agent={agent}
+                    hoveredId={hoveredId}
+                    onHover={setHoveredId}
+                    onTryDemo={handleTryDemo}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -173,31 +179,23 @@ export default function AIShowcase() {
         <DemoModal
           agent={selectedAgent}
           onClose={() => setIsModalOpen(false)}
-          isMobile={isMobile}
         />
       )}
     </>
   );
 }
 
-// Responsive Photo Card Component
-const PhotoCard = ({ agent, isMobile, isTablet, hoveredId, onHover }) => {
+// Desktop Photo Card Component
+const PhotoCard = ({ agent, hoveredId, onHover }) => {
   const isActive = hoveredId === agent.id;
   const isDimmed = hoveredId !== null && !isActive;
-
-  // Responsive sizing
-  const getCardSize = () => {
-    if (isMobile) return "w-[130px] h-[140px]";
-    if (isTablet) return "w-[150px] h-[160px]";
-    return "w-[180px] h-[190px]";
-  };
 
   return (
     <div
       className={`
         relative overflow-hidden rounded-xl sm:rounded-2xl cursor-pointer flex-shrink-0
         transition-all duration-300 shadow-lg hover:shadow-xl
-        ${getCardSize()}
+        w-[180px] h-[190px]
         ${isDimmed ? 'opacity-40 sm:opacity-50' : 'opacity-100'}
       `}
       onMouseEnter={() => onHover(agent.id)}
@@ -213,10 +211,8 @@ const PhotoCard = ({ agent, isMobile, isTablet, hoveredId, onHover }) => {
             transform: isActive ? 'scale(1.05)' : 'scale(1)',
           }}
         />
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
-        {/* Agent Name on Hover */}
         <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
           <p className="text-white text-[10px] sm:text-xs font-medium text-center bg-black/50 backdrop-blur-sm py-1 px-2 rounded">
             {agent.text.length > 20 ? agent.text.substring(0, 20) + '...' : agent.text}
@@ -227,8 +223,8 @@ const PhotoCard = ({ agent, isMobile, isTablet, hoveredId, onHover }) => {
   );
 };
 
-// Responsive Agent Row Component
-const AgentRow = ({ agent, hoveredId, onHover, onTryDemo, isMobile }) => {
+// Desktop Agent Row Component
+const AgentRow = ({ agent, hoveredId, onHover, onTryDemo }) => {
   const isActive = hoveredId === agent.id;
   const isDimmed = hoveredId !== null && !isActive;
 
@@ -237,12 +233,10 @@ const AgentRow = ({ agent, hoveredId, onHover, onTryDemo, isMobile }) => {
       className={`
         cursor-pointer transition-all duration-300 group
         ${isDimmed ? 'opacity-40 sm:opacity-50' : 'opacity-100'}
-        ${isMobile ? 'py-2' : ''}
       `}
       onMouseEnter={() => onHover(agent.id)}
       onMouseLeave={() => onHover(null)}
     >
-      {/* Agent Name and Status */}
       <div className="flex items-start sm:items-center gap-2 sm:gap-3 flex-wrap">
         <div
           className={`
@@ -259,14 +253,10 @@ const AgentRow = ({ agent, hoveredId, onHover, onTryDemo, isMobile }) => {
           {agent.text}
         </h3>
 
-        {/* Action Buttons */}
         <div
           className={`
             flex items-center gap-1.5 sm:gap-2 transition-all duration-300
-            ${isActive || isMobile
-              ? 'opacity-100 translate-x-0'
-              : 'opacity-0 -translate-x-4 pointer-events-none'
-            }
+            ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 pointer-events-none'}
           `}
         >
           <a
@@ -288,12 +278,10 @@ const AgentRow = ({ agent, hoveredId, onHover, onTryDemo, isMobile }) => {
         </div>
       </div>
 
-      {/* Agent Role/Subtitle */}
       <p className="mt-1 sm:mt-1.5 pl-6 sm:pl-8 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider text-gray-500">
         {agent.role}
       </p>
 
-      {/* Description */}
       <div
         className={`
           mt-1.5 sm:mt-2 pl-6 sm:pl-8 transition-all duration-300 overflow-hidden
@@ -308,8 +296,87 @@ const AgentRow = ({ agent, hoveredId, onHover, onTryDemo, isMobile }) => {
   );
 };
 
-// Responsive Demo Modal Component
-const DemoModal = ({ agent, onClose, isMobile }) => {
+// Mobile & Tablet Agent Card Component - Image with text below and always visible buttons
+const MobileAgentCard = ({ agent, hoveredId, onHover, onTryDemo }) => {
+  const isActive = hoveredId === agent.id;
+  const isDimmed = hoveredId !== null && !isActive;
+
+  return (
+    <div
+      className={`
+        group cursor-pointer transition-all duration-300
+        ${isDimmed ? 'opacity-50' : 'opacity-100'}
+      `}
+      onMouseEnter={() => onHover(agent.id)}
+      onMouseLeave={() => onHover(null)}
+    >
+      {/* Image Container - Full width */}
+      <div className="relative w-full aspect-square overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+        <img
+          src={agent.image}
+          alt={agent.text}
+          className="w-full h-full object-cover transition-all duration-500"
+          style={{
+            filter: isActive ? 'grayscale(0) brightness(1)' : 'grayscale(0.3) brightness(0.85)',
+            transform: isActive ? 'scale(1.05)' : 'scale(1)',
+          }}
+        />
+        
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      {/* Text Section - Below Image */}
+      <div className="mt-3 sm:mt-4">
+        <h3
+          className={`
+            text-base sm:text-lg font-bold leading-tight tracking-tight transition-colors duration-300 text-center sm:text-left
+            ${isActive ? 'text-black' : 'text-gray-800'}
+          `}
+        >
+          {agent.text}
+        </h3>
+        <p className="mt-1 text-xs sm:text-sm font-medium uppercase tracking-wider text-gray-500 text-center sm:text-left">
+          {agent.role}
+        </p>
+        
+        {/* Description - Shows on hover */}
+        <div
+          className={`
+            mt-2 transition-all duration-300 overflow-hidden text-center sm:text-left
+            ${isActive ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'}
+          `}
+        >
+          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            {agent.description}
+          </p>
+        </div>
+
+        {/* Buttons - Always visible on mobile/tablet */}
+        <div className="mt-3 sm:mt-4 flex gap-2">
+          <a
+            href={agent.link}
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 text-center px-3 py-2 text-xs sm:text-sm font-medium bg-black text-white rounded-lg hover:bg-gray-800 transition-all duration-200"
+          >
+            Details
+          </a>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onTryDemo(agent);
+            }}
+            className="flex-1 text-center px-3 py-2 text-xs sm:text-sm font-medium bg-[#fdd204] text-black rounded-lg hover:bg-black hover:text-white transition-all duration-200"
+          >
+            Try Demo
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Demo Modal Component
+const DemoModal = ({ agent, onClose }) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -317,7 +384,6 @@ const DemoModal = ({ agent, onClose, isMobile }) => {
     };
   }, []);
 
-  // Handle escape key
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose();
@@ -335,7 +401,6 @@ const DemoModal = ({ agent, onClose, isMobile }) => {
         className="relative bg-white rounded-xl sm:rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-1.5 sm:p-2 bg-black/10 hover:bg-black/20 rounded-full transition-colors"
@@ -343,10 +408,8 @@ const DemoModal = ({ agent, onClose, isMobile }) => {
           <X className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
         </button>
 
-        {/* Modal Content */}
         <div className="p-4 sm:p-6 md:p-8">
           <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
-            {/* Image */}
             <div className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-auto rounded-lg sm:rounded-xl overflow-hidden">
               <img
                 src={agent.image}
@@ -355,7 +418,6 @@ const DemoModal = ({ agent, onClose, isMobile }) => {
               />
             </div>
 
-            {/* Details */}
             <div className="flex-1">
               <div className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 bg-[#fdd204] text-black text-[10px] sm:text-xs font-semibold rounded-full mb-3 sm:mb-4">
                 AI Agent Demo
@@ -370,19 +432,19 @@ const DemoModal = ({ agent, onClose, isMobile }) => {
                 <h4 className="font-semibold text-black text-sm sm:text-base">Key Features:</h4>
                 <ul className="space-y-1.5 sm:space-y-2 text-gray-600 text-xs sm:text-sm">
                   <li className="flex items-center gap-2">
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full flex-shrink-0" />
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full" />
                     Real-time processing and response
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full flex-shrink-0" />
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full" />
                     Enterprise-grade security
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full flex-shrink-0" />
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full" />
                     24/7 intelligent automation
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full flex-shrink-0" />
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#fdd204] rounded-full" />
                     Seamless API integration
                   </li>
                 </ul>

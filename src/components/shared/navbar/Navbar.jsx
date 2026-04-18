@@ -176,7 +176,7 @@ export default function Navbar() {
 
     return (
         <nav className="fixed top-5 left-0 w-full flex items-center justify-between px-4 sm:px-6 md:px-16 lg:px-8 2xl:px-20 py-4 z-50 bg-transparent">
-            {/* Logo - ensure it stays above the mobile menu */}
+            {/* Logo - no glass effect on mobile */}
             <div className="flex items-center w-32 z-[60] relative">
                 <Link href="/" onClick={handleLinkClick}>
                     <Image
@@ -191,7 +191,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Links - Glassmorphism effect */}
-            <div className="hidden lg:flex flex-1 bg-white/5 backdrop-blur-md text-white items-center justify-between lg:px-2.5 lg:pl-6  lg:ml-2 xl:ml-5 2xl:ml-8 rounded-full border border-white/20 shadow-lg">
+            <div className="hidden lg:flex flex-1 bg-white/5 backdrop-blur-md text-white items-center justify-between lg:px-2.5 lg:pl-6 lg:ml-2 xl:ml-5 2xl:ml-8 rounded-full border border-white/20 shadow-lg">
                 <ul className="flex items-center space-x-12 lg:text-sm xl:text-lg tracking-wide ">
                     {navItems.map((item, index) => (
                         <li key={index} className="relative">
@@ -228,16 +228,16 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu Button - ensure it stays above the mobile menu */}
+            {/* Mobile Menu Button with glass effect only */}
             <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="lg:hidden flex flex-col justify-center items-center space-y-1.5 z-[60] relative w-8 h-8 bg-transparent"
+                className="lg:hidden flex flex-col justify-center items-center space-y-1.5 z-[60] relative w-10 h-10 bg-white/10 backdrop-blur-md rounded-full border border-white/20 transition-all duration-300 hover:bg-white/20"
             >
                 {[0, 1, 2].map((i) => (
                     <span
                         key={i}
                         ref={(el) => (iconRef.current[i] = el)}
-                        className="block h-[2px] w-6 bg-white rounded-full"
+                        className="block h-[2px] w-5 bg-white rounded-full"
                     ></span>
                 ))}
             </button>

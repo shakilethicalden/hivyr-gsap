@@ -309,7 +309,7 @@ const HivyrAIChatbot = () => {
     }, []);
 
     return (
-        <div className="fixed bottom-6 right-6 z-[9999] font-sans">
+        <div className="fixed -bottom-6 md:bottom-6 -right-6 md:right-6 z-[9999] ">
             {/* Floating Toggle Button with Custom Chatbot Image - Transparent Background */}
             <button
                 className="relative transition-all duration-200 hover:scale-105 cursor-pointer"
@@ -327,7 +327,7 @@ const HivyrAIChatbot = () => {
                     <img
                         src="/video/chatbot.gif"
                         alt="Hivyr AI Chatbot"
-                        className="w-[150px] h-[150px] object-cover"
+                        className="w-[100px] md:w-[150px] h-[100px] md:h-[150px] object-cover"
                     />
                 </div>
             </button>
@@ -420,7 +420,7 @@ const HivyrAIChatbot = () => {
                                         value={leadData.name}
                                         onChange={(e) => updateLeadForm("name", e.target.value)}
                                         onKeyPress={(e) => e.key === "Enter" && handleLeadFormNext()}
-                                        className="w-full p-2.5 mb-3 border border-gray-200 rounded-xl text-sm font-sans transition-all duration-200 focus:outline-none focus:border-[#fdd204]"
+                                        className="w-full p-2.5 mb-3 border border-gray-200 rounded-xl text-sm  transition-all duration-200 focus:outline-none focus:border-[#fdd204]"
                                     />
                                     <input
                                         type="email"
@@ -428,7 +428,7 @@ const HivyrAIChatbot = () => {
                                         value={leadData.email}
                                         onChange={(e) => updateLeadForm("email", e.target.value)}
                                         onKeyPress={(e) => e.key === "Enter" && handleLeadFormNext()}
-                                        className="w-full p-2.5 mb-3 border border-gray-200 rounded-xl text-sm font-sans transition-all duration-200 focus:outline-none focus:border-[#fdd204]"
+                                        className="w-full p-2.5 mb-3 border border-gray-200 rounded-xl text-sm  transition-all duration-200 focus:outline-none focus:border-[#fdd204]"
                                     />
                                     <input
                                         type="text"
@@ -436,7 +436,7 @@ const HivyrAIChatbot = () => {
                                         value={leadData.company}
                                         onChange={(e) => updateLeadForm("company", e.target.value)}
                                         onKeyPress={(e) => e.key === "Enter" && handleLeadFormNext()}
-                                        className="w-full p-2.5 mb-3 border border-gray-200 rounded-xl text-sm font-sans transition-all duration-200 focus:outline-none focus:border-[#fdd204]"
+                                        className="w-full p-2.5 mb-3 border border-gray-200 rounded-xl text-sm  transition-all duration-200 focus:outline-none focus:border-[#fdd204]"
                                     />
                                     <button
                                         onClick={handleLeadFormNext}
@@ -463,7 +463,7 @@ const HivyrAIChatbot = () => {
                             onChange={(e) => setInputValue(e.target.value)}
                             onKeyPress={handleKeyPress}
                             disabled={isBotTyping || showLeadForm}
-                            className="flex-1 border border-gray-200 rounded-full py-3 px-4 text-sm font-sans outline-none transition-all duration-200 focus:border-[#fdd204] disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="flex-1 border border-gray-200 rounded-full py-3 px-4 text-sm  outline-none transition-all duration-200 focus:border-[#fdd204] disabled:opacity-50 disabled:cursor-not-allowed"
                         />
                         <button
                             onClick={handleSendMessage}

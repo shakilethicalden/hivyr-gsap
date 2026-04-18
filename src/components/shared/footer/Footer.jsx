@@ -4,6 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Footer = () => {
+  const handleLinkClick = () => {
+    // Optional: Add any click handling logic here
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="w-full bg-white text-gray-900 relative overflow-hidden">
 
@@ -18,15 +23,18 @@ const Footer = () => {
 
           {/* Brand Section */}
           <div className="lg:col-span-5">
-            {/* Logo SVG - Replace the path with your actual logo path */}
-            <div className="mb-6">
-              <Image
-                src="/images/logo/logo.png"
-                alt="Hivyr"
-                width={750}
-                height={750}
-                className="mb-6 w-[150px] h-auto"
-              />
+            {/* Logo with exact styling from the example */}
+            <div className="flex items-center w-32 z-[60] relative mb-6">
+              <Link href="/" onClick={handleLinkClick}>
+                <Image
+                  src="/images/logo/logo-white.png"
+                  alt="Logo"
+                  width={800}
+                  height={800}
+                  className="object-contain cursor-pointer"
+                  priority
+                />
+              </Link>
             </div>
             <p className="text-gray-500 paragraph_text max-w-md">
               Building next-generation digital experiences with AI-first thinking.
@@ -38,12 +46,12 @@ const Footer = () => {
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8">
             {/* Explore */}
             <div>
-              <h4 className="text-[16px] md:text-[18px] font-bold uppercase tracking-wider  mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold uppercase tracking-wider mb-4">
                 Explore
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/products" className="footer-link paragraph_text  transition-all">
+                  <Link href="/products" className="footer-link paragraph_text transition-all">
                     Products
                   </Link>
                 </li>
@@ -57,17 +65,12 @@ const Footer = () => {
                     Services
                   </Link>
                 </li>
-                {/* <li>
-                  <Link href="/pricing" className="footer-link paragraph_text transition-all">
-                    Pricing
-                  </Link>
-                </li> */}
               </ul>
             </div>
 
             {/* Company */}
             <div>
-              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider  mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider mb-4">
                 Company
               </h4>
               <ul className="space-y-3">
@@ -96,7 +99,7 @@ const Footer = () => {
 
             {/* Resources */}
             <div>
-              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider  mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider mb-4">
                 Resources
               </h4>
               <ul className="space-y-3">
@@ -125,7 +128,7 @@ const Footer = () => {
 
             {/* Legal */}
             <div>
-              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider  mb-4">
+              <h4 className="text-[16px] md:text-[18px] font-bold tracking-wider mb-4">
                 Legal
               </h4>
               <ul className="space-y-3">
@@ -164,7 +167,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="w-full md:w-60 px-4 py-3 bg-white/50 backdrop-blur-sm border border-black/20 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-900/40 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-600"
               />
-              <button className="button_text bg-black text-white rounded-full transition-all ">
+              <button className="button_text bg-black text-white rounded-full transition-all">
                 Subscribe
               </button>
             </div>
